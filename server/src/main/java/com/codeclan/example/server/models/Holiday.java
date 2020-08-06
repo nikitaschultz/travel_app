@@ -60,4 +60,12 @@ public class Holiday {
     public void setPublished(boolean published) {
         isPublished = published;
     }
+
+    public void publish(){
+        this.isPublished = true;
+    }
+
+    public void addTraveller(Traveller traveller){
+        this.travellers.add(traveller);
+    }
 }
