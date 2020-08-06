@@ -13,19 +13,19 @@ public class Flight extends Plan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="departureAirport")
+    @Column(name="departure_airport")
     private String departureAirport;
 
-    @Column(name="arrivalAirport")
+    @Column(name="arrival_airport")
     private String arrivalAirport;
 
-    @Column(name="departureTime")
+    @Column(name="departure_time")
     private String departureTime;
 
-    @Column(name="arrivalTime")
+    @Column(name="arrival_time")
     private String arrivalTime;
 
-    @Column(name="flightNumber")
+    @Column(name="flight_number")
     private String flightNumber;
 
     public Flight(SimpleDateFormat date, String bookingConfirmation, String departureAirport, String arrivalAirport, String departureTime, String arrivalTime, String flightNumber) {

@@ -8,7 +8,7 @@ public abstract class Plan {
     @Column(name="date")
     private SimpleDateFormat date;
 
-    @Column(name="bookingConfirmation")
+    @Column(name="booking_confirmation")
     private String bookingConfirmation;
 
     public Plan(SimpleDateFormat date, String bookingConfirmation) {

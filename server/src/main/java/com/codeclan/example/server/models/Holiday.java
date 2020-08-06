@@ -1,6 +1,7 @@
 package com.codeclan.example.server.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,10 +18,17 @@ public class Holiday {
     @Column(name="title")
     private String title;
 
-    @Column(name="travellers")
+    @JsonBackReference
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "travellers_holidays",
+            joinColumns = {@JoinColumn(name = "holiday_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "traveller_id", nullable = false, updatable = false)}
+    )
     private ArrayList<Traveller> travellers;
 
-    @Column(name="isPublished")
+    @Column(name="is_published")
     private boolean isPublished;
 
     @JsonBackReference

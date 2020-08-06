@@ -1,5 +1,8 @@
 package com.codeclan.example.server.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 
@@ -17,7 +20,14 @@ public class Traveller {
     @Column(name="image")
     private String image;
 
-    @Column(name="holidays")
+    @JsonIgnoreProperties({"travellers"})
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "travellers_holidays",
+            joinColumns = {@JoinColumn(name = "traveller_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "holiday_id", nullable = false, updatable = false)}
+    )
     private ArrayList<Holiday> holidays;
 
     public Traveller(String name, String image) {

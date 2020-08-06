@@ -19,7 +19,7 @@ public class Accommodation extends Plan {
     @Column(name="address")
     private String address;
 
-    @Column(name="numOfNights")
+    @Column(name="num_of_nights")
     private int numOfNights;
 
     public Accommodation(SimpleDateFormat date, String bookingConfirmation, String name, String address, int numOfNights) {

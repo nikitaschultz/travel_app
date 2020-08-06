@@ -13,16 +13,16 @@ public class Train extends Plan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="departureStation")
+    @Column(name="departure_station")
     private String DepartureStation;
 
-    @Column(name="arrivalStation")
+    @Column(name="arrival_station")
     private String arrivalStation;
 
-    @Column(name="departureTime")
+    @Column(name="departure_time")
     private String departureTime;
 
-    @Column(name="arrivalTime")
+    @Column(name="arrival_time")
     private String arrivalTime;
 
     public Train(SimpleDateFormat date, String bookingConfirmation, String departureStation, String arrivalStation, String departureTime, String arrivalTime) {
