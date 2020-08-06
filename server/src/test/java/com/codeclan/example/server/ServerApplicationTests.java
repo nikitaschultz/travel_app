@@ -40,5 +40,10 @@ class ServerApplicationTests {
 		travellerRepository.save(traveller);
 	}
 
+	@Test
+	public void canCreateHolidayAddTravellerAndSave(){
+
+	}
+
 
 }

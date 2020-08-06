@@ -15,9 +15,14 @@ public class DataLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Traveller traveller = new Traveller("Nikita", "beach");
-        travellerRepository.save(traveller);
+        Traveller traveller1 = new Traveller("Nikita", "beach");
+        travellerRepository.save(traveller1);
 
-        
+        Traveller traveller2 = new Traveller("Sam", "forest");
+        travellerRepository.save(traveller2);
+
+        Traveller traveller3 = new Traveller("Matthew", "desert");
+        travellerRepository.save(traveller3);
+
     }
 }
