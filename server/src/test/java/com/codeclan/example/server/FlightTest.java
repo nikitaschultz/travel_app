@@ -1,5 +1,7 @@
 package com.codeclan.example.server;
 
+import com.codeclan.example.server.models.Holiday;
+import com.codeclan.example.server.models.Trip;
 import com.codeclan.example.server.models.plans.Flight;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,17 +12,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FlightTest {
 
+    private Holiday holiday;
+    private Trip trip;
     private SimpleDateFormat date;
     private Flight flight;
 
     @BeforeEach
     public void before(){
+        holiday = new Holiday("Christmas", false);
+        trip = new Trip("Poland", holiday);
         date = new SimpleDateFormat("2020-12-20");
-        flight = new Flight(date, "12345A", "GLA", "GDN", "1030", "2000", "FLI1234");
+        flight = new Flight(trip, date, "12345A", "GLA", "GDN", "1030", "2000", "FLI1234");
     }
 
     @Test
     public void canGetAllProperties(){
+        assertEquals(trip, flight.getTrip());
         assertEquals(date, flight.getDate());
         assertEquals("12345A", flight.getBookingConfirmation());
         assertEquals("GLA", flight.getDepartureAirport());

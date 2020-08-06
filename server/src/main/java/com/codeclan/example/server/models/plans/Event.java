@@ -1,6 +1,7 @@
 package com.codeclan.example.server.models.plans;
 
 import com.codeclan.example.server.models.Plan;
+import com.codeclan.example.server.models.Trip;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
@@ -19,8 +20,8 @@ public class Event extends Plan {
     @Column(name="location")
     private String location;
 
-    public Event(SimpleDateFormat date, String bookingConfirmation, String name, String location) {
-        super(date, bookingConfirmation);
+    public Event(Trip trip, SimpleDateFormat date, String bookingConfirmation, String name, String location) {
+        super(trip, date, bookingConfirmation);
         this.name = name;
         this.location = location;
     }

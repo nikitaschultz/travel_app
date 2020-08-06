@@ -1,6 +1,7 @@
 package com.codeclan.example.server.models.plans;
 
 import com.codeclan.example.server.models.Plan;
+import com.codeclan.example.server.models.Trip;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
@@ -22,8 +23,8 @@ public class Accommodation extends Plan {
     @Column(name="num_of_nights")
     private int numOfNights;
 
-    public Accommodation(SimpleDateFormat date, String bookingConfirmation, String name, String address, int numOfNights) {
-        super(date, bookingConfirmation);
+    public Accommodation(Trip trip, SimpleDateFormat date, String bookingConfirmation, String name, String address, int numOfNights) {
+        super(trip, date, bookingConfirmation);
         this.name = name;
         this.address = address;
         this.numOfNights = numOfNights;

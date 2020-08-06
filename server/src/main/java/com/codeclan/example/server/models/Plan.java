@@ -1,6 +1,10 @@
 package com.codeclan.example.server.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.text.SimpleDateFormat;
 
 public abstract class Plan {
@@ -11,7 +15,13 @@ public abstract class Plan {
     @Column(name="booking_confirmation")
     private String bookingConfirmation;
 
-    public Plan(SimpleDateFormat date, String bookingConfirmation) {
+    @JsonIgnoreProperties({"plans"})
+    @ManyToOne
+    @JoinColumn(name="trip_id", nullable = false)
+    private Trip trip;
+
+    public Plan(Trip trip, SimpleDateFormat date, String bookingConfirmation) {
+        this.trip = trip;
         this.date = date;
         this.bookingConfirmation = bookingConfirmation;
     }
@@ -33,5 +43,13 @@ public abstract class Plan {
 
     public void setBookingConfirmation(String bookingConfirmation) {
         this.bookingConfirmation = bookingConfirmation;
+    }
+
+    public Trip getTrip() {
+        return trip;
+    }
+
+    public void setTrip(Trip trip) {
+        this.trip = trip;
     }
 }

@@ -1,6 +1,7 @@
 package com.codeclan.example.server.models.plans;
 
 import com.codeclan.example.server.models.Plan;
+import com.codeclan.example.server.models.Trip;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
@@ -28,8 +29,8 @@ public class Flight extends Plan {
     @Column(name="flight_number")
     private String flightNumber;
 
-    public Flight(SimpleDateFormat date, String bookingConfirmation, String departureAirport, String arrivalAirport, String departureTime, String arrivalTime, String flightNumber) {
-        super(date, bookingConfirmation);
+    public Flight(Trip trip, SimpleDateFormat date, String bookingConfirmation, String departureAirport, String arrivalAirport, String departureTime, String arrivalTime, String flightNumber) {
+        super(trip, date, bookingConfirmation);
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
         this.departureTime = departureTime;

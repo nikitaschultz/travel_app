@@ -1,5 +1,6 @@
 package com.codeclan.example.server.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 
@@ -20,6 +21,10 @@ public class Traveller {
     @Column(name="image")
     private String image;
 
+    @JsonBackReference
+    @OneToMany(mappedBy="trip", fetch = FetchType.LAZY)
+    private ArrayList<Comment> comments;
+
     @JsonIgnoreProperties({"travellers"})
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
@@ -34,6 +39,7 @@ public class Traveller {
         this.name = name;
         this.image = image;
         this.holidays = new ArrayList<Holiday>();
+        this.comments = new ArrayList<Comment>();
     }
 
     public Traveller() {
