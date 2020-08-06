@@ -1,7 +1,10 @@
 package com.codeclan.example.server.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="holidays")
@@ -20,10 +23,15 @@ public class Holiday {
     @Column(name="isPublished")
     private boolean isPublished;
 
+    @JsonBackReference
+    @OneToMany(mappedBy="holiday", fetch = FetchType.LAZY)
+    private List<Trip> trips;
+
     public Holiday(String title, boolean isPublished) {
         this.title = title;
         this.isPublished = isPublished;
         this.travellers = new ArrayList<Traveller>();
+        this.trips = new ArrayList<Trip>();
     }
 
     public Holiday() {
@@ -67,5 +75,17 @@ public class Holiday {
 
     public void addTraveller(Traveller traveller){
         this.travellers.add(traveller);
+    }
+
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
+    }
+
+    public void addTrip(Trip trip){
+        this.trips.add(trip);
     }
 }

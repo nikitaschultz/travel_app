@@ -17,7 +17,7 @@ public class TravellerTest {
 
     @BeforeEach
     public void before(){
-        traveller = new Traveller("Nikita");
+        traveller = new Traveller("Nikita", "sun");
         holiday = new Holiday("Christmas Trip", false);
     }
 

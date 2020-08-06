@@ -14,11 +14,15 @@ public class Traveller {
     @Column(name="name")
     private String name;
 
+    @Column(name="image")
+    private String image;
+
     @Column(name="holidays")
     private ArrayList<Holiday> holidays;
 
-    public Traveller(String name) {
+    public Traveller(String name, String image) {
         this.name = name;
+        this.image = image;
         this.holidays = new ArrayList<Holiday>();
     }
 
@@ -51,5 +55,13 @@ public class Traveller {
 
     public void addHoliday(Holiday holiday){
         this.holidays.add(holiday);
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -2,6 +2,7 @@ package com.codeclan.example.server;
 
 import com.codeclan.example.server.models.Holiday;
 import com.codeclan.example.server.models.Traveller;
+import com.codeclan.example.server.models.Trip;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ public class HolidayTest {
 
     @BeforeEach
     public void before(){
-        traveller = new Traveller("Nikita");
+        traveller = new Traveller("Nikita", "sun");
         holiday = new Holiday("Christmas", false);
     }
 
@@ -36,4 +37,5 @@ public class HolidayTest {
         holiday.addTraveller(traveller);
         assertEquals(1, holiday. getTravellers().size());
     }
+
 }
