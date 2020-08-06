@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="trips")
@@ -24,11 +25,11 @@ public class Trip {
 
     @JsonBackReference
     @OneToMany(mappedBy="trip", fetch = FetchType.LAZY)
-    private ArrayList<Plan> plans;
+    private List<Plan> plans;
 
     @JsonBackReference
     @OneToMany(mappedBy="trip", fetch = FetchType.LAZY)
-    private ArrayList<Comment> comments;
+    private List<Comment> comments;
 
     public Trip(String location, Holiday holiday) {
         this.location = location;
@@ -62,5 +63,25 @@ public class Trip {
 
     public void setHoliday(Holiday holiday) {
         this.holiday = holiday;
+    }
+
+    public void addPlan(Plan plan){
+        this.plans.add(plan);
+    }
+
+    public List<Plan> getPlans() {
+        return plans;
+    }
+
+    public void setPlans(List<Plan> plans) {
+        this.plans = plans;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

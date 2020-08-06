@@ -1,4 +1,4 @@
-package com.codeclan.example.server;
+package com.codeclan.example.server.Tests;
 
 import com.codeclan.example.server.models.Holiday;
 import com.codeclan.example.server.models.Trip;
@@ -22,4 +22,5 @@ public class TripTest {
     public void canGetTripLocation(){
         assertEquals("Poland", trip.getLocation());
     }
+
 }

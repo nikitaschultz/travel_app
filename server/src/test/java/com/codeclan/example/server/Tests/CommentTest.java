@@ -1,4 +1,4 @@
-package com.codeclan.example.server;
+package com.codeclan.example.server.Tests;
 
 import com.codeclan.example.server.models.Comment;
 import com.codeclan.example.server.models.Holiday;

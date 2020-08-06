@@ -2,12 +2,15 @@ package com.codeclan.example.server.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 
+@Entity
 public abstract class Plan {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name="date")
     private SimpleDateFormat date;
@@ -27,6 +30,14 @@ public abstract class Plan {
     }
 
     public Plan() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public SimpleDateFormat getDate() {

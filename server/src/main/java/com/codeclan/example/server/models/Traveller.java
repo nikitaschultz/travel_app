@@ -6,6 +6,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="travellers")
@@ -23,7 +24,7 @@ public class Traveller {
 
     @JsonBackReference
     @OneToMany(mappedBy="trip", fetch = FetchType.LAZY)
-    private ArrayList<Comment> comments;
+    private List<Comment> comments;
 
     @JsonIgnoreProperties({"travellers"})
     @ManyToMany
@@ -33,7 +34,7 @@ public class Traveller {
             joinColumns = {@JoinColumn(name = "traveller_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "holiday_id", nullable = false, updatable = false)}
     )
-    private ArrayList<Holiday> holidays;
+    private List<Holiday> holidays;
 
     public Traveller(String name, String image) {
         this.name = name;
@@ -61,11 +62,11 @@ public class Traveller {
         this.id = id;
     }
 
-    public ArrayList<Holiday> getHolidays() {
+    public List<Holiday> getHolidays() {
         return holidays;
     }
 
-    public void setHolidays(ArrayList<Holiday> holidays) {
+    public void setHolidays(List<Holiday> holidays) {
         this.holidays = holidays;
     }
 
@@ -79,5 +80,13 @@ public class Traveller {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

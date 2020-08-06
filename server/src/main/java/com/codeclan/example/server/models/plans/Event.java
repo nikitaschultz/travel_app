@@ -10,10 +10,6 @@ import java.text.SimpleDateFormat;
 @Table(name="events")
 public class Event extends Plan {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name="name")
     private String name;
 
@@ -27,14 +23,6 @@ public class Event extends Plan {
     }
 
     public Event() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

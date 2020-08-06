@@ -24,9 +24,8 @@ public class Holiday {
     @JoinTable(
             name = "travellers_holidays",
             joinColumns = {@JoinColumn(name = "holiday_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "traveller_id", nullable = false, updatable = false)}
-    )
-    private ArrayList<Traveller> travellers;
+            inverseJoinColumns = {@JoinColumn(name = "traveller_id", nullable = false, updatable = false)})
+    private List<Traveller> travellers;
 
     @Column(name="is_published")
     private boolean isPublished;
@@ -61,11 +60,11 @@ public class Holiday {
         this.title = title;
     }
 
-    public ArrayList<com.codeclan.example.server.models.Traveller> getTravellers() {
+    public List<Traveller> getTravellers() {
         return travellers;
     }
 
-    public void setTravellers(ArrayList<com.codeclan.example.server.models.Traveller> travellers) {
+    public void setTravellers(List<Traveller> travellers) {
         this.travellers = travellers;
     }
 

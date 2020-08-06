@@ -10,10 +10,6 @@ import java.text.SimpleDateFormat;
 @Table(name="trains")
 public class Train extends Plan {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name="departure_station")
     private String DepartureStation;
 
@@ -35,14 +31,6 @@ public class Train extends Plan {
     }
 
     public Train() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getDepartureStation() {

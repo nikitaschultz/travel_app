@@ -10,10 +10,6 @@ import java.text.SimpleDateFormat;
 @Table(name = "flights")
 public class Flight extends Plan {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name="departure_airport")
     private String departureAirport;
 
@@ -39,14 +35,6 @@ public class Flight extends Plan {
     }
 
     public Flight() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getDepartureAirport() {
