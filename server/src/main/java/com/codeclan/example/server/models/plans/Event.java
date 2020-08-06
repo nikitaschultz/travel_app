@@ -2,12 +2,11 @@ package com.codeclan.example.server.models.plans;
 
 import com.codeclan.example.server.models.Plan;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 
+@Entity
+@Table(name="events")
 public class Event extends Plan {
 
     @Id
