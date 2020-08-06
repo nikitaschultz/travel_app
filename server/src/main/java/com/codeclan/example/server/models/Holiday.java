@@ -1,6 +1,7 @@
 package com.codeclan.example.server.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -18,7 +19,7 @@ public class Holiday {
     @Column(name="title")
     private String title;
 
-    @JsonBackReference
+    @JsonIgnoreProperties({"holiday"})
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
@@ -30,7 +31,7 @@ public class Holiday {
     @Column(name="is_published")
     private boolean isPublished;
 
-    @JsonBackReference
+    @JsonIgnoreProperties({"holiday"})
     @OneToMany(mappedBy="holiday", fetch = FetchType.LAZY)
     private List<Trip> trips;
 

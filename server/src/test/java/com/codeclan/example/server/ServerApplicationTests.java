@@ -1,10 +1,14 @@
 package com.codeclan.example.server;
 
+import com.codeclan.example.server.models.Holiday;
 import com.codeclan.example.server.models.Traveller;
+import com.codeclan.example.server.models.Trip;
 import com.codeclan.example.server.repositories.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Optional;
 
 @SpringBootTest
 class ServerApplicationTests {
@@ -41,8 +45,16 @@ class ServerApplicationTests {
 	}
 
 	@Test
-	public void canCreateHolidayAddTravellerAndSave(){
+	public void canCreateHolidayAndSave(){
+		Holiday holiday = new Holiday("Christmas", false);
+		holidayRepository.save(holiday);
+	}
 
+	@Test
+	public void canCreateTripAndSave(){
+		Holiday holiday = holidayRepository.getOne(1L);
+		Trip trip = new Trip("Poland", holiday);
+		tripRepository.save(trip);
 	}
 
 
