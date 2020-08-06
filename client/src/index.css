@@ -11,3 +11,41 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.mainContainer {
+    position: fixed;
+    background-color: #82375e;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.whosTravelling {
+    position: fixed;
+    color: white;
+    font-family: 'Rouge Script', cursive;
+    font-size: 7rem;
+    left: 15%;
+    top: 20%;
+}
+
+.selectTraveller {
+    position: fixed;
+    height: 10vh;
+    width: 40%;
+    border-radius: 30px;
+    top: 50%;
+    left: 25%;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.goButton {
+    position: fixed;
+    font-size: 1.5rem;
+    padding: 2vh;
+    border-radius: 30px;
+    background-color: white;
+    top: 70%;
+    left: 75%; 
+}
