@@ -14,19 +14,7 @@ import java.util.Optional;
 class ServerApplicationTests {
 
 	@Autowired
-	AccommodationRepository accommodationRepository;
-
-	@Autowired
-	EventRepository eventRepository;
-
-	@Autowired
-	FlightRepository flightRepository;
-
-	@Autowired
 	HolidayRepository holidayRepository;
-
-	@Autowired
-	TrainRepository trainRepository;
 
 	@Autowired
 	TravellerRepository travellerRepository;

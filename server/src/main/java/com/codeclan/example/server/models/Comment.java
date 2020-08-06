@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name="comments")
@@ -27,10 +28,11 @@ public class Comment {
     @Column(name="comment")
     private String comment;
 
+    @Temporal(value = TemporalType.DATE)
     @Column(name="date")
-    private SimpleDateFormat date;
+    private Date date;
 
-    public Comment(Traveller traveller, Trip trip, String comment, SimpleDateFormat date) {
+    public Comment(Traveller traveller, Trip trip, String comment, Date date) {
         this.traveller = traveller;
         this.trip = trip;
         this.comment = comment;
@@ -72,11 +74,11 @@ public class Comment {
         this.comment = comment;
     }
 
-    public SimpleDateFormat getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(SimpleDateFormat date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }

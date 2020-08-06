@@ -1,9 +1,11 @@
 package com.codeclan.example.server.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 public abstract class Plan {
@@ -12,8 +14,9 @@ public abstract class Plan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Temporal(value = TemporalType.DATE)
     @Column(name="date")
-    private SimpleDateFormat date;
+    private Date date;
 
     @Column(name="booking_confirmation")
     private String bookingConfirmation;
@@ -23,7 +26,7 @@ public abstract class Plan {
     @JoinColumn(name="trip_id", nullable = false)
     private Trip trip;
 
-    public Plan(Trip trip, SimpleDateFormat date, String bookingConfirmation) {
+    public Plan(Trip trip, Date date, String bookingConfirmation) {
         this.trip = trip;
         this.date = date;
         this.bookingConfirmation = bookingConfirmation;
@@ -40,11 +43,11 @@ public abstract class Plan {
         this.id = id;
     }
 
-    public SimpleDateFormat getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(SimpleDateFormat date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

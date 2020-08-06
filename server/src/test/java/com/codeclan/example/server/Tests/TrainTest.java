@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,14 +16,14 @@ public class TrainTest {
 
     private Holiday holiday;
     private Trip trip;
-    private SimpleDateFormat date;
+    private Date date;
     private Train train;
 
     @BeforeEach
     public void before(){
         holiday = new Holiday("Christmas", false);
         trip = new Trip("Poland", holiday);
-        date = new SimpleDateFormat("2020-12-20");
+        date = new Date();
         train = new Train(trip, date, "EEE22", "Glasgow", "Edinburgh", "1000", "1130");
     }
 

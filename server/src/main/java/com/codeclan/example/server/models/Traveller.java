@@ -22,7 +22,7 @@ public class Traveller {
     @Column(name="image")
     private String image;
 
-    @JsonBackReference
+    @JsonIgnoreProperties({"travellers"})
     @OneToMany(mappedBy="trip", fetch = FetchType.LAZY)
     private List<Comment> comments;
 

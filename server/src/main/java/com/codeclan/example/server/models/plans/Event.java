@@ -5,6 +5,7 @@ import com.codeclan.example.server.models.Trip;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name="events")
@@ -16,7 +17,7 @@ public class Event extends Plan {
     @Column(name="location")
     private String location;
 
-    public Event(Trip trip, SimpleDateFormat date, String bookingConfirmation, String name, String location) {
+    public Event(Trip trip, Date date, String bookingConfirmation, String name, String location) {
         super(trip, date, bookingConfirmation);
         this.name = name;
         this.location = location;

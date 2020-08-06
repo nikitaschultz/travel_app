@@ -5,6 +5,7 @@ import com.codeclan.example.server.models.Trip;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name="trains")
@@ -22,7 +23,7 @@ public class Train extends Plan {
     @Column(name="arrival_time")
     private String arrivalTime;
 
-    public Train(Trip trip, SimpleDateFormat date, String bookingConfirmation, String departureStation, String arrivalStation, String departureTime, String arrivalTime) {
+    public Train(Trip trip, Date date, String bookingConfirmation, String departureStation, String arrivalStation, String departureTime, String arrivalTime) {
         super(trip, date, bookingConfirmation);
         DepartureStation = departureStation;
         this.arrivalStation = arrivalStation;
