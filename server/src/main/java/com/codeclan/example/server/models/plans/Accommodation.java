@@ -2,17 +2,24 @@ package com.codeclan.example.server.models.plans;
 
 import com.codeclan.example.server.models.Plan;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 
 @Entity
 @Table(name="accommodations")
 public class Accommodation extends Plan {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name="name")
     private String name;
+
+    @Column(name="address")
     private String address;
+
+    @Column(name="numOfNights")
     private int numOfNights;
 
     public Accommodation(SimpleDateFormat date, String bookingConfirmation, String name, String address, int numOfNights) {
