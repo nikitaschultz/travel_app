@@ -85,6 +85,13 @@ public class DataLoader implements ApplicationRunner {
         holiday6.addTraveller(jefferson);
         holidayRepository.save(holiday6);
 
+        Holiday holiday7 = new Holiday("An American Musical", false);
+        holiday7.addTraveller(hamilton);
+        holiday7.addTraveller(burr);
+        holiday7.addTraveller(jefferson);
+        holiday7.addTraveller(washington);
+        holidayRepository.save(holiday7);
+
         Trip trip1 = new Trip(40.7128, 74.0060, "New York", holiday6);
         tripRepository.save(trip1);
 
@@ -109,16 +116,21 @@ public class DataLoader implements ApplicationRunner {
         Trip trip8 = new Trip(40.7128, 74.0060, "New York", holiday1);
         tripRepository.save(trip8);
 
+        Trip trip9 = new Trip(40.7128, 74.0060, "New York", holiday7);
+        tripRepository.save(trip9);
+
         Date d1773 = new Date(-6216652725000L);
         Date d1773b = new Date(-6208876725000L);
         Date d1787 = new Date(-5762447925000L);
+        Date d1787b = new Date(-5761843125000L);
+        Date d1796 = new Date(-5469811125000L);
         Date d1784 = new Date(-5869583925000L);
         Date d1789 = new Date(-5711731125000L);
         Date d1790 = new Date(-5667148725000L);
         Date d1790b = new Date(-5667062325000L);
 
 
-        Comment comment1 = new Comment(hamilton, trip7, "So grateful for the funds raised by the community leaders.  Can't wait to get to the North American Colonies and get my education.  This is my shot!!!", d1773);
+        Comment comment1 = new Comment(hamilton, trip7, "So grateful for the funds raised by the community.  Can't wait to get to the North American Colonies and get my education.  This is my shot!!!", d1773);
         commentRepository.save(comment1);
 
         Comment comment2 = new Comment(hamilton, trip8, "Excited to be in the greatest city in the world!", d1773b);
@@ -139,17 +151,56 @@ public class DataLoader implements ApplicationRunner {
         Comment comment8 = new Comment(jefferson, trip6, "Might just come back and be Secretary of state ;)", d1789);
         commentRepository.save(comment8);
 
+        Comment comment9 = new Comment(hamilton, trip9, "CAN'T WAIT I LOVE IT!", new Date());
+        commentRepository.save(comment9);
 
-        Flight flight = new Flight(trip2, d1790b, "12345A", "GLA", "GDN", "1030", "2000", "FLI1234");
-        flightRepository.save(flight);
+        Comment comment10 = new Comment(burr, trip9, "Uhh, might be busy on this night guys...", new Date());
+        commentRepository.save(comment10);
 
-        Event event = new Event(trip2, d1790b, "1234E", "Dinner", "Montezumas");
-        eventRepository.save(event);
+        Comment comment11 = new Comment(jefferson, trip9, "Don't care.  Not enough me.  0/10", new Date());
+        commentRepository.save(comment11);
 
-        Accommodation accommodation = new Accommodation(trip3, d1790b, "ABCD123", "Premier Inn", "123 Fake St", 2);
-        accommodationRepository.save(accommodation);
+        Event event1 = new Event(trip9, new Date(1609459200000L), "WV74YJ3S0B", "Hamilton Musical", "Broadway");
+        eventRepository.save(event1);
 
-        Train train = new Train(trip1, d1790b, "EEE22", "Glasgow", "Edinburgh", "1000", "1130");
-        trainRepository.save(train);
+        Train train1 = new Train(trip2, d1787, "TUGBEZJ", "Pennsylvania Station", "30th Street Station", "1235", "1400");
+        trainRepository.save(train1);
+
+        Accommodation accommodation1 = new Accommodation(trip2, d1787, "MXP0WUXDP9", "Yorktown Hotel", "123 YorkTown St", 6);
+        accommodationRepository.save(accommodation1);
+
+        Event event2 = new Event(trip2, d1787, "O57LQZKTSM", "Constitutional Convention", "Annapolis Convention");
+        eventRepository.save(event2);
+
+        Train train2 = new Train(trip2, d1787b, "9QUIW9J", "30th Street Station", "Pennsylvania Station", "11:00", "1425");
+        trainRepository.save(train2);
+
+        Event event3 = new Event(trip1, d1790, "Y7G3U1L9347G", "Dinner", "Jefferson's House");
+        eventRepository.save(event3);
+
+        Train train3 = new Train(trip3, d1796, "QSL9662", "Pennsylvania Station", "Union Station", "1300", "1759");
+        trainRepository.save(train3);
+
+        Event event4 = new Event(trip3, d1796, "N/A", "Farewell Address", "New York");
+        eventRepository.save(event4);
+
+        Flight flight1 = new Flight(trip4, d1784, "OAB9UDED", "ORY", "EWR", "1945", "0815", "BF 721");
+        flightRepository.save(flight1);
+
+        Accommodation accommodation2 = new Accommodation(trip5, d1784, "N/A", "Lafayette Inn", "7 Reynolds St", 1826);
+        accommodationRepository.save(accommodation2);
+
+        Event event5 = new Event(trip5, d1784, "N/A", "Party!", "Paris");
+        eventRepository.save(event5);
+
+        Flight flight2 = new Flight(trip6, d1789, "YY7S8I3O2W", "EWR", "ORY", "1800", "0630", "BF 700");
+        flightRepository.save(flight2);
+
+        Flight flight3 = new Flight(trip7, d1773, "JNI4ZLLC", "NEV", "JFK", "1005", "1410", "JK 123");
+        flightRepository.save(flight3);
+
+        Event event6 = new Event(trip8, d1773b, "N/A", "Make a difference! (Also speak to Mr. Burr)", "New York");
+        eventRepository.save(event6);
+
     }
 }
