@@ -25,7 +25,7 @@ public class EventController {
             @RequestBody Event event
     ){
         eventRepository.save(event);
-        return new ResponseEntity<Event>(event, HttpStatus.OK);
+        return new ResponseEntity<>(event, HttpStatus.OK);
     }
 
     @DeleteMapping(value="/events/{id}")

@@ -27,7 +27,7 @@ public class CommentController {
             @RequestBody Comment comment
     ){
         commentRepository.save(comment);
-        return new ResponseEntity<Comment>(comment, HttpStatus.OK);
+        return new ResponseEntity<>(comment, HttpStatus.OK);
     }
 
     @DeleteMapping(value="/comments/{id}")

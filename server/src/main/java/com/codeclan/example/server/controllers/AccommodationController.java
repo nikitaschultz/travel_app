@@ -26,7 +26,7 @@ public class AccommodationController {
             @RequestBody Accommodation accommodation
     ){
         accommodationRepository.save(accommodation);
-        return new ResponseEntity<Accommodation>(accommodation, HttpStatus.OK);
+        return new ResponseEntity<>(accommodation, HttpStatus.OK);
     }
 
     @DeleteMapping(value="/accommodations/{id}")
