@@ -25,7 +25,7 @@ public class CommentTest {
         date = new Date();
         traveller = new Traveller("Nikita", "sun");
         holiday = new Holiday("Christmas", false);
-        trip = new Trip("Poland", holiday);
+        trip = new Trip(54.372158, 18.638306, "Gdansk", holiday);
         comment = new Comment(traveller, trip, "Had such a great trip!", date);
     }
 

@@ -2,11 +2,11 @@ package com.codeclan.example.server.controllers;
 
 import com.codeclan.example.server.models.plans.Accommodation;
 import com.codeclan.example.server.repositories.AccommodationRepository;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,4 +20,31 @@ public class AccommodationController {
     public ResponseEntity<List<Accommodation>> getAllAccommodations(){
         return new ResponseEntity<>(accommodationRepository.findAll(), HttpStatus.OK);
     }
+
+    @PostMapping(value="/accommodations")
+    public ResponseEntity<Accommodation> postAccommodation(
+            @RequestBody Accommodation accommodation
+    ){
+        accommodationRepository.save(accommodation);
+        return new ResponseEntity<Accommodation>(accommodation, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value="/accommodations/{id}")
+    public ResponseEntity<Accommodation> deleteAccommodation(
+            @PathVariable Long id
+    ){
+        Accommodation found = accommodationRepository.getOne(id);
+        accommodationRepository.delete(found);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
+    @PatchMapping(value="/accommodations/{id}")
+    public ResponseEntity<Accommodation> updateAccommodation(
+            @RequestBody Accommodation accommodation
+    ){
+        accommodationRepository.save(accommodation);
+        return new ResponseEntity<>(accommodation, HttpStatus.OK);
+    }
+
+
 }

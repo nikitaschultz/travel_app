@@ -22,7 +22,7 @@ public class TrainTest {
     @BeforeEach
     public void before(){
         holiday = new Holiday("Christmas", false);
-        trip = new Trip("Poland", holiday);
+        trip = new Trip(54.372158, 18.638306, "Gdansk", holiday);
         date = new Date();
         train = new Train(trip, date, "EEE22", "Glasgow", "Edinburgh", "1000", "1130");
     }

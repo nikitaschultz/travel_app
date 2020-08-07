@@ -23,8 +23,8 @@ public class Traveller {
     @Column(name="image")
     private String image;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy="trip", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"traveller"})
+    @OneToMany(mappedBy="traveller", fetch = FetchType.LAZY)
     private List<Comment> comments;
 
     @JsonBackReference

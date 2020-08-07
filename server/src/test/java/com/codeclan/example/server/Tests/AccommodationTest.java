@@ -1,5 +1,6 @@
 package com.codeclan.example.server.Tests;
 
+import com.codeclan.example.server.enums.PlanType;
 import com.codeclan.example.server.models.Holiday;
 import com.codeclan.example.server.models.Trip;
 import com.codeclan.example.server.models.plans.Accommodation;
@@ -21,7 +22,7 @@ public class AccommodationTest {
     @BeforeEach
     public void before(){
         holiday = new Holiday("Christmas", false);
-        trip = new Trip("Poland", holiday);
+        trip = new Trip(54.372158, 18.638306, "Gdansk", holiday);
         date = new Date();
         accommodation = new Accommodation(trip, date, "ABCD123", "Premier Inn", "123 Fake St", 2);
     }
@@ -34,5 +35,6 @@ public class AccommodationTest {
         assertEquals("Premier Inn", accommodation.getName());
         assertEquals("123 Fake St", accommodation.getAddress());
         assertEquals(2, accommodation.getNumOfNights());
+        assertEquals(PlanType.ACCOMMODATION, accommodation.getPlanType());
     }
 }

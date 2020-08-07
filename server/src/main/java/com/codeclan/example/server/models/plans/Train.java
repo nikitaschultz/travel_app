@@ -1,5 +1,6 @@
 package com.codeclan.example.server.models.plans;
 
+import com.codeclan.example.server.enums.PlanType;
 import com.codeclan.example.server.models.Plan;
 import com.codeclan.example.server.models.Trip;
 
@@ -24,7 +25,7 @@ public class Train extends Plan {
     private String arrivalTime;
 
     public Train(Trip trip, Date date, String bookingConfirmation, String departureStation, String arrivalStation, String departureTime, String arrivalTime) {
-        super(trip, date, bookingConfirmation);
+        super(PlanType.TRAIN, trip, date, bookingConfirmation);
         DepartureStation = departureStation;
         this.arrivalStation = arrivalStation;
         this.departureTime = departureTime;

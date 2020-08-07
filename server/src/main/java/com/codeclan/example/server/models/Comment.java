@@ -15,7 +15,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnoreProperties({"comments"})
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="traveller_id", nullable = false)
     private Traveller traveller;

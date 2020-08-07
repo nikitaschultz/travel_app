@@ -15,6 +15,12 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="latitude")
+    private Double latitude;
+
+    @Column(name="longitude")
+    private Double longitude;
+
     @Column(name="location")
     private String location;
 
@@ -31,7 +37,9 @@ public class Trip {
     @OneToMany(mappedBy="trip", fetch = FetchType.LAZY)
     private List<Comment> comments;
 
-    public Trip(String location, Holiday holiday) {
+    public Trip(Double latitude, Double longitude, String location, Holiday holiday) {
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.location = location;
         this.holiday = holiday;
         this.plans = new ArrayList<Plan>();
@@ -83,5 +91,21 @@ public class Trip {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 }

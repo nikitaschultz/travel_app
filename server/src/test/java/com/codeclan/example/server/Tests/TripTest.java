@@ -15,7 +15,7 @@ public class TripTest {
     @BeforeEach
     public void before(){
         holiday = new Holiday("Christmas", false);
-        trip = new Trip("Poland", holiday);
+        trip = new Trip(54.3520,18.6466, "Gdansk", holiday);
     }
 
     @Test

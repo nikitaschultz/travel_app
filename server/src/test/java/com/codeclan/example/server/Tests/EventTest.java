@@ -21,7 +21,7 @@ public class EventTest {
     @BeforeEach
     public void before(){
         holiday = new Holiday("Christmas", false);
-        trip = new Trip("Poland", holiday);
+        trip = new Trip(54.372158, 18.638306, "Gdansk", holiday);
         date = new Date();
         event = new Event(trip, date, "1234E", "Dinner", "Montezumas");
     }

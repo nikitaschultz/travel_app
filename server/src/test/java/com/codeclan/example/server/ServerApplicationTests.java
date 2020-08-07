@@ -41,7 +41,7 @@ class ServerApplicationTests {
 	@Test
 	public void canCreateTripAndSave(){
 		Holiday holiday = holidayRepository.getOne(1L);
-		Trip trip = new Trip("Poland", holiday);
+		Trip trip = new Trip(54.372158, 18.638306, "Gdansk", holiday);
 		tripRepository.save(trip);
 	}
 
