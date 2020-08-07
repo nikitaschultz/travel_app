@@ -1,10 +1,26 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const UserSelectGo = () => {
+class UserSelectGo extends Component {
+    constructor(props){
+        super(props);
+        this.hasSelectedTraveller = this.hasSelectedTraveller.bind(this);
+    }
 
-    return (
-        <button className="goButton" type="button"> Enter </button>
-    )
+    hasSelectedTraveller(){
+        this.props.hasSelectedTraveller();
+    }
+
+    render(){
+        if (this.props.selectedTraveller !== ""){
+            return (
+                <button className="goButton" onClick={this.hasSelectedTraveller} type="button"> Enter </button>
+            )
+        }
+        else {
+            return null
+        }
+    }
+
 
 }
 
