@@ -20,7 +20,7 @@ public class Comment {
     @JoinColumn(name="traveller_id", nullable = false)
     private Traveller traveller;
 
-    @JsonIgnoreProperties({"comments"})
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="trip_id", nullable = false)
     private Trip trip;

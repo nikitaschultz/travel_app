@@ -23,11 +23,11 @@ public class Trip {
     @JoinColumn(name="holiday_id", nullable = false)
     private Holiday holiday;
 
-    @JsonBackReference
+    @JsonIgnoreProperties({"trip"})
     @OneToMany(mappedBy="trip", fetch = FetchType.LAZY)
     private List<Plan> plans;
 
-    @JsonBackReference
+    @JsonIgnoreProperties({"trip"})
     @OneToMany(mappedBy="trip", fetch = FetchType.LAZY)
     private List<Comment> comments;
 

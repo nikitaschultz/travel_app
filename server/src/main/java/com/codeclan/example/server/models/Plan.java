@@ -2,6 +2,7 @@ package com.codeclan.example.server.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
@@ -21,7 +22,7 @@ public abstract class Plan {
     @Column(name="booking_confirmation")
     private String bookingConfirmation;
 
-    @JsonIgnoreProperties({"plans"})
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name="trip_id", nullable = false)
     private Trip trip;
@@ -66,4 +67,5 @@ public abstract class Plan {
     public void setTrip(Trip trip) {
         this.trip = trip;
     }
+
 }

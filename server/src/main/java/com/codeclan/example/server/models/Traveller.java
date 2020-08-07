@@ -2,6 +2,7 @@ package com.codeclan.example.server.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -22,11 +23,11 @@ public class Traveller {
     @Column(name="image")
     private String image;
 
-    @JsonIgnoreProperties({"travellers"})
+    @JsonManagedReference
     @OneToMany(mappedBy="trip", fetch = FetchType.LAZY)
     private List<Comment> comments;
 
-    @JsonIgnoreProperties({"travellers"})
+    @JsonBackReference
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
