@@ -8,9 +8,7 @@ class HolidayContainer extends Component {
     super(props);
     this.state = {
       holidays: []
-
     }
-
 
   }
 
@@ -26,13 +24,6 @@ class HolidayContainer extends Component {
 
   }
 
-
-
-
-
-
-
-
   render(){
 
     if(!this.state.holidays){
@@ -42,14 +33,10 @@ class HolidayContainer extends Component {
     return (
 
       <Fragment>
-
-      <Route render={(props) => {
-        return <HolidayList holidays={this.state.holidays}/>
-      }} />
-
-
+        <Route render={(props) => {
+          return <HolidayList holidays={this.state.holidays}/>
+        }} />
       </Fragment>
-
 
     )
   }

@@ -6,12 +6,9 @@ const Holiday = ({holiday}) => {
     return "Loading..."
   }
   return (
-    <Fragment>
-    <p>
-    {holiday.title}
-    </p>
-
-    </Fragment>
+    <div className="holiday">
+      <h2>{holiday.title}</h2>
+    </div>
   )
 }
 
