@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Holidays from '../components/Holidays.js'
-import Home from '../components/Home.js'
-import Journal from '../components/Journal.js'
-import Profile from '../components/Profile.js'
+import HolidayContainer from '../../HolidayContainer/containers/HolidayContainer.js';
+import Home from '../components/Home.js';
+import Journal from '../components/Journal.js';
+import Profile from '../components/Profile.js';
 import NavBar from '../../NavBar.js';
 
 const MainContainer = () => {
@@ -16,7 +16,7 @@ const MainContainer = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/profile" component={Profile} />
-        <Route path="/holidays" component={Holidays} />
+        <Route path="/holidays" component={HolidayContainer}/>
         <Route path="/journal" component={Journal} />
 
       </Switch>

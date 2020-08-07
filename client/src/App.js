@@ -1,21 +1,22 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import MainContainer from './MainContainer/containers/MainContainer.js';
-import UserSelectContainer from './UserSelectContainer/containers/UserSelectContainer.js';
 
-function App() {
+class App extends Component {
 
-  return (
+    render() {
+        return (
 
-    <div className="App">
-
-
-        <UserSelectContainer />
+            <div className="App">
 
 
-    </div>
+                <MainContainer />
 
-  );
+
+            </div>
+
+        );
+    }
 }
 
 export default App;
