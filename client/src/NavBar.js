@@ -11,7 +11,7 @@ const NavBar = (props) => {
 
       <ul>
         <li className="navLink">
-          <a href="/home">Home</a>
+          <a href="/">Home</a>
         </li>
         <li className="navLink">
           <a href="/profile">Profile</a>
