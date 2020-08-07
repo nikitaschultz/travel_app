@@ -40,9 +40,20 @@ class MainContainer extends Component {
                 </Fragment>
                 )}
             />
-            <Route path="/profile" component={Profile} />
-            <Route path="/holidays" component={HolidayContainer}/>
-            <Route path="/journal" component={Journal} />
+
+            <Route path="/profile" render={(props) => (
+                <Profile {...props} selectedTraveller={this.state.selectedTraveller} />
+                )}
+            />
+
+            <Route path="/holidays" render={(props) => (
+                <HolidayContainer {...props} selectedTraveller={this.state.selectedTraveller} />
+                )}
+            />
+            <Route path="/journal" render={(props) => (
+                <Journal {...props} selectedTraveller={this.state.selectedTraveller} />
+                )}
+            />
 
           </Switch>
 
