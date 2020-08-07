@@ -2,6 +2,7 @@ package com.codeclan.example.server.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -30,11 +31,11 @@ public class Trip {
     private Holiday holiday;
 
     @JsonIgnoreProperties({"trip"})
-    @OneToMany(mappedBy="trip", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="trip", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Plan> plans;
 
-    @JsonIgnoreProperties({"trip"})
-    @OneToMany(mappedBy="trip", fetch = FetchType.LAZY)
+    @JsonBackReference(value="comments")
+    @OneToMany(mappedBy="trip", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comment> comments;
 
     public Trip(Double latitude, Double longitude, String location, Holiday holiday) {

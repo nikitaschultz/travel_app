@@ -140,16 +140,16 @@ public class DataLoader implements ApplicationRunner {
         commentRepository.save(comment8);
 
 
-//        Flight flight = new Flight(trip2, date, "12345A", "GLA", "GDN", "1030", "2000", "FLI1234");
-//        flightRepository.save(flight);
-//
-//        Event event = new Event(trip2, date, "1234E", "Dinner", "Montezumas");
-//        eventRepository.save(event);
-//
-//        Accommodation accommodation = new Accommodation(trip3, date, "ABCD123", "Premier Inn", "123 Fake St", 2);
-//        accommodationRepository.save(accommodation);
-//
-//        Train train = new Train(trip1, date, "EEE22", "Glasgow", "Edinburgh", "1000", "1130");
-//        trainRepository.save(train);
+        Flight flight = new Flight(trip2, d1790b, "12345A", "GLA", "GDN", "1030", "2000", "FLI1234");
+        flightRepository.save(flight);
+
+        Event event = new Event(trip2, d1790b, "1234E", "Dinner", "Montezumas");
+        eventRepository.save(event);
+
+        Accommodation accommodation = new Accommodation(trip3, d1790b, "ABCD123", "Premier Inn", "123 Fake St", 2);
+        accommodationRepository.save(accommodation);
+
+        Train train = new Train(trip1, d1790b, "EEE22", "Glasgow", "Edinburgh", "1000", "1130");
+        trainRepository.save(train);
     }
 }
