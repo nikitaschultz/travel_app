@@ -1,26 +1,22 @@
-import React from 'react';
-import UserSelectContainer from './UserSelectPage/containers/UserSelectContainer.js';
-
+import React, {Component} from 'react';
 import './App.css';
-import MainContainer from './containers/MainContainer.js'
+import MainContainer from './MainContainer/containers/MainContainer.js';
 
-function App() {
+class App extends Component {
 
-    const travellers = [{name: "Steve"},{name: "Sam"}];
+    render() {
+        return (
 
-  return (
-<<<<<<< HEAD
-      <UserSelectContainer travellers={travellers}/>
-=======
-    <div className="App">
-      
-
-        <MainContainer/>
+            <div className="App">
 
 
-    </div>
->>>>>>> 1cd8150941fab5ef412ebcd764d8d35ac289cc40
-  );
+                <MainContainer />
+
+
+            </div>
+
+        );
+    }
 }
 
 export default App;

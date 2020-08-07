@@ -30,14 +30,19 @@ code {
 }
 
 .selectTraveller {
-    position: fixed;
+    position: relative;
     height: 10vh;
-    width: 40%;
+    width: 40vw;
     border-radius: 30px;
-    top: 50%;
-    left: 25%;
     font-size: 2rem;
     text-align: center;
+}
+
+.searchAndAdd {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 25%;
 }
 
 .goButton {
@@ -49,6 +54,28 @@ code {
     top: 70%;
     left: 75%;
 }
+
+
+.addUserForm {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: white;
+    width: 30%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    z-index: 10;
+
+}
+
+.addUserFormItem {}
 
 
 .sidenav {
