@@ -1,29 +1,20 @@
 import React from 'react';
 import './App.css';
-import MainContainer from './MainContainer/containers/MainContainer.js'
+import MainContainer from './MainContainer/containers/MainContainer.js';
+import UserSelectContainer from './UserSelectContainer/containers/UserSelectContainer.js';
 
 function App() {
 
-    const travellers = [{name: "Steve"},{name: "Sam"}];
-
   return (
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <UserSelectContainer travellers={travellers}/>
-=======
-=======
->>>>>>> development
+
     <div className="App">
 
 
-        <MainContainer/>
+        <UserSelectContainer />
 
 
     </div>
-<<<<<<< HEAD
->>>>>>> 1cd8150941fab5ef412ebcd764d8d35ac289cc40
-=======
->>>>>>> development
+
   );
 }
 

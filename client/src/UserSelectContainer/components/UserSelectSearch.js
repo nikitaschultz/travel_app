@@ -7,12 +7,17 @@ class UserSelectSearch extends Component {
         super(props);
 
         this.handleChange = this.handleChange.bind(this);
+        this.handlePopUp = this.handlePopUp.bind(this);
     }
 
     handleChange(event){
         const index = parseInt(event.target.value);
         const selectedTraveller = this.props.travellers[index];
         this.props.onSelectTraveller(selectedTraveller);
+    }
+
+    handlePopUp(){
+        this.props.onToggle();
     }
 
     render(){
@@ -32,8 +37,9 @@ class UserSelectSearch extends Component {
         })
 
         return (
-            <div>
-                <select className="selectTraveller" name="travellersList" onChange={this.handleChange} defaultValue="select-traveller">
+            <div className="searchAndAdd">
+                <button type="button" className="addUser" onClick={this.handlePopUp}> + </button>
+                <select name="travellersList" className="selectTraveller" onChange={this.handleChange} defaultValue="select-traveller">
                     <option disabled value="select-traveller">Select traveller</option>
                     {travellerOptions}
                 </select>
