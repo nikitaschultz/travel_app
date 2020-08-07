@@ -1,19 +1,32 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, FormControl, ControlLabel, HelpBlock } from 'rsuite';
-import { Button, IconButton, ButtonGroup, ButtonToolbar } from 'rsuite';
 
 class UserSelectNewUser extends Component {
     constructor(props){
         super(props);
         this.state = {
-            newUser: {
+            newTraveller: {
                 name: ""
             }
         }
         this.handlePopUp = this.handlePopUp.bind(this);
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handlePopUp(){
+        this.props.onToggle();
+    }
+
+    handleNameChange(event){
+        let propertyName = event.target.name;
+        let newTraveller = this.state.newTraveller;
+        newTraveller[propertyName] = event.target.value;
+        this.setState({newTraveller: newTraveller});
+    }
+
+    handleSubmit(event){
+        event.preventDefault();
+        this.props.onNewTraveller(this.state.newTraveller);
         this.props.onToggle();
     }
 
@@ -22,20 +35,18 @@ class UserSelectNewUser extends Component {
         if (this.props.isAddingUser === true){
             return(
 
-                <Form className="addUserForm">
-                <FormGroup className="addUserFormItem">
-                <ControlLabel>Username</ControlLabel>
-                <FormControl name="name" />
-                <HelpBlock>Required</HelpBlock>
-                </FormGroup>
+                <form className="addUserForm" onSubmit={this.handleSubmit}>
 
-                <FormGroup className="addUserFormItem">
-                <ButtonToolbar>
-                <Button appearance="primary">Submit</Button>
-                <Button appearance="default" onClick={this.handlePopUp}>Cancel</Button>
-                </ButtonToolbar>
-                </FormGroup>
-                </Form>
+                    <div>
+                        <label> Name </label>
+                        <input onChange={this.handleNameChange} value={this.state.newTraveller.name} name="name" />
+                    </div>
+
+                    <div>
+                        <button type="submit"> Add User</button>
+                        <button type="button" onClick={this.handlePopUp}>Cancel</button>
+                    </div>
+                </form>
             )
         }
 

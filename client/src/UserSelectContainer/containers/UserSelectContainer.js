@@ -35,6 +35,15 @@ class UserSelectContainer extends Component {
         this.setState({selectedTraveller: selectedTraveller});
     };
 
+    handlePost(newTraveller){
+        console.log(newTraveller);
+    // const request = new Request();
+    // request.post('/api/travellers', newTraveller)
+    // .then(() => {
+    //     window.location = '/pirates';
+    // })
+    }
+
     isAddingUser(){
         if (this.state.isAddingUser === false){
             this.setState({isAddingUser: true})
@@ -47,9 +56,9 @@ class UserSelectContainer extends Component {
         return(
             <div className="mainContainer">
 
-                <UserSelectNewUser isAddingUser={this.state.isAddingUser} onToggle={this.isAddingUser}/>
+                <UserSelectNewUser isAddingUser={this.state.isAddingUser} onNewTraveller={this.handlePost} onToggle={this.isAddingUser}/>
                 <UserSelectTitle />
-                <UserSelectSearch travellers={this.state.allTravellers} onToggle={this.isAddingUser} onSelectTraveller={this.handleChange}/>
+                <UserSelectSearch travellers={this.state.allTravellers} onToggle={this.isAddingUser}onSelectTraveller={this.handleChange}/>
                 <UserSelectGo />
 
             </div>
