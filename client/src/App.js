@@ -1,8 +1,6 @@
 import React from 'react';
-import UserSelectContainer from './UserSelectPage/containers/UserSelectContainer.js';
-
 import './App.css';
-import MainContainer from './containers/MainContainer.js'
+import MainContainer from './MainContainer/containers/MainContainer.js'
 
 function App() {
 
@@ -10,16 +8,22 @@ function App() {
 
   return (
 <<<<<<< HEAD
+<<<<<<< HEAD
       <UserSelectContainer travellers={travellers}/>
 =======
+=======
+>>>>>>> development
     <div className="App">
-      
+
 
         <MainContainer/>
 
 
     </div>
+<<<<<<< HEAD
 >>>>>>> 1cd8150941fab5ef412ebcd764d8d35ac289cc40
+=======
+>>>>>>> development
   );
 }
 
