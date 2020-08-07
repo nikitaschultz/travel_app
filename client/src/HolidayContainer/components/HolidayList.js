@@ -10,13 +10,15 @@ const Holidays = (props) => {
   }
 
 	const holidays = props.holidays.map((holiday, index) => {
+    if(!holiday.published){
 	  return (
-	    <li key={index} className="component-item">
-	    <div className="component">
-	    <Holiday holiday={holiday} />
-	    </div>
-	    </li>
-	  )
+        <li key={index} className="holiday-list-item">
+    	    <div className="component">
+      	    <Holiday holiday={holiday} />
+    	    </div>
+  	    </li>
+	     )
+     }
 	})
 
 	return (
