@@ -5,8 +5,7 @@ import com.codeclan.example.server.repositories.TrainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +18,30 @@ public class TrainController {
     @GetMapping(value="/trains")
     public ResponseEntity<List<Train>> getAllTrains(){
         return new ResponseEntity<>(trainRepository.findAll(), HttpStatus.OK);
+    }
+
+    @PostMapping(value="/trains")
+    public ResponseEntity<Train> postTrain(
+            @RequestBody Train train
+    ){
+        trainRepository.save(train);
+        return new ResponseEntity<>(train, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value="/trains/{id}")
+    public ResponseEntity<Train> deleteTrain(
+            @PathVariable Long id
+    ){
+        Train found = trainRepository.getOne(id);
+        trainRepository.delete(found);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
+    @PatchMapping(value="/trains/{id}")
+    public ResponseEntity<Train> updateTrain(
+            @RequestBody Train train
+    ){
+        trainRepository.save(train);
+        return new ResponseEntity<>(train, HttpStatus.OK);
     }
 }
