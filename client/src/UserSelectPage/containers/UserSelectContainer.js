@@ -2,30 +2,41 @@ import React, {Component} from 'react';
 import UserSelectTitle from '../components/UserSelectTitle.js';
 import UserSelectSearch from '../components/UserSelectSearch.js';
 import UserSelectGo from '../components/UserSelectGo.js';
+import Request from '../../helpers/request.js';
 
 
 class UserSelectContainer extends Component {
     constructor(props){
         super(props);
-        // prop of all travellers will be passed down
         this.state = {
+            allTravellers: [],
             selectedTraveller: ''
         }
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    componentDidMount() {
+        // fetch for all travellers
+        const request = new Request();
+
+        request.get('/api/travellers')
+        .then(data => {
+            this.setState({
+                allTravellers: data
+            })
+        })
     }
 
     handleChange(selectedTraveller){
         this.setState({selectedTraveller: selectedTraveller});
     }
 
-    // function which is passed down to userselectgo and sends the selectedtraveller to mainContainer
-
     render(){
         return(
             <div className="mainContainer">
 
                 <UserSelectTitle />
-                <UserSelectSearch travellers={this.props.travellers} onSelectTraveller={this.handleChange}/>
+                <UserSelectSearch travellers={this.state.allTravellers} onSelectTraveller={this.handleChange}/>
                 <UserSelectGo />
             </div>
         )
