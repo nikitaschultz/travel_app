@@ -5,9 +5,7 @@ import com.codeclan.example.server.repositories.HolidayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +26,32 @@ public class HolidayController {
 
         return new ResponseEntity<>(holidayRepository.findAll(), HttpStatus.OK);
     }
+
+    @PostMapping(value="/holidays")
+    public ResponseEntity<Holiday> postHoliday(
+            @RequestBody Holiday holiday
+    ){
+        holidayRepository.save(holiday);
+        return new ResponseEntity<>(holiday, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value="/holidays/{id}")
+    public ResponseEntity<Holiday> deleteHoliday(
+            @PathVariable Long id
+    ){
+        Holiday found = holidayRepository.getOne(id);
+        holidayRepository.delete(found);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
+    @PatchMapping(value="/holidays/{id}")
+    public ResponseEntity<Holiday> updateHoliday(
+            @RequestBody Holiday holiday
+    ){
+        holidayRepository.save(holiday);
+        return new ResponseEntity<>(holiday, HttpStatus.OK);
+    }
+
 
 
 }
