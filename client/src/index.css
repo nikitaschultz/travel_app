@@ -12,12 +12,13 @@ code {
     monospace;
 }
 
-.mainContainer {
-    position: fixed;
+.userSelectContainer {
+    position: absolute;
     background-color: #82375e;
     top: 0;
     width: 100vw;
     height: 100vh;
+    z-index: 1000;
 }
 
 .whosTravelling {

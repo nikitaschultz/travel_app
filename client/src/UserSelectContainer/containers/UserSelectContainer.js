@@ -16,6 +16,7 @@ class UserSelectContainer extends Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.isAddingUser = this.isAddingUser.bind(this);
+        this.hasSelectedTraveller = this.hasSelectedTraveller.bind(this);
     }
 
     componentDidMount() {
@@ -32,6 +33,7 @@ class UserSelectContainer extends Component {
     }
 
     handleChange(selectedTraveller){
+        this.props.sendNewTravellerToMain(selectedTraveller);
         this.setState({selectedTraveller: selectedTraveller});
     };
 
@@ -52,17 +54,25 @@ class UserSelectContainer extends Component {
         }
     };
 
+    hasSelectedTraveller(){
+        // unrenders the whole user select container
+        this.props.hasSelectedTraveller();
+    }
+
     render(){
-        return(
-            <div className="mainContainer">
+        if (this.props.isSelectingTraveller === true){
+            return(
+                <div className="userSelectContainer">
+                    <UserSelectNewUser isAddingUser={this.state.isAddingUser} onNewTraveller={this.handlePost} onToggle={this.isAddingUser}/>
+                    <UserSelectTitle />
+                    <UserSelectSearch travellers={this.state.allTravellers} onToggle={this.isAddingUser}onSelectTraveller={this.handleChange}/>
+                    <UserSelectGo selectedTraveller={this.state.selectedTraveller} hasSelectedTraveller={this.hasSelectedTraveller}/>
 
-                <UserSelectNewUser isAddingUser={this.state.isAddingUser} onNewTraveller={this.handlePost} onToggle={this.isAddingUser}/>
-                <UserSelectTitle />
-                <UserSelectSearch travellers={this.state.allTravellers} onToggle={this.isAddingUser}onSelectTraveller={this.handleChange}/>
-                <UserSelectGo />
-
-            </div>
-        )
+                </div>
+            )
+        } else {
+            return null
+        }
     }
 }
 
