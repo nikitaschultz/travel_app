@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../../helpers/request';
 import HolidayList from '../components/HolidayList.js';
+import HolidayDetail from '../components/HolidayDetail.js';
 
 class HolidayContainer extends Component {
   constructor(props){
@@ -9,35 +10,41 @@ class HolidayContainer extends Component {
     this.state = {
       holidays: []
     }
-
   }
 
   componentDidMount(){
     const request = new Request();
-    request.get('api/holidays')
+    const url = 'api/holidays?travellerId=' + this.props.selectedTraveller.id
+    request.get(url)
     .then((data) => {
-      this.setState({
-        holidays: data
-
-      })
+      this.setState({holidays: data})
     })
+  }
 
+  findHolidayById(id){
+    return this.state.holidays.find(holiday => {
+      return holiday.id === parseInt(id);
+    })
   }
 
   render(){
-
-    if(!this.state.holidays){
+    if(this.state.holidays.length === 0){
       return null
     }
 
     return (
-
-      <Fragment>
-        <Route render={(props) => {
-          return <HolidayList holidays={this.state.holidays}/>
-        }} />
-      </Fragment>
-
+      <Router>
+        <Fragment>
+          <Switch>
+            <Route exact path="/holidays/:id" render={(props) => {
+              const id = props.match.params.id;
+              const holiday = this.findHolidayById(id);
+              return <HolidayDetail holiday={holiday} />
+            }} />
+            <HolidayList holidays={this.state.holidays}/>
+          </Switch>
+        </Fragment>
+      </Router>
     )
   }
 }

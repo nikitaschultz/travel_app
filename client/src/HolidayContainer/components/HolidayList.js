@@ -4,11 +4,10 @@ import Holiday from './Holiday.js';
 
 const Holidays = (props) => {
 
-
   if (props.holidays.length === 0){
     return (<p>Loading...</p>)
   }
-
+  
 	const holidays = props.holidays.map((holiday, index) => {
     if(!holiday.published){
 	  return (

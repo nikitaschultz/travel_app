@@ -11,7 +11,10 @@ class MainContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-            selectedTraveller: "",
+            selectedTraveller:
+              {id: 1,
+              image: "beach",
+              name: "Alexander Hamilton"},
             isSelectingTraveller: true
         }
         this.handleChange = this.handleChange.bind(this);
@@ -38,7 +41,7 @@ class MainContainer extends Component {
                     <UserSelectContainer {...props} sendNewTravellerToMain={this.handleChange} isSelectingTraveller={this.state.isSelectingTraveller} hasSelectedTraveller={this.hasSelectedTraveller}/>
                     <Home />
                 </Fragment>
-                )}
+              )}
             />
 
             <Route path="/profile" render={(props) => (
@@ -46,7 +49,7 @@ class MainContainer extends Component {
                 )}
             />
 
-            <Route path="/holidays" render={(props) => (
+            <Route exact path="/holidays" render={(props) => (
                 <HolidayContainer {...props} selectedTraveller={this.state.selectedTraveller} />
                 )}
             />

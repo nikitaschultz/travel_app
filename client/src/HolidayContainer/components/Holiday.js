@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import { Link } from 'react-router-dom';
 
 const Holiday = ({holiday}) => {
 
@@ -7,7 +8,7 @@ const Holiday = ({holiday}) => {
   }
   return (
     <div className="holiday">
-      <h2>{holiday.title}</h2>
+      <Link to={"/holidays/" + holiday.id}><h2>{holiday.title}</h2></Link>
     </div>
   )
 }
