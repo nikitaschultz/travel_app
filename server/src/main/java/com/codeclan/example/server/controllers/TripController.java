@@ -21,6 +21,13 @@ public class TripController {
         return new ResponseEntity<>(tripRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(value="/trips/{id}")
+    public ResponseEntity getTrip(
+            @PathVariable Long id
+    ){
+        return new ResponseEntity(tripRepository.findById(id), HttpStatus.OK);
+    }
+
     @PostMapping(value="/trips")
     public ResponseEntity<Trip> postTrip(
             @RequestBody Trip trip

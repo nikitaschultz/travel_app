@@ -20,6 +20,13 @@ public class EventController {
         return new ResponseEntity<>(eventRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(value="/events/{id}")
+    public ResponseEntity getEvent(
+            @PathVariable Long id
+    ){
+        return new ResponseEntity(eventRepository.findById(id), HttpStatus.OK);
+    }
+
     @PostMapping(value="/events")
     public ResponseEntity<Event> postEvent(
             @RequestBody Event event

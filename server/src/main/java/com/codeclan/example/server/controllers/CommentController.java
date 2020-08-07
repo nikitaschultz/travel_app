@@ -22,6 +22,13 @@ public class CommentController {
         return new ResponseEntity<>(commentRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(value="/comments/{id}")
+    public ResponseEntity getComment(
+            @PathVariable Long id
+    ){
+        return new ResponseEntity(commentRepository.findById(id), HttpStatus.OK);
+    }
+
     @PostMapping(value="/comments")
     public ResponseEntity<Comment> postComment(
             @RequestBody Comment comment

@@ -27,6 +27,13 @@ public class HolidayController {
         return new ResponseEntity<>(holidayRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(value="/holidays/{id}")
+    public ResponseEntity getHoliday(
+            @PathVariable Long id
+    ){
+        return new ResponseEntity(holidayRepository.findById(id), HttpStatus.OK);
+    }
+
     @PostMapping(value="/holidays")
     public ResponseEntity<Holiday> postHoliday(
             @RequestBody Holiday holiday

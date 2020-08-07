@@ -21,6 +21,13 @@ public class FlightController {
         return new ResponseEntity<>(flightRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(value="/flights/{id}")
+    public ResponseEntity getFlight(
+            @PathVariable Long id
+    ){
+        return new ResponseEntity(flightRepository.findById(id), HttpStatus.OK);
+    }
+
     @PostMapping(value="/flights")
     public ResponseEntity<Flight> postFlight(
             @RequestBody Flight flight

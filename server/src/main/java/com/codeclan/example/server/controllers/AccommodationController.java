@@ -21,6 +21,13 @@ public class AccommodationController {
         return new ResponseEntity<>(accommodationRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(value="/accommodations/{id}")
+    public ResponseEntity getAccommodation(
+            @PathVariable Long id
+    ){
+        return new ResponseEntity<>(accommodationRepository.findById(id), HttpStatus.OK);
+    }
+
     @PostMapping(value="/accommodations")
     public ResponseEntity<Accommodation> postAccommodation(
             @RequestBody Accommodation accommodation

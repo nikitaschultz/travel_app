@@ -21,6 +21,13 @@ public class TravellerController {
         return new ResponseEntity<>(travellerRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(value="/travellers/{id}")
+    public ResponseEntity getTraveller(
+            @PathVariable Long id
+    ){
+        return new ResponseEntity(travellerRepository.findById(id), HttpStatus.OK);
+    }
+
     @PostMapping(value="/travellers")
     public ResponseEntity<Traveller> postTraveller(
             @RequestBody Traveller traveller
