@@ -18,7 +18,7 @@ public class Holiday {
     @Column(name="title")
     private String title;
 
-    @JsonIgnoreProperties({"holiday"})
+    @JsonIgnoreProperties({"comments", "holidays"})
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
@@ -31,7 +31,7 @@ public class Holiday {
     private boolean isPublished;
 
     @JsonIgnoreProperties({"holiday"})
-    @OneToMany(mappedBy="holiday", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="holiday", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<Trip> trips;
 
     public Holiday(String title, boolean isPublished) {

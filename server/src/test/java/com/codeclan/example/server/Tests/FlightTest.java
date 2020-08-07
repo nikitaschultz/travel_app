@@ -21,7 +21,7 @@ public class FlightTest {
     @BeforeEach
     public void before(){
         holiday = new Holiday("Christmas", false);
-        trip = new Trip("Poland", holiday);
+        trip = new Trip(54.372158, 18.638306, "Gdansk", holiday);
         date = new Date();
         flight = new Flight(trip, date, "12345A", "GLA", "GDN", "1030", "2000", "FLI1234");
     }

@@ -1,5 +1,6 @@
 package com.codeclan.example.server.models.plans;
 
+import com.codeclan.example.server.enums.PlanType;
 import com.codeclan.example.server.models.Plan;
 import com.codeclan.example.server.models.Trip;
 
@@ -21,7 +22,7 @@ public class Accommodation extends Plan {
     private int numOfNights;
 
     public Accommodation(Trip trip, Date date, String bookingConfirmation, String name, String address, int numOfNights) {
-        super(trip, date, bookingConfirmation);
+        super(PlanType.ACCOMMODATION, trip, date, bookingConfirmation);
         this.name = name;
         this.address = address;
         this.numOfNights = numOfNights;

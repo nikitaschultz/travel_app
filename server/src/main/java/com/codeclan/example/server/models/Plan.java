@@ -1,5 +1,6 @@
 package com.codeclan.example.server.models;
 
+import com.codeclan.example.server.enums.PlanType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -15,6 +16,10 @@ public abstract class Plan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name="plan_type")
+    private PlanType planType;
+
     @Temporal(value = TemporalType.DATE)
     @Column(name="date")
     private Date date;
@@ -22,12 +27,13 @@ public abstract class Plan {
     @Column(name="booking_confirmation")
     private String bookingConfirmation;
 
-    @JsonManagedReference
+    @JsonIgnoreProperties(value="plans")
     @ManyToOne
     @JoinColumn(name="trip_id", nullable = false)
     private Trip trip;
 
-    public Plan(Trip trip, Date date, String bookingConfirmation) {
+    public Plan(PlanType planType, Trip trip, Date date, String bookingConfirmation) {
+        this.planType = planType;
         this.trip = trip;
         this.date = date;
         this.bookingConfirmation = bookingConfirmation;
@@ -68,4 +74,11 @@ public abstract class Plan {
         this.trip = trip;
     }
 
+    public PlanType getPlanType() {
+        return planType;
+    }
+
+    public void setPlanType(PlanType planType) {
+        this.planType = planType;
+    }
 }

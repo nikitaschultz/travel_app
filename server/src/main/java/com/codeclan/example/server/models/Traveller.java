@@ -23,11 +23,11 @@ public class Traveller {
     @Column(name="image")
     private String image;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy="trip", fetch = FetchType.LAZY)
+    @JsonBackReference(value="comments")
+    @OneToMany(mappedBy="traveller", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comment> comments;
 
-    @JsonBackReference
+    @JsonBackReference(value="holidays")
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(

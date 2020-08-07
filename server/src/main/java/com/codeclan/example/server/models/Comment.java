@@ -1,6 +1,7 @@
 package com.codeclan.example.server.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -20,7 +21,7 @@ public class Comment {
     @JoinColumn(name="traveller_id", nullable = false)
     private Traveller traveller;
 
-    @JsonBackReference
+    @JsonIgnoreProperties({"comments"})
     @ManyToOne
     @JoinColumn(name="trip_id", nullable = false)
     private Trip trip;

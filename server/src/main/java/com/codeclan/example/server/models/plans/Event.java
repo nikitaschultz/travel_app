@@ -1,5 +1,6 @@
 package com.codeclan.example.server.models.plans;
 
+import com.codeclan.example.server.enums.PlanType;
 import com.codeclan.example.server.models.Plan;
 import com.codeclan.example.server.models.Trip;
 
@@ -18,7 +19,7 @@ public class Event extends Plan {
     private String location;
 
     public Event(Trip trip, Date date, String bookingConfirmation, String name, String location) {
-        super(trip, date, bookingConfirmation);
+        super(PlanType.EVENT, trip, date, bookingConfirmation);
         this.name = name;
         this.location = location;
     }
