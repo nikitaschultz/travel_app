@@ -36,12 +36,14 @@ class HolidayContainer extends Component {
       <Router>
         <Fragment>
           <Switch>
+            <Route exact path="/holidays" render={(props) => {
+              return <HolidayList holidays={this.state.holidays}/>
+            }} />
             <Route exact path="/holidays/:id" render={(props) => {
               const id = props.match.params.id;
               const holiday = this.findHolidayById(id);
               return <HolidayDetail holiday={holiday} />
             }} />
-            <HolidayList holidays={this.state.holidays}/>
           </Switch>
         </Fragment>
       </Router>

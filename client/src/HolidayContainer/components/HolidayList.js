@@ -7,9 +7,9 @@ const Holidays = (props) => {
   if (props.holidays.length === 0){
     return (<p>Loading...</p>)
   }
-  
+
 	const holidays = props.holidays.map((holiday, index) => {
-    if(!holiday.published){
+
 	  return (
         <li key={index} className="holiday-list-item">
     	    <div className="component">
@@ -17,7 +17,7 @@ const Holidays = (props) => {
     	    </div>
   	    </li>
 	     )
-     }
+    
 	})
 
 	return (

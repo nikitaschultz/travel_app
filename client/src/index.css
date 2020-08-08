@@ -76,6 +76,17 @@ code {
 
 }
 
+.map-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.leaflet-container {
+  height: 300px;
+  width: 400px;
+}
+
 .addUserFormItem {}
 
 
