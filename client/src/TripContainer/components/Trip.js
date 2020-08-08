@@ -1,7 +1,6 @@
 import React from 'react';
 import LocationMap from './LocationMap.js';
 import PlanContainer from '../../PlanContainer/containers/PlanContainer.js';
-import { Panel, PanelGroup } from 'rsuite';
 
 const Trip = ({trip}) => {
   const position = [trip.latitude, -trip.longitude];

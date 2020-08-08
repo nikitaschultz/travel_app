@@ -16,11 +16,11 @@ const TripList = ({trips}) => {
   })
 
   return (
-    <div>
+    <Fragment>
       <PanelGroup accordion bordered>
         {allTrips}
       </PanelGroup>
-    </div>
+    </Fragment>
   )
 }
 

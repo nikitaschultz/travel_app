@@ -1,5 +1,5 @@
 import React from 'react';
-import { Timeline } from 'rsuite';
+import { Timeline, Icon } from 'rsuite';
 import Event from './Event.js';
 import Flight from './Flight.js';
 import Accommodation from './Accommodation.js';
@@ -13,41 +13,43 @@ const PlanList = ({plans}) => {
     switch(plan.planType){
       case "FLIGHT":
         return (
-          <Timeline.Item key={index}>
-            <h4>{dateFormatter.format(plan.date)}</h4>
+          <Timeline.Item key={index} dot={<Icon icon="plane" size="2x" />}>
+            <p>{dateFormatter.format(plan.date)}</p>
             <h5>Flight</h5>
             <Flight plan={plan} />
           </Timeline.Item>
         );
       case "EVENT":
         return (
-          <Timeline.Item key={index}>
-            <h4>{dateFormatter.format(plan.date)}</h4>
+          <Timeline.Item key={index} dot={<Icon icon="calendar" size="2x"/>}>
+            <p>{dateFormatter.format(plan.date)}</p>
             <h5>Event</h5>
             <Event plan={plan} />
           </Timeline.Item>
         );
       case "ACCOMMODATION":
         return (
-          <Timeline.Item key={index}>
-            <h4>{dateFormatter.format(plan.date)}</h4>
+          <Timeline.Item key={index} dot={<Icon icon="bed" size="2x" />}>
+            <p>{dateFormatter.format(plan.date)}</p>
             <h5>Accommodation</h5>
             <Accommodation plan={plan} />
           </Timeline.Item>
         );
       case "TRAIN":
         return (
-          <Timeline.Item key={index}>
-            <h4>{dateFormatter.format(plan.date)}</h4>
+          <Timeline.Item key={index} dot={<Icon icon="train" size="2x" />}>
+            <p>{dateFormatter.format(plan.date)}</p>
             <h5>Train</h5>
             <Train plan={plan} />
           </Timeline.Item>
         );
+      default:
+        return null
     }
   })
 
     return (
-      <Timeline align="left">
+      <Timeline className="custom-timeline">
         {planList}
       </Timeline>
     )

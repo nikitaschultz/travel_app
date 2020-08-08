@@ -1,5 +1,4 @@
-import React, {Fragment} from 'react';
-import {Link} from 'react-router-dom';
+import React from 'react';
 import Holiday from './Holiday.js';
 
 const Holidays = (props) => {
