@@ -140,3 +140,15 @@ code {
     color: #818181;
     display: flex;
 }
+
+.sticky-heading {
+  position: sticky;
+  top: 0.83em;
+  z-index: 1000;
+}
+
+.sticky-subheading {
+  position: sticky;
+  top: 3.16em;
+  z-index: 1000;
+}

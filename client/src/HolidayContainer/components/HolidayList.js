@@ -9,7 +9,6 @@ const Holidays = (props) => {
   }
 
 	const holidays = props.holidays.map((holiday, index) => {
-
 	  return (
         <li key={index} className="holiday-list-item">
     	    <div className="component">
@@ -17,14 +16,12 @@ const Holidays = (props) => {
     	    </div>
   	    </li>
 	     )
-    
 	})
 
 	return (
 	  <ul className="component-list">
 	    {holidays}
 	  </ul>
-
 	)
 }
 
