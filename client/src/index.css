@@ -88,58 +88,70 @@ code {
 }
 
 .container {
-    position: fixed;
-    left: 15%;
-    width: 85%;
+  position: fixed;
+  left: 70px;
+  width: 100%;
 }
 
 .homeWelcome {
-    display: flex;
-    font-size: 2rem;
-    text-align: center;
-    justify-content: center;
-    background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400/91dc1964120315.5ac77335ae374.png");
-    height: 30vh;
+  display: flex;
+  font-size: 2rem;
+  text-align: center;
+  justify-content: center;
+  background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400/91dc1964120315.5ac77335ae374.png");
+  height: 30vh;
 }
 
 .homeWelcome h2{
-    color: white;
-    display: flex;
-    align-items: center;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: white;
+  display: flex;
+  align-items: center;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 
 .sidenav {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 15%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 70px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #8EAA7B;
+  overflow-x: hidden;
+  padding-top: 20px;
+  align-items: center;
 }
 
 .sidenav ul {
-    text-align: center;
-    display: inline-block;
-    text-align: center;
-    list-style-type: none;
-    padding: 0;
+  text-align: center;
+  display: inline-block;
+  text-align: center;
+  list-style-type: none;
+  padding: 0;
 }
 
 .sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: flex;
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #E4E4E4;
+  display: flex;
+  justify-content: center;
 }
+
+.sidenav a:hover{
+  color: white;
+  text-decoration: none;
+}
+
+.sidenav a:visited {
+  color: white;
+  text-decoration: none;
+}
+
 
 .sticky-heading {
   position: sticky;
@@ -168,4 +180,8 @@ code {
 
 .custom-timeline .rs-timeline-item-content {
   margin-left: 24px;
+}
+
+ul.no-bullet {
+  list-style-type: none;
 }

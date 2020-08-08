@@ -18,7 +18,7 @@ const Holidays = (props) => {
 	})
 
 	return (
-	  <ul className="component-list">
+	  <ul className="no-bullet">
 	    {holidays}
 	  </ul>
 	)
