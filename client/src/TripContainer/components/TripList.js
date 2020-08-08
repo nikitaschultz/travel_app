@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Trip from './Trip.js';
+import { PanelGroup, Panel } from 'rsuite';
 
 const TripList = ({trips}) => {
   if(trips.length === 0){
@@ -8,13 +9,17 @@ const TripList = ({trips}) => {
 
   const allTrips = trips.map((trip, index) => {
     return (
-      <Trip key={index} trip={trip} />
+      <Panel key={index} header={trip.location} defaultExpanded>
+        <Trip trip={trip} />
+      </Panel>
     )
   })
 
   return (
-    <div className="tripList">
-      {allTrips}
+    <div>
+      <PanelGroup accordion bordered>
+        {allTrips}
+      </PanelGroup>
     </div>
   )
 }

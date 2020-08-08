@@ -3,8 +3,9 @@ import React, { Fragment } from 'react';
 const Event = ({plan}) => {
   return (
     <Fragment>
-      <h5>{plan.name}</h5>
-      <p>{plan.location}</p>
+      <h6>{plan.name}</h6>
+      <p>Location: {plan.location}</p>
+      <p>Booking Confirmation: {plan.bookingConfirmation}</p>
     </Fragment>
   )
 }

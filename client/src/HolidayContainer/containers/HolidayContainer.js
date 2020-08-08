@@ -34,7 +34,7 @@ class HolidayContainer extends Component {
 
     return (
       <Router>
-        <Fragment>
+        <div className="container">
           <Switch>
             <Route exact path="/holidays" render={(props) => {
               return <HolidayList holidays={this.state.holidays}/>
@@ -45,7 +45,7 @@ class HolidayContainer extends Component {
               return <HolidayDetail holiday={holiday} />
             }} />
           </Switch>
-        </Fragment>
+        </div>
       </Router>
     )
   }
