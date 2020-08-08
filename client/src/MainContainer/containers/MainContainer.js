@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import HolidayContainer from '../../HolidayContainer/containers/HolidayContainer.js';
 import UserSelectContainer from '../../UserSelectContainer/containers/UserSelectContainer.js'
-import Home from '../components/Home.js';
+import HomeContainer from '../../HomeContainer/containers/HomeContainer.js';
 import Journal from '../components/Journal.js';
 import Profile from '../components/Profile.js';
 import NavBar from '../../NavBar.js';
@@ -36,7 +36,7 @@ class MainContainer extends Component {
             <Route exact path="/" render={(props) => (
                 <Fragment>
                     <UserSelectContainer {...props} sendNewTravellerToMain={this.handleChange} isSelectingTraveller={this.state.isSelectingTraveller} hasSelectedTraveller={this.hasSelectedTraveller}/>
-                    <Home />
+                    <HomeContainer selectedTraveller={this.state.selectedTraveller}/>
                 </Fragment>
                 )}
             />
