@@ -1,5 +1,6 @@
 import React from 'react';
 import TripContainer from '../../TripContainer/containers/TripContainer.js';
+import { Link } from 'react-router-dom';
 
 class HolidayDetail extends React.Component{
   componentDidMount(){
@@ -12,7 +13,7 @@ class HolidayDetail extends React.Component{
         <div className="sticky-heading">
           <h2>{this.props.holiday.title}</h2>
           <button className="main-green">Add a Trip</button>
-          <button className="main-white">Edit Holiday</button>
+          <Link to={"/holidays/" + this.props.holiday.id + "/edit"} className="nav-buttons-white">Edit Holiday</Link>
         </div>
         <TripContainer trips={this.props.holiday.trips} />
       </React.Fragment>

@@ -4,6 +4,7 @@ import Request from '../../helpers/request';
 import HolidayList from '../components/HolidayList.js';
 import HolidayDetail from '../components/HolidayDetail.js';
 import HolidayForm from '../components/HolidayForm.js';
+import HolidayEdit from '../components/HolidayEdit.js';
 
 class HolidayContainer extends Component {
   constructor(props){
@@ -52,6 +53,11 @@ class HolidayContainer extends Component {
       <Router>
         <div className="container">
           <Switch>
+            <Route exact path="/holidays/:id/edit" render={(props) => {
+              const id = props.match.params.id;
+              const holiday = this.findHolidayById(id);
+              return <HolidayEdit holiday={holiday} />
+            }} />
             <Route exact path="/holidays/new" render={(props) => {
               return <HolidayForm selectedTraveller={props.selectedTraveller} onCreate={props.handlePost} />
             }} />
