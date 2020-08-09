@@ -7,27 +7,27 @@ const NavBar = (props) => {
     <nav className="sidenav">
       <ul className="no-bullet">
         <li>
-          <img src="/images/logo.png" width="50" height="50" alt="Logo"/>
+          <img src="/images/logo.png" width="40" height="40" alt="Logo"/>
         </li>
         <br />
         <li>
-          <Link to="/">
-            <Icon icon="home" size="3x" />
+          <Link className="nav-icon" to="/">
+            <Icon icon="home" size="2x" />
           </Link>
         </li>
         <li>
-          <Link to="/profile">
-            <Icon icon="user" size="3x" />
+          <Link className="nav-icon" to="/profile">
+            <Icon icon="user" size="2x" />
           </Link>
         </li>
         <li className="navLink">
-          <Link to="/holidays">
-            <Icon icon="map" size="3x" />
+          <Link className="nav-icon" to="/holidays">
+            <Icon icon="map" size="2x" />
           </Link>
         </li>
         <li className="navLink">
-          <Link to="/journal" >
-            <Icon icon="book" size="3x" />
+          <Link className="nav-icon" to="/journal" >
+            <Icon icon="book" size="2x" />
           </Link>
         </li>
 

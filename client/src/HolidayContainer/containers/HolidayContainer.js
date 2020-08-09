@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../../helpers/request';
 import HolidayList from '../components/HolidayList.js';
 import HolidayDetail from '../components/HolidayDetail.js';
+import HolidayForm from '../components/HolidayForm.js';
 
 class HolidayContainer extends Component {
   constructor(props){
@@ -27,6 +28,15 @@ class HolidayContainer extends Component {
     })
   }
 
+  handlePost(holiday){
+    const request = new Request();
+    const url = '/api/holidays'
+    request.post(url, holiday)
+    .then(() => {
+      window.location = '/holidays';
+    })
+  }
+
   render(){
     if(this.state.holidays.length === 0){
       return null
@@ -36,6 +46,9 @@ class HolidayContainer extends Component {
       <Router>
         <div className="container">
           <Switch>
+            <HolidayForm
+              selectedTraveller={this.props.selectedTraveller}
+              onCreate={this.handlePost} />
             <Route exact path="/holidays" render={(props) => {
               return <HolidayList holidays={this.state.holidays}/>
             }} />

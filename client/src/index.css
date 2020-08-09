@@ -131,8 +131,8 @@ code {
   padding: 0;
 }
 
-.sidenav a {
-  padding: 6px 8px 6px 16px;
+a.nav-icon {
+  padding: 6px 8px 6px 8px;
   text-decoration: none;
   font-size: 25px;
   color: #E4E4E4;
@@ -140,23 +140,17 @@ code {
   justify-content: center;
 }
 
-.sidenav a:hover{
+a.nav-icon, a.nav-icon:visited {
+  color: ghostwhite;
+  text-decoration: none;
+}
+
+a.nav-icon:hover, a.nav-icon:active, a.nav-icon:focus{
   color: #343E2D;
   text-decoration: none;
+  text-shadow: 0 0 5px ghostwhite;
 }
 
-.sidenav a:visited {
-  color: white;
-  text-decoration: none;
-}
-
-
-
-.sticky-heading {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
 
 .custom-timeline {
   margin-left: 20px;
@@ -186,8 +180,72 @@ ul.no-bullet {
   padding-inline-start: 0px;
 }
 
+li.nav-item{
+  padding: 0px;
+}
+
 li.holiday-list-item {
   padding: 0px;
+}
+
+.nav-buttons-green, .nav-buttons-white:hover{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 30px;
+  border: solid 2px white;
+  border-radius: 15px;
+  margin: 5px;
+  color: white;
+  background-color: #8EAA7B;
+  width: 130px;
+  height: 30px;
+  font-weight: bold;
+}
+
+.nav-buttons-green, .nav-buttons-white:hover{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 30px;
+  border: solid 2px white;
+  border-radius: 15px;
+  margin: 5px;
+  color: white;
+  background-color: #8EAA7B;
+  width: 130px;
+  height: 30px;
+  font-weight: bold;
+}
+
+.nav-buttons-white, .nav-buttons-green:hover{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 30px;
+  border: solid 2px #8EAA7B;
+  border-radius: 15px;
+  margin: 5px;
+  color: #8EAA7B;
+  background-color: white;
+  width: 130px;
+  height: 30px;
+  font-weight: bold;
+}
+
+a.main-green {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a.main-green:hover {
+  color: #8EAA7B;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 button.main-white, button.main-green:hover {
@@ -212,10 +270,37 @@ button.main-green, button.main-white:hover {
   font-weight: bold;
 }
 
+button.sml-white, button.sml-green:hover {
+  border: solid 2px #8EAA7B;
+  border-radius: 15px;
+  margin: 5px;
+  color: #8EAA7B;
+  background-color: white;
+  width: 100px;
+  height: 25px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+button.sml-green, button.sml-white:hover {
+  border: solid 2px white;
+  border-radius: 15px;
+  margin: 5px;
+  color: white;
+  background-color: #8EAA7B;
+  width: 100px;
+  height: 25px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
 .sticky-heading {
   background-color: white;
   box-shadow: 0 1px 5px 0 lightgrey;
   padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 2000;
 }
 
 .holiday {

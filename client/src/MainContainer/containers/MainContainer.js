@@ -53,6 +53,7 @@ class MainContainer extends Component {
                 <HolidayContainer {...props} selectedTraveller={this.state.selectedTraveller} />
                 )}
             />
+            
             <Route path="/journal" render={(props) => (
                 <Journal {...props} selectedTraveller={this.state.selectedTraveller} />
                 )}
