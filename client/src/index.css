@@ -89,7 +89,6 @@ code {
 
 .container {
   margin: 0 0 0 70px;
-  width: 100%;
 }
 
 .homeWelcome {
@@ -184,6 +183,11 @@ code {
 
 ul.no-bullet {
   list-style-type: none;
+  padding-inline-start: 0px;
+}
+
+li.holiday-list-item {
+  padding: 0px;
 }
 
 button.main-white, button.main-green:hover {
@@ -212,4 +216,29 @@ button.main-green, button.main-white:hover {
   background-color: white;
   box-shadow: 0 1px 5px 0 lightgrey;
   padding: 10px;
+}
+
+.holiday {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid grey;
+  padding: 5px;
+  margin: 0px;
+}
+
+a.holiday-link, a.holiday-link:hover {
+  color: grey;
+  text-decoration: none;
+  font-size: 26px;
+}
+
+h2.holiday-title {
+  font-size: 20px;
+}
+
+h3.holiday-locations {
+  font-size: 15px;
+  text-align: left;
 }

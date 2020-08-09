@@ -1,24 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Icon, Whisper, Tooltip } from 'rsuite';
+import { Icon } from 'rsuite';
 
 const NavBar = (props) => {
-  const homeToolTip = (
-    <Tooltip>Home</Tooltip>
-  )
-
-  const profileToolTip = (
-    <Tooltip>Profile</Tooltip>
-  )
-
-  const holidayToolTip = (
-    <Tooltip>Holidays</Tooltip>
-  )
-
-  const journalToolTip = (
-    <Tooltip>Journal</Tooltip>
-  )
-
   return (
     <nav className="sidenav">
       <ul className="no-bullet">
