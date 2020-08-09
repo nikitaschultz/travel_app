@@ -28,30 +28,22 @@ const NavBar = (props) => {
         <br />
         <li>
           <Link to="/">
-            <Whisper placement="right" trigger="hover" speaker={homeToolTip}>
-              <Icon icon="home" size="3x" />
-            </Whisper>
+            <Icon icon="home" size="3x" />
           </Link>
         </li>
         <li>
           <Link to="/profile">
-            <Whisper placement="right" trigger="hover" speaker={profileToolTip}>
-              <Icon icon="user" size="3x" />
-            </Whisper>
+            <Icon icon="user" size="3x" />
           </Link>
         </li>
         <li className="navLink">
           <Link to="/holidays">
-            <Whisper placement="right" trigger="hover" speaker={holidayToolTip}>
-              <Icon icon="map" size="3x" />
-            </Whisper>
+            <Icon icon="map" size="3x" />
           </Link>
         </li>
         <li className="navLink">
           <Link to="/journal" >
-            <Whisper placement="right" trigger="hover" speaker={journalToolTip}>
-              <Icon icon="book" size="3x" />
-            </Whisper>
+            <Icon icon="book" size="3x" />
           </Link>
         </li>
 

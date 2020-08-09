@@ -88,8 +88,7 @@ code {
 }
 
 .container {
-  position: fixed;
-  left: 70px;
+  margin: 0 0 0 70px;
   width: 100%;
 }
 
@@ -143,7 +142,7 @@ code {
 }
 
 .sidenav a:hover{
-  color: white;
+  color: #343E2D;
   text-decoration: none;
 }
 
@@ -151,6 +150,7 @@ code {
   color: white;
   text-decoration: none;
 }
+
 
 
 .sticky-heading {
@@ -184,4 +184,32 @@ code {
 
 ul.no-bullet {
   list-style-type: none;
+}
+
+button.main-white, button.main-green:hover {
+  border: solid 2px #8EAA7B;
+  border-radius: 15px;
+  margin: 5px;
+  color: #8EAA7B;
+  background-color: white;
+  width: 130px;
+  height: 30px;
+  font-weight: bold;
+}
+
+button.main-green, button.main-white:hover {
+  border: solid 2px white;
+  border-radius: 15px;
+  margin: 5px;
+  color: white;
+  background-color: #8EAA7B;
+  width: 130px;
+  height: 30px;
+  font-weight: bold;
+}
+
+.sticky-heading {
+  background-color: white;
+  box-shadow: 0 1px 5px 0 lightgrey;
+  padding: 10px;
 }

@@ -4,7 +4,11 @@ import TripContainer from '../../TripContainer/containers/TripContainer.js';
 const HolidayDetail = ({holiday}) => {
   return(
     <div className="holiday-detail">
-      <h2 className="sticky-heading">{holiday.title}</h2>
+      <div className="sticky-heading">
+        <h2>{holiday.title}</h2>
+        <button className="main-green">Add a Trip</button>
+        <button className="main-white">Edit Holiday</button>
+      </div>
       <TripContainer trips={holiday.trips} />
     </div>
   )
