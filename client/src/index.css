@@ -202,22 +202,7 @@ li.holiday-list-item {
   width: 130px;
   height: 30px;
   font-weight: bold;
-}
-
-.nav-buttons-green, .nav-buttons-white:hover{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 130px;
-  height: 30px;
-  border: solid 2px white;
-  border-radius: 15px;
-  margin: 5px;
-  color: white;
-  background-color: #8EAA7B;
-  width: 130px;
-  height: 30px;
-  font-weight: bold;
+  text-decoration: none;
 }
 
 .nav-buttons-white, .nav-buttons-green:hover{
@@ -234,6 +219,7 @@ li.holiday-list-item {
   width: 130px;
   height: 30px;
   font-weight: bold;
+  text-decoration: none;
 }
 
 a.main-green {
@@ -247,6 +233,7 @@ a.main-green:hover {
   font-weight: bold;
   text-decoration: none;
 }
+
 
 button.main-white, button.main-green:hover {
   border: solid 2px #8EAA7B;

@@ -12,6 +12,7 @@ class HolidayContainer extends Component {
       holidays: [],
       selectedHoliday: null
     }
+    this.handleHolidaySelected = this.handleHolidaySelected.bind(this);
   }
 
   componentDidMount(){
@@ -21,6 +22,10 @@ class HolidayContainer extends Component {
     .then((data) => {
       this.setState({holidays: data})
     })
+  }
+
+  handleHolidaySelected(holiday){
+    this.setState({selectedHoliday: holiday});
   }
 
   findHolidayById(id){
@@ -53,12 +58,11 @@ class HolidayContainer extends Component {
             <Route exact path="/holidays/:id" render={(props) => {
               const id = props.match.params.id;
               const holiday = this.findHolidayById(id);
-              return <HolidayDetail holiday={holiday} />
+              return <HolidayDetail holiday={holiday} handleHolidaySelected={this.handleHolidaySelected}/>
             }} />
             <Route render={() => {
               return <HolidayList holidays={this.state.holidays} />
             }} />
-
           </Switch>
         </div>
       </Router>

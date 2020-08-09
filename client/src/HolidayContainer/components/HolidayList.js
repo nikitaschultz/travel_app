@@ -23,9 +23,7 @@ const Holidays = (props) => {
 	  <ul className="no-bullet">
 	    {holidays}
       <li>
-        <div className="nav-buttons-green">
-          <Link to="/holidays/new" className="main-green" >New Holiday</Link>
-        </div>
+        <Link to="/holidays/new" className="nav-buttons-green" >New Holiday</Link>
       </li>
 	  </ul>
 	)

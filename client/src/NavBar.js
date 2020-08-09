@@ -7,7 +7,9 @@ const NavBar = (props) => {
     <nav className="sidenav">
       <ul className="no-bullet">
         <li>
-          <img src="/images/logo.png" width="40" height="40" alt="Logo"/>
+          <Link className="nav-icon" to="/">
+            <img src="/images/logo.png" width="40" height="40" alt="Logo"/>
+          </Link>
         </li>
         <br />
         <li>
