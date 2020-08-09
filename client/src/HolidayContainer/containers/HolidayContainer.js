@@ -11,18 +11,29 @@ class HolidayContainer extends Component {
     super(props);
     this.state = {
       holidays: [],
-      selectedHoliday: null
+      selectedHoliday: null,
+      travellers: []
     }
     this.handleHolidaySelected = this.handleHolidaySelected.bind(this);
+    this.findHolidayById = this.findHolidayById.bind(this);
+    this.findTravellerById = this.findTravellerById.bind(this);
   }
 
   componentDidMount(){
     const request = new Request();
-    const url = 'api/holidays?travellerId=' + this.props.selectedTraveller.id
+
+    let url = 'api/holidays?travellerId=' + this.props.selectedTraveller.id
     request.get(url)
     .then((data) => {
       this.setState({holidays: data})
     })
+
+    url = '/api/travellers'
+    request.get(url)
+    .then((data) => {
+      this.setState({travellers: data})
+    })
+
   }
 
   handleHolidaySelected(holiday){
@@ -35,12 +46,27 @@ class HolidayContainer extends Component {
     })
   }
 
+  findTravellerById(id){
+    return this.state.travellers.find(traveller => {
+      return traveller.id === parseInt(id);
+    })
+  }
+
   handlePost(holiday){
     const request = new Request();
     const url = '/api/holidays'
     request.post(url, holiday)
     .then(() => {
       window.location = '/holidays';
+    })
+  }
+
+  handlePatch(id, holiday){
+    const request = new Request();
+    const url = `/api/holidays/${id}`
+    request.patch(url, holiday)
+    .then(() => {
+      window.location = `/holidays`
     })
   }
 
@@ -56,15 +82,24 @@ class HolidayContainer extends Component {
             <Route exact path="/holidays/:id/edit" render={(props) => {
               const id = props.match.params.id;
               const holiday = this.findHolidayById(id);
-              return <HolidayEdit holiday={holiday} />
+              return <HolidayEdit
+                holiday={holiday}
+                onUpdate={this.handlePatch}
+                travellers={this.state.travellers}
+                selectedTraveller={this.props.selectedTraveller}
+                findTravellerById={this.findTravellerById} />
             }} />
             <Route exact path="/holidays/new" render={(props) => {
-              return <HolidayForm selectedTraveller={props.selectedTraveller} onCreate={props.handlePost} />
+              return <HolidayForm
+                selectedTraveller={this.props.selectedTraveller}
+                onCreate={props.handlePost} />
             }} />
             <Route exact path="/holidays/:id" render={(props) => {
               const id = props.match.params.id;
               const holiday = this.findHolidayById(id);
-              return <HolidayDetail holiday={holiday} handleHolidaySelected={this.handleHolidaySelected}/>
+              return <HolidayDetail
+                holiday={holiday}
+                handleHolidaySelected={this.handleHolidaySelected}/>
             }} />
             <Route render={() => {
               return <HolidayList holidays={this.state.holidays} />
