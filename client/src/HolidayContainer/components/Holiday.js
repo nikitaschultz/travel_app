@@ -26,7 +26,7 @@ const Holiday = ({holiday}) => {
         <h2 className="holiday-title">{holiday.title}</h2>
         <h3 className="holiday-locations">{locations}</h3>
       </Link>
-      <button className="main-white">View Holiday</button>
+      <Link to={"/holidays/" + holiday.id} className="nav-buttons-white">View Holiday</Link>
     </div>
   )
 }

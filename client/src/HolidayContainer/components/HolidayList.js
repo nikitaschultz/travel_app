@@ -1,5 +1,6 @@
 import React from 'react';
 import Holiday from './Holiday.js';
+import { Link } from 'react-router-dom';
 
 const Holidays = (props) => {
 
@@ -23,7 +24,7 @@ const Holidays = (props) => {
 	    {holidays}
       <li>
         <div className="nav-buttons-green">
-          <a href="/holidays/new" className="main-green" >New Holiday</a>
+          <Link to="/holidays/new" className="main-green" >New Holiday</Link>
         </div>
       </li>
 	  </ul>

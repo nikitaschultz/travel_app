@@ -9,7 +9,8 @@ class HolidayContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      holidays: []
+      holidays: [],
+      selectedHoliday: null
     }
   }
 
@@ -46,17 +47,18 @@ class HolidayContainer extends Component {
       <Router>
         <div className="container">
           <Switch>
-            <HolidayForm
-              selectedTraveller={this.props.selectedTraveller}
-              onCreate={this.handlePost} />
-            <Route exact path="/holidays" render={(props) => {
-              return <HolidayList holidays={this.state.holidays}/>
+            <Route exact path="/holidays/new" render={(props) => {
+              return <HolidayForm selectedTraveller={props.selectedTraveller} onCreate={props.handlePost} />
             }} />
             <Route exact path="/holidays/:id" render={(props) => {
               const id = props.match.params.id;
               const holiday = this.findHolidayById(id);
               return <HolidayDetail holiday={holiday} />
             }} />
+            <Route render={() => {
+              return <HolidayList holidays={this.state.holidays} />
+            }} />
+
           </Switch>
         </div>
       </Router>
