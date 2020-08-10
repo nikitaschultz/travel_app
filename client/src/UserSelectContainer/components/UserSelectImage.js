@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {Component}from 'react';
 
-const UserSelectImage = (props) => {
+class UserSelectImage extends Component {
+    constructor(props){
+        super(props);
+    }
 
-    return(
-        <img src=""> Who's travelling?</img>
-    )
+
+    render(){
+
+        if (this.props.selectedTraveller !== ""){
+            return(
+                <img className="userSelectImage" src={`./images/${this.props.selectedTraveller.image}.jpg`} alt="" />
+            )
+        } else {
+            return null
+        }
+    }
 
 }
 
