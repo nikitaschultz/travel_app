@@ -47,16 +47,16 @@ public class DataLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Traveller hamilton = new Traveller("Alexander Hamilton", "beach");
+        Traveller hamilton = new Traveller("Alexander Hamilton", "image1");
         travellerRepository.save(hamilton);
 
-        Traveller burr = new Traveller("Aaron Burr", "forest");
+        Traveller burr = new Traveller("Aaron Burr", "image2");
         travellerRepository.save(burr);
 
-        Traveller jefferson = new Traveller("Thomas Jefferson", "desert");
+        Traveller jefferson = new Traveller("Thomas Jefferson", "image3");
         travellerRepository.save(jefferson);
 
-        Traveller washington = new Traveller("George Washington", "mountain");
+        Traveller washington = new Traveller("George Washington", "image4");
         travellerRepository.save(washington);
 
         Holiday holiday1 = new Holiday("Coming to the Mainland", true);

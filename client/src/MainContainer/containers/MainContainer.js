@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import HolidayContainer from '../../HolidayContainer/containers/HolidayContainer.js';
+import TripContainer from '../../TripContainer/containers/TripContainer.js';
 import UserSelectContainer from '../../UserSelectContainer/containers/UserSelectContainer.js'
 import HomeContainer from '../../HomeContainer/containers/HomeContainer.js';
 import Journal from '../components/Journal.js';
@@ -8,33 +9,38 @@ import Profile from '../components/Profile.js';
 import NavBar from '../../NavBar.js';
 
 class MainContainer extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            selectedTraveller:
-              {id: 1,
-              image: "beach",
-              name: "Alexander Hamilton"},
-            isSelectingTraveller: true
-        }
-        this.handleChange = this.handleChange.bind(this);
-        this.hasSelectedTraveller = this.hasSelectedTraveller.bind(this);
-    }
+  constructor(props){
+      super(props);
+      this.state = {
+          selectedTraveller:
+            {id: 1,
+            image: "beach",
+            name: "Alexander Hamilton"},
+          isSelectingTraveller: true,
+          selectedHoliday: null
+      }
+      this.handleChange = this.handleChange.bind(this);
+      this.hasSelectedTraveller = this.hasSelectedTraveller.bind(this);
+      this.handleHolidaySelected = this.handleHolidaySelected.bind(this);
+  }
 
-    hasSelectedTraveller(){
-        this.setState({isSelectingTraveller: false});
-    };
+  handleHolidaySelected(holiday){
+    this.setState({selectedHoliday: holiday})
+  }
 
-    handleChange(selectedTraveller){
-        this.setState({selectedTraveller: selectedTraveller});
-    };
+  hasSelectedTraveller(){
+      this.setState({isSelectingTraveller: false});
+  };
 
-    render(){
-        return (
-          <Router>
-          <Fragment>
+  handleChange(selectedTraveller){
+      this.setState({selectedTraveller: selectedTraveller});
+  };
+
+  render(){
+    return (
+      <Router>
+        <Fragment>
           <NavBar className="sidenav"/>
-
           <Switch>
             <Route exact path="/" render={(props) => (
                 <Fragment>
@@ -50,22 +56,25 @@ class MainContainer extends Component {
             />
 
             <Route exact path="/holidays" render={(props) => (
-                <HolidayContainer {...props} selectedTraveller={this.state.selectedTraveller} />
+                <HolidayContainer {...props} selectedTraveller={this.state.selectedTraveller} handleHolidaySelected={this.handleHolidaySelected} />
                 )}
             />
+
             <Route path="/journal" render={(props) => (
                 <Journal {...props} selectedTraveller={this.state.selectedTraveller} />
                 )}
             />
 
+            <Route path="/trips" render={(props) => (
+              <TripContainer {...props} selectedTraveller={this.state.selectedTraveller} selectedHoliday={this.state.selectedHoliday} />
+            )}
+            />
+
           </Switch>
-
-
-          </Fragment>
-          </Router>
-        )
-    }
-
+        </Fragment>
+      </Router>
+    )
+  }
 }
 
 export default MainContainer;
