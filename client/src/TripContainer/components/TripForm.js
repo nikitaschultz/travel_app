@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import Geocode from 'react-geocode';
+import apiKey from '../../helpers/apiKey.js';
 
 class TripForm extends Component {
   constructor(props){
@@ -13,6 +15,8 @@ class TripForm extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.findLocation = this.findLocation.bind(this);
+    console.log(apiKey);
   }
 
   handleChange(event){
@@ -27,6 +31,20 @@ class TripForm extends Component {
 
   }
 
+  findLocation(){
+    Geocode.setApiKey(apiKey)
+    Geocode.setLanguage("en");
+    Geocode.fromAddress(this.state.trip.location).then(
+      response => {
+        const { lat, lng } = response.results[0].geometry.location;
+        console.log(lat, lng);
+      },
+      error => {
+        console.error(error)
+      }
+    )
+  }
+
   render(){
     return (
       <Fragment>
@@ -37,6 +55,7 @@ class TripForm extends Component {
             name="location"
             onChange={this.handleChange}
             value={this.state.trip.location} />
+          <button onClick={this.findLocation}>Find Location</button>
           <input type="submit" value="Create" />
         </form>
       </Fragment>
