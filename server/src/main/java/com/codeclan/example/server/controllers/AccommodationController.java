@@ -45,7 +45,7 @@ public class AccommodationController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @PutMapping(value="/accommodations/{id}")
+    @PostMapping(value="/accommodations/{id}")
     public ResponseEntity<Accommodation> updateAccommodation(
             @RequestBody Accommodation accommodation
     ){

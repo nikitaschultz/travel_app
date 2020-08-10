@@ -27,7 +27,7 @@ public class TrainController {
         return new ResponseEntity(trainRepository.findById(id), HttpStatus.OK);
     }
 
-    @PutMapping(value="/trains")
+    @PostMapping(value="/trains")
     public ResponseEntity<Train> postTrain(
             @RequestBody Train train
     ){

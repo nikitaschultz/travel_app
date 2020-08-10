@@ -45,7 +45,7 @@ public class FlightController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @PutMapping(value="/flights/{id}")
+    @PostMapping(value="/flights/{id}")
     public ResponseEntity<Flight> updateFlight(
             @RequestBody Flight flight
     ){
