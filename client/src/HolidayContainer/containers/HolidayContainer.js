@@ -98,13 +98,18 @@ class HolidayContainer extends Component {
               const holiday = this.findHolidayById(id);
               return <HolidayDetail
                 holiday={holiday}
-                handleHolidaySelected={this.props.handleHolidaySelected} />
+                handleHolidaySelected={this.props.handleHolidaySelected}
+                handleTripSelected={this.props.handleTripSelected}
+                selectedTrip={this.props.selectedTrip} />
             }} />
             <Route exact path="/holidays" render={(props) => {
               return <HolidayList holidays={this.state.holidays} />
             }} />
             <Route path="/trips" render={(props) => {
-              return <TripContainer holiday={this.props.selectedHoliday} />
+              return <TripContainer
+                holiday={this.props.selectedHoliday}
+                trip={this.props.selectedTrip}
+                handleTripSelected={this.props.handleTripSelected} />
             }} />
           </Switch>
         </div>

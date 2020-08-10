@@ -19,7 +19,7 @@ class HolidayDetail extends React.Component{
           <Link to={"/trips/new"} className="nav-buttons-green">Add Trip</Link>
           <Link to={"/holidays/" + this.props.holiday.id + "/edit"} className="nav-buttons-white">Edit Holiday</Link>
         </div>
-        <TripContainer holiday={this.props.holiday} />
+        <TripContainer handleTripSelected={this.props.handleTripSelected} holiday={this.props.holiday} selectedTrip={this.props.selectedTrip} />
       </React.Fragment>
     )
   }

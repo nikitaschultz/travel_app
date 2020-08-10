@@ -3,6 +3,7 @@ import TripList from '../components/TripList.js';
 import TripForm from '../components/TripForm.js';
 import TripEdit from '../components/TripEdit.js';
 import Request from '../../helpers/request.js';
+import PlanContainer from '../../PlanContainer/containers/PlanContainer.js';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class TripContainer extends Component {
@@ -52,8 +53,13 @@ class TripContainer extends Component {
               holiday={this.props.holiday}
               onUpdate={this.handlePut} />
           }} />
+          <Route path="/plans" render={(props) => {
+            return <PlanContainer selectedTrip={this.props.selectedTrip} />
+          }} />
           <Route render={() => {
-            return <TripList trips={this.props.holiday.trips} />
+            return <TripList
+              trips={this.props.holiday.trips}
+              handleTripSelected={this.props.handleTripSelected} />
           }} />
         </Switch>
       </Router>
