@@ -17,17 +17,16 @@ class TripContainer extends Component {
     })
   }
 
-  handlePost(trip){
+  handlePost(trip, holidayId){
     const request = new Request();
     const url = '/api/trips';
     request.post(url, trip)
     .then(() => {
-      window.location = "/trips";
+      window.location = `/holidays/${holidayId}`
     })
   }
 
   handlePut(id, trip, holidayId){
-    console.log(trip);
     const request = new Request();
     const url = `/api/trips/${id}`;
     request.put(url, trip)

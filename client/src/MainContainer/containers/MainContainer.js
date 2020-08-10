@@ -58,7 +58,7 @@ class MainContainer extends Component {
             />
 
             <Route path="/holidays" render={(props) => (
-                <HolidayContainer selectedTraveller={this.state.selectedTraveller} handleHolidaySelected={this.handleHolidaySelected} handleTravellerChange={this.handleChange} hasSelectedTraveller={this.hasSelectedTraveller} />
+                <HolidayContainer selectedTraveller={this.state.selectedTraveller} handleHolidaySelected={this.handleHolidaySelected} handleTravellerChange={this.handleChange} hasSelectedTraveller={this.hasSelectedTraveller} selectedHoliday={this.state.selectedHoliday} />
                 )}
             />
 

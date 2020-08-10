@@ -104,7 +104,7 @@ class HolidayContainer extends Component {
               return <HolidayList holidays={this.state.holidays} />
             }} />
             <Route path="/trips" render={(props) => {
-              return <TripContainer holiday={this.props.holiday} />
+              return <TripContainer holiday={this.props.selectedHoliday} />
             }} />
           </Switch>
         </div>

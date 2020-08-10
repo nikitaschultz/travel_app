@@ -19,7 +19,6 @@ class TripEdit extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    let trip = this.state.trip
     this.props.onUpdate(this.state.trip.id, this.state.trip, this.props.holiday.id)
   }
 
