@@ -14,6 +14,7 @@ class AccommodationForm extends Component {
       }
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event){
@@ -23,11 +24,16 @@ class AccommodationForm extends Component {
     this.setState({accommodation: accommodation})
   }
 
+  handleSubmit(event){
+    event.preventDefault();
+    this.props.onCreate('accommodations', this.state.accommodation)
+  }
+
   render(){
     return (
       <Fragment>
         <h4>Accommodation</h4>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label htmlFor="date">Date:</label>
           <input type="date" name="date" onChange={this.handleChange} value={this.state.accommodation.date} /><br />
           <label htmlFor="bookingConfirmation">Booking Confirmation:</label>
@@ -38,6 +44,7 @@ class AccommodationForm extends Component {
           <input type="text" name="address" onChange={this.handleChange} value={this.state.accommodation.address} /><br />
           <label htmlFor="numOfNights">Number of Nights:</label>
           <input type="number" name="numOfNights" onChange={this.handleChange} value={this.state.accommodation.numOfNights} /><br />
+          <input type="submit" value="Create" />
         </form>
       </Fragment>
     )

@@ -15,6 +15,7 @@ class FlightForm extends Component {
       }
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event){
@@ -24,11 +25,16 @@ class FlightForm extends Component {
     this.setState({flight: flight})
   }
 
+  handleSubmit(event){
+    event.preventDefault();
+    this.props.onCreate('flights', this.state.flight)
+  }
+
   render(){
     return (
       <Fragment>
         <h4>Flight</h4>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label htmlFor="date">Date:</label>
           <input type="date" name="date" onChange={this.handleChange} value={this.state.flight.date} /><br />
           <label htmlFor="bookingConfirmation">Booking Confirmation:</label>
@@ -41,6 +47,7 @@ class FlightForm extends Component {
           <input type="text" name="departureTime" onChange={this.handleChange} value={this.state.flight.departureTime} /><br />
           <label htmlFor="arrivalTime">Arrival Time:</label>
           <input type="text" name="arrivalTime" onChange={this.handleChange} value={this.state.flight.arrivalTime} /><br />
+          <input type="submit" value="Create" />
         </form>
       </Fragment>
     )

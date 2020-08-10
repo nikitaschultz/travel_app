@@ -13,6 +13,7 @@ class EventForm extends Component {
       }
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event){
@@ -22,11 +23,16 @@ class EventForm extends Component {
     this.setState({event: eventObj})
   }
 
+  handleSubmit(event){
+    event.preventDefault();
+    this.props.onCreate('events', this.state.event)
+  }
+
   render(){
     return (
       <Fragment>
         <h4>Event</h4>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label htmlFor="date">Date:</label>
           <input type="date" name="date" onChange={this.handleChange} value={this.state.event.date} /><br />
           <label htmlFor="bookingConfirmation">Booking Confirmation:</label>
@@ -35,6 +41,7 @@ class EventForm extends Component {
           <input type="text" name="name" onChange={this.handleChange} value={this.state.event.name} /><br />
           <label htmlFor="location">Location:</label>
           <input type="text" name="location" onChange={this.handleChange} value={this.state.event.location} /><br />
+          <input type="submit" value="Create" />
         </form>
       </Fragment>
     )

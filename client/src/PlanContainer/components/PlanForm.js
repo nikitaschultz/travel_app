@@ -38,22 +38,22 @@ class PlanForm extends Component {
     switch(this.state.selectedPlanType){
       case "FLIGHT":
         form = (
-          <FlightForm />
+          <FlightForm onCreate={this.props.onCreate} />
         )
         break;
       case "TRAIN":
         form = (
-          <TrainForm />
+          <TrainForm onCreate={this.props.onCreate} />
         )
         break;
       case "ACCOMMODATION":
         form = (
-          <AccommodationForm />
+          <AccommodationForm onCreate={this.props.onCreate} />
         )
         break;
       case "EVENT":
         form = (
-          <EventForm />
+          <EventForm onCreate={this.props.onCreate} />
         )
         break;
       default:
@@ -61,8 +61,6 @@ class PlanForm extends Component {
           <p>Please select a plan type.</p>
         );
     }
-
-
 
     return (
       <Fragment>
