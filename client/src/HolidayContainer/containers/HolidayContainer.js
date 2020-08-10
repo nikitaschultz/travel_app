@@ -60,11 +60,12 @@ class HolidayContainer extends Component {
     const selectedTraveller = this.props.selectedTraveller;
     const request = new Request();
     const url = `/api/holidays/${id}`
-    request.put(url, holiday)
+    request.post(url, holiday)
     .then(() => {
+      window.location = `/holidays/${id}`
       this.props.hasSelectedTraveller();
       this.props.handleTravellerChange(selectedTraveller);
-      window.location = `/holidays/${id}`
+      console.log("this is making the change");
     })
   }
 
