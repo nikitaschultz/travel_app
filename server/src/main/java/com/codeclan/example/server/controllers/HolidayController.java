@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 public class HolidayController {
 
@@ -51,7 +52,7 @@ public class HolidayController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @PatchMapping(value="/holidays/{id}")
+    @PostMapping(value="/holidays/{id}")
     public ResponseEntity<Holiday> updateHoliday(
             @RequestBody Holiday holiday
     ){

@@ -75,7 +75,7 @@ class HolidayEdit extends Component {
           <ul>
             {travellerCheckboxes}
           </ul>
-          <input type="submit" value="Save" />
+          <button type="submit">Save</button>
         </form>
       </Fragment>
     )

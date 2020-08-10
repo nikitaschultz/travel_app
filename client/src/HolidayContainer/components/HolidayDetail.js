@@ -8,6 +8,10 @@ class HolidayDetail extends React.Component{
   }
 
   render(){
+    if(!this.props.holiday){
+      return <p>Loading...</p>
+    }
+
     return(
       <React.Fragment>
         <div className="sticky-heading">

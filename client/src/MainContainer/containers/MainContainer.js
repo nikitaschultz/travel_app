@@ -22,7 +22,9 @@ class MainContainer extends Component {
       this.handleChange = this.handleChange.bind(this);
       this.hasSelectedTraveller = this.hasSelectedTraveller.bind(this);
       this.handleHolidaySelected = this.handleHolidaySelected.bind(this);
+      console.log("RELOADED");
   }
+
 
   handleHolidaySelected(holiday){
     this.setState({selectedHoliday: holiday})
@@ -44,29 +46,29 @@ class MainContainer extends Component {
           <Switch>
             <Route exact path="/" render={(props) => (
                 <Fragment>
-                    <UserSelectContainer {...props} sendNewTravellerToMain={this.handleChange} isSelectingTraveller={this.state.isSelectingTraveller} hasSelectedTraveller={this.hasSelectedTraveller}/>
+                    <UserSelectContainer sendNewTravellerToMain={this.handleChange} isSelectingTraveller={this.state.isSelectingTraveller} hasSelectedTraveller={this.hasSelectedTraveller}/>
                     <HomeContainer selectedTraveller={this.state.selectedTraveller}/>
                 </Fragment>
               )}
             />
 
             <Route path="/profile" render={(props) => (
-                <Profile {...props} selectedTraveller={this.state.selectedTraveller} />
+                <Profile selectedTraveller={this.state.selectedTraveller} />
                 )}
             />
 
-            <Route exact path="/holidays" render={(props) => (
-                <HolidayContainer {...props} selectedTraveller={this.state.selectedTraveller} handleHolidaySelected={this.handleHolidaySelected} />
+            <Route path="/holidays" render={(props) => (
+                <HolidayContainer selectedTraveller={this.state.selectedTraveller} handleHolidaySelected={this.handleHolidaySelected} handleTravellerChange={this.handleChange} hasSelectedTraveller={this.hasSelectedTraveller} />
                 )}
             />
 
             <Route path="/journal" render={(props) => (
-                <Journal {...props} selectedTraveller={this.state.selectedTraveller} />
+                <Journal selectedTraveller={this.state.selectedTraveller} />
                 )}
             />
 
             <Route path="/trips" render={(props) => (
-              <TripContainer {...props} selectedTraveller={this.state.selectedTraveller} selectedHoliday={this.state.selectedHoliday} />
+              <TripContainer selectedTraveller={this.state.selectedTraveller} selectedHoliday={this.state.selectedHoliday} />
             )}
             />
 
