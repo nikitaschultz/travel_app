@@ -5,16 +5,15 @@ import HolidayList from '../components/HolidayList.js';
 import HolidayDetail from '../components/HolidayDetail.js';
 import HolidayForm from '../components/HolidayForm.js';
 import HolidayEdit from '../components/HolidayEdit.js';
+import TripContainer from '../../TripContainer/containers/TripContainer.js';
 
 class HolidayContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
       holidays: [],
-      selectedHoliday: null,
       travellers: []
     }
-    this.handleHolidaySelected = this.handleHolidaySelected.bind(this);
     this.findHolidayById = this.findHolidayById.bind(this);
     this.findTravellerById = this.findTravellerById.bind(this);
   }
@@ -34,10 +33,6 @@ class HolidayContainer extends Component {
       this.setState({travellers: data})
     })
 
-  }
-
-  handleHolidaySelected(holiday){
-    this.setState({selectedHoliday: holiday});
   }
 
   findHolidayById(id){
@@ -66,7 +61,7 @@ class HolidayContainer extends Component {
     const url = `/api/holidays/${id}`
     request.patch(url, holiday)
     .then(() => {
-      window.location = `/holidays`
+      window.location = `/holidays/${id}`
     })
   }
 
@@ -92,17 +87,20 @@ class HolidayContainer extends Component {
             <Route exact path="/holidays/new" render={(props) => {
               return <HolidayForm
                 selectedTraveller={this.props.selectedTraveller}
-                onCreate={props.handlePost} />
+                onCreate={this.props.handlePost} />
             }} />
-            <Route exact path="/holidays/:id" render={(props) => {
+            <Route path="/holidays/:id" render={(props) => {
               const id = props.match.params.id;
               const holiday = this.findHolidayById(id);
               return <HolidayDetail
                 holiday={holiday}
-                handleHolidaySelected={this.handleHolidaySelected}/>
+                handleHolidaySelected={this.props.handleHolidaySelected} />
             }} />
-            <Route render={() => {
+            <Route exact path="/holidays" render={(props) => {
               return <HolidayList holidays={this.state.holidays} />
+            }} />
+            <Route path="/trips" render={(props) => {
+              return <TripContainer holiday={this.props.holiday} />
             }} />
           </Switch>
         </div>

@@ -59,12 +59,7 @@ class HolidayEdit extends Component {
           )
         }
       }else{
-        return (
-          <li key={index}>
-            <input type="checkbox" checked readOnly={true} value={traveller.id} id={traveller.id} ></input>
-            <label htmlFor={traveller.id}>{traveller.name}</label>
-          </li>
-        )
+        return null
       }
     })
 

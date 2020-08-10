@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 
-class HolidayForm extends React.Component {
+class HolidayForm extends Component {
   constructor(props){
     super(props);
     this.state = {
