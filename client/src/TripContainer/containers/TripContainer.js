@@ -29,7 +29,7 @@ class TripContainer extends Component {
   handlePut(id, trip, holidayId){
     const request = new Request();
     const url = `/api/trips/${id}`;
-    request.put(url, trip)
+    request.post(url, trip)
     .then(() => {
       window.location = `/holidays/${holidayId}`
     })

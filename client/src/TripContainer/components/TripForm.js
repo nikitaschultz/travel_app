@@ -41,17 +41,16 @@ class TripForm extends Component {
   }
 
   findLocation(){
-    Geocode.setApiKey(apiKey)
+    Geocode.setApiKey(apiKey);
     Geocode.setLanguage("en");
-    Geocode.fromAddress(this.state.trip.location).then(
-      response => {
+    Geocode.fromAddress(this.state.trip.location)
+    .then((response) => {
         const { lat, lng } = response.results[0].geometry.location;
         this.setState({lat: lat, lng: lng, showMap: true, submissionError: null})
       },
       error => {
         console.error(error)
-      }
-    )
+      })
   }
 
   render(){
