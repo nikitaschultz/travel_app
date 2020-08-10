@@ -6,7 +6,7 @@ class FlightForm extends Component {
     this.state = {
       flight: {
         planType: "FLIGHT",
-        date: new Date(),
+        date: "",
         bookingConfirmation: "",
         departureAirport: "",
         arrivalAirport: "",
