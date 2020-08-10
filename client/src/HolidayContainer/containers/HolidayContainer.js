@@ -22,7 +22,7 @@ class HolidayContainer extends Component {
   componentDidMount(){
     const request = new Request();
 
-    let url = 'api/holidays?travellerId=' + this.props.selectedTraveller.id
+    let url = '/api/holidays?travellerId=' + this.props.selectedTraveller.id
     request.get(url)
     .then((data) => {
       this.setState({holidays: data})
@@ -63,9 +63,9 @@ class HolidayContainer extends Component {
     request.post(url, holiday)
     .then(() => {
       window.location = `/holidays/${id}`
+      console.log(this.props.hasSelectedTraveller);
       this.props.hasSelectedTraveller();
       this.props.handleTravellerChange(selectedTraveller);
-      console.log("this is making the change");
     })
   }
 

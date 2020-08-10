@@ -1,5 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { Dropdown } from 'rsuite';
+import AccommodationForm from './AccommodationForm.js';
+import FlightForm from './FlightForm.js';
+import TrainForm from './TrainForm.js';
+import EventForm from './EventForm.js';
 
 class PlanForm extends Component {
   constructor(props){
@@ -7,7 +11,10 @@ class PlanForm extends Component {
     this.state = {
       selectedPlanType: null
     }
-    this.handlePlanTypeSelect = this.handlePlanTypeSelect.bind(this);
+    this.selectFlight = this.selectFlight.bind(this);
+    this.selectTrain = this.selectTrain.bind(this);
+    this.selectAccommodation = this.selectAccommodation.bind(this);
+    this.selectEvent = this.selectEvent.bind(this);
   }
 
   selectFlight(){
@@ -26,11 +33,37 @@ class PlanForm extends Component {
     this.setState({selectedPlanType: "EVENT"})
   }
 
-  handlePlanTypeSelect(event){
-    console.log("Flight");
-  }
-
   render(){
+    let form;
+    switch(this.state.selectedPlanType){
+      case "FLIGHT":
+        form = (
+          <FlightForm />
+        )
+        break;
+      case "TRAIN":
+        form = (
+          <TrainForm />
+        )
+        break;
+      case "ACCOMMODATION":
+        form = (
+          <AccommodationForm />
+        )
+        break;
+      case "EVENT":
+        form = (
+          <EventForm />
+        )
+        break;
+      default:
+        form = (
+          <p>Please select a plan type.</p>
+        );
+    }
+
+
+
     return (
       <Fragment>
         <h3>Add a Plan</h3>
@@ -40,6 +73,7 @@ class PlanForm extends Component {
           <Dropdown.Item onSelect={this.selectAccommodation}>Accommodation</Dropdown.Item>
           <Dropdown.Item onSelect={this.selectEvent}>Event</Dropdown.Item>
         </Dropdown>
+        { form }
       </Fragment>
     )
   }

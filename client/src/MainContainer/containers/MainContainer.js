@@ -24,7 +24,6 @@ class MainContainer extends Component {
       this.hasSelectedTraveller = this.hasSelectedTraveller.bind(this);
       this.handleHolidaySelected = this.handleHolidaySelected.bind(this);
       this.handleTripSelected = this.handleTripSelected.bind(this);
-      console.log("RELOADED");
   }
 
   handleHolidaySelected(holiday){
@@ -66,7 +65,7 @@ class MainContainer extends Component {
                 <HolidayContainer
                   selectedTraveller={this.state.selectedTraveller}
                   handleHolidaySelected={this.handleHolidaySelected}
-                  handleTripSelected={this.handleTripSelected} 
+                  handleTripSelected={this.handleTripSelected}
                   handleTravellerChange={this.handleChange}
                   hasSelectedTraveller={this.hasSelectedTraveller}
                   selectedHoliday={this.state.selectedHoliday}
