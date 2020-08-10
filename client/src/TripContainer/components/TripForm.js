@@ -37,7 +37,7 @@ class TripForm extends Component {
             name="location"
             onChange={this.handleChange}
             value={this.state.trip.location} />
-          <input type="submit" onSubmit={this.handleSubmit} />
+          <input type="submit" value="Create" />
         </form>
       </Fragment>
     )

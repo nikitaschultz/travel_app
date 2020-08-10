@@ -26,17 +26,32 @@ class TripContainer extends Component {
     })
   }
 
+  handlePut(id, trip, holidayId){
+    console.log(trip);
+    const request = new Request();
+    const url = `/api/trips/${id}`;
+    request.put(url, trip)
+    .then(() => {
+      window.location = `/holidays/${holidayId}`
+    })
+  }
+
   render(){
     return(
       <Router>
         <Switch>
           <Route exact path="/trips/new" render={(props) => {
-            return <TripForm holiday={this.props.holiday} />
+            return <TripForm
+              holiday={this.props.holiday}
+              onCreate={this.handlePost} />
           }} />
           <Route exact path="/trips/:id/edit" render={(props) => {
             const id = props.match.params.id;
             const trip = this.findTripById(id);
-            return <TripEdit trip={trip} holiday={this.props.holiday} />
+            return <TripEdit
+              trip={trip}
+              holiday={this.props.holiday}
+              onUpdate={this.handlePut} />
           }} />
           <Route render={() => {
             return <TripList trips={this.props.holiday.trips} />
