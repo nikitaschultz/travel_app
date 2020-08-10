@@ -51,7 +51,7 @@ public class HolidayController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @PatchMapping(value="/holidays/{id}")
+    @PutMapping(value="/holidays/{id}")
     public ResponseEntity<Holiday> updateHoliday(
             @RequestBody Holiday holiday
     ){

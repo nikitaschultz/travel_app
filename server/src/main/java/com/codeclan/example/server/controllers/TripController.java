@@ -45,7 +45,7 @@ public class TripController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @PatchMapping(value="/trips/{id}")
+    @PutMapping(value="/trips/{id}")
     public ResponseEntity<Trip> updateTrip(
             @RequestBody Trip trip
     ){

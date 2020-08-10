@@ -46,7 +46,7 @@ public class CommentController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @PatchMapping(value="/comments/{id}")
+    @PutMapping(value="/comments/{id}")
     public ResponseEntity<Comment> updateComment(
             @RequestBody Comment comment
     ){

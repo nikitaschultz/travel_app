@@ -45,7 +45,7 @@ public class TravellerController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @PatchMapping(value = "/travellers/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/travellers/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Traveller> updateTraveller(
             @RequestBody Traveller traveller
     ){

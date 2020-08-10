@@ -22,7 +22,9 @@ class MainContainer extends Component {
       this.handleChange = this.handleChange.bind(this);
       this.hasSelectedTraveller = this.hasSelectedTraveller.bind(this);
       this.handleHolidaySelected = this.handleHolidaySelected.bind(this);
+      console.log("RELOADED");
   }
+
 
   handleHolidaySelected(holiday){
     this.setState({selectedHoliday: holiday})
@@ -55,8 +57,8 @@ class MainContainer extends Component {
                 )}
             />
 
-            <Route exact path="/holidays" render={(props) => (
-                <HolidayContainer {...props} selectedTraveller={this.state.selectedTraveller} handleHolidaySelected={this.handleHolidaySelected} />
+            <Route path="/holidays" render={(props) => (
+                <HolidayContainer replace {...props} selectedTraveller={this.state.selectedTraveller} handleHolidaySelected={this.handleHolidaySelected} handleTravellerChange={this.handleChange} hasSelectedTraveller={this.hasSelectedTraveller} />
                 )}
             />
 
