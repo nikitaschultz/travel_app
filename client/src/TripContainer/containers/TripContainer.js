@@ -69,7 +69,8 @@ class TripContainer extends Component {
             return <TripList
               trips={this.props.holiday.trips}
               handleTripSelected={this.props.handleTripSelected}
-              selectedTrip={this.props.selectedTrip} />
+              selectedTrip={this.props.selectedTrip}
+              holiday={this.props.holiday} />
           }} />
         </Switch>
       </Router>

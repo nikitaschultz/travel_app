@@ -19,21 +19,33 @@ class HolidayContainer extends Component {
     this.findHolidayById = this.findHolidayById.bind(this);
     this.findTravellerById = this.findTravellerById.bind(this);
     this.handlePut = this.handlePut.bind(this);
+    this.handlePost = this.handlePost.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.fetchHolidays = this.fetchHolidays.bind(this);
   }
 
   componentDidMount(){
+    this.fetchHolidays();
+    this.fetchTravellers();
+  }
+
+  fetchTravellers(){
+    const request = new Request();
+
+    let url = '/api/travellers'
+    request.get(url)
+    .then((data) => {
+      this.setState({travellers: data})
+    })
+  }
+
+  fetchHolidays(){
     const request = new Request();
 
     let url = '/api/holidays?travellerId=' + this.props.selectedTraveller.id
     request.get(url)
     .then((data) => {
       this.setState({holidays: data})
-    })
-
-    url = '/api/travellers'
-    request.get(url)
-    .then((data) => {
-      this.setState({travellers: data})
     })
   }
 
@@ -54,7 +66,7 @@ class HolidayContainer extends Component {
     const url = '/api/holidays'
     request.post(url, holiday)
     .then(() => {
-
+      this.fetchHolidays()
     })
   }
 
@@ -64,7 +76,16 @@ class HolidayContainer extends Component {
     delete holiday.trips;
     request.post(url, holiday)
     .then(() => {
+      this.fetchHolidays()
+    })
+  }
 
+  handleDelete(id){
+    const request = new Request();
+    const url = `/api/holidays/${id}`
+    request.delete(url)
+    .then(() => {
+      this.fetchHolidays()
     })
   }
 
@@ -76,7 +97,7 @@ class HolidayContainer extends Component {
     return (
       <Router>
         <div className="extended-container">
-        <HolidayNavBar selectedTraveller={this.props.selectedTraveller} />
+        <HolidayNavBar logOut={this.props.logOut} selectedTraveller={this.props.selectedTraveller} />
         <div className="container">
           <Switch>
             <Route exact path="/holidays/new" render={(props) => {

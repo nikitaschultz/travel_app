@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Confirmation from '../../MainContainer/components/Confirmation.js';
 
 class HolidayForm extends Component {
   constructor(props){
@@ -8,7 +9,8 @@ class HolidayForm extends Component {
         title: "",
         travellers: [],
         published: false
-      }
+      },
+      confirmed: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,22 +32,34 @@ class HolidayForm extends Component {
   handleSubmit(event){
     event.preventDefault();
     this.props.onCreate(this.state.holiday);
+    this.setState({confirmed: true})
   }
 
   render(){
-    return (
-      <Fragment>
-        <h3>Create a New Holiday</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="title">Holiday Title:</label>
-          <input type="text"
-            name="title"
-            onChange={this.handleChange}
-            value={this.state.holiday.title}/>
-          <input type="submit" value="Create" />
-        </form>
-      </Fragment>
-    )
+    if(!this.state.confirmed){
+      return (
+        <Fragment>
+          <div className="container-header">
+            <h1 className="container-title">Create A New Holiday</h1>
+          </div>
+          <br />
+          <p>To create a new holiday, enter the holiday title and click "Create".</p>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="title">Holiday Title:</label>
+            <input type="text"
+              name="title"
+              onChange={this.handleChange}
+              value={this.state.holiday.title}/>
+            <input type="submit" value="Create" />
+          </form>
+        </Fragment>
+      )
+    }else{
+      return (
+        <Confirmation url="/holidays" />
+      )
+    }
+
   }
 }
 

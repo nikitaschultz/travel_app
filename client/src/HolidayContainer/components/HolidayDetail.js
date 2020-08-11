@@ -14,10 +14,9 @@ class HolidayDetail extends React.Component{
 
     return(
       <React.Fragment>
-        <div className="sticky-heading">
-          <h2>{this.props.holiday.title}</h2>
-          <Link to={"/trips/new"} className="nav-buttons-green">Add Trip</Link>
-          <Link to={"/holidays/" + this.props.holiday.id + "/edit"} className="nav-buttons-white">Edit Holiday</Link>
+        <div className={"sticky-heading", "container-header"}>
+          <h1 className="container-title">{this.props.holiday.title}</h1>
+          <Link to={"/holidays/" + this.props.holiday.id + "/edit"} className={"right-align-button", "nav-buttons-white-sml"}>Edit Holiday</Link>
         </div>
         <TripContainer handleTripSelected={this.props.handleTripSelected} holiday={this.props.holiday} selectedTrip={this.props.selectedTrip} />
       </React.Fragment>
