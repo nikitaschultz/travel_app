@@ -592,3 +592,18 @@ h1.container-title {
   margin: 0;
   padding: 0;
 }
+
+.buttons-centered {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmation-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30vh 0 0 0;
+}

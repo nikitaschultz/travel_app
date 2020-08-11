@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from 'react';
+import Confirmation from '../../MainContainer/components/Confirmation.js';
 
 class HolidayEdit extends Component {
   constructor(props){
     super(props);
     this.state = {
-      holiday: this.props.holiday
+      holiday: this.props.holiday,
+      confirmed: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,6 +40,7 @@ class HolidayEdit extends Component {
   handleSubmit(event){
     event.preventDefault();
     this.props.onUpdate(this.state.holiday.id, this.state.holiday);
+    this.setState({confirmed: true})
   }
 
   render(){
@@ -63,22 +66,28 @@ class HolidayEdit extends Component {
       }
     })
 
-    return (
-      <Fragment>
-        <h3>Edit Holiday</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="title">Holiday Title:</label>
-          <input type="text"
-            name="title"
-            onChange={this.handleChange}
-            value={this.state.holiday.title}/>
-          <ul>
-            {travellerCheckboxes}
-          </ul>
-          <button type="submit">Save</button>
-        </form>
-      </Fragment>
-    )
+    if(!this.state.confirmed){
+      return (
+        <Fragment>
+          <h3>Edit Holiday</h3>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="title">Holiday Title:</label>
+            <input type="text"
+              name="title"
+              onChange={this.handleChange}
+              value={this.state.holiday.title}/>
+            <ul>
+              {travellerCheckboxes}
+            </ul>
+            <button type="submit">Save</button>
+          </form>
+        </Fragment>
+      )
+    }else{
+      return (
+        <Confirmation url={"/holidays/" + this.state.holiday.id} />
+      )
+    }
   }
 
 }

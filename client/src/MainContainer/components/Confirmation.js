@@ -7,8 +7,12 @@ const Confirmation = ({url}) => {
       <div className="container-header">
         <h1 className="container-title">Success!</h1>
       </div>
-      <p>Changes have been saved.</p>
-      <Link className="main-green" to={url}>Continue</Link>
+      <div className="confirmation-screen">
+        <p>Your changes have been saved.</p>
+        <div className="buttons-centered">
+          <Link className="nav-buttons-white" to={url}>Continue</Link>
+        </div>
+      </div>
     </div>
   )
 }

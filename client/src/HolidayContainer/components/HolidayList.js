@@ -26,9 +26,6 @@ const Holidays = (props) => {
       </div>
   	  <ul className="no-bullet">
   	    {holidays}
-        <li>
-          <Link to="/holidays/new" className="nav-buttons-green" >New Holiday</Link>
-        </li>
   	  </ul>
     </Fragment>
 	)

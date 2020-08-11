@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Confirmation from '../../MainContainer/components/Confirmation.js';
+
 class HolidayForm extends Component {
   constructor(props){
     super(props);

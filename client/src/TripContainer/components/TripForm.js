@@ -31,7 +31,6 @@ class TripForm extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    let trip = this.state.trip;
     if(this.state.showMap){
       this.props.onCreate(this.state.trip)
     }else{

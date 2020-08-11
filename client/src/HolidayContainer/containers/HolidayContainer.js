@@ -19,6 +19,7 @@ class HolidayContainer extends Component {
     this.findHolidayById = this.findHolidayById.bind(this);
     this.findTravellerById = this.findTravellerById.bind(this);
     this.handlePut = this.handlePut.bind(this);
+    this.handlePost = this.handlePost.bind(this);
     this.fetchHolidays = this.fetchHolidays.bind(this);
   }
 
