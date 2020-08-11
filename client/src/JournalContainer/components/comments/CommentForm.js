@@ -3,11 +3,11 @@ import React, { Component } from "react";
 //this needs a date, and a way to effectively get selected traveller
 
 class CommentForm extends Component {
-  constructor(props) { // NEW
+  constructor(props) {
   super(props);
   this.state = {
-    author: '',
-    text: ''
+    author: '',//gonna be selectedTraveller after i follow the pathing down
+    text: '',
     date: ''
   };
   this.handleAuthorChange = this.handleAuthorChange.bind(this);
@@ -16,7 +16,7 @@ this.handleTextChange = this.handleTextChange.bind(this);
 
 
 
-handleTextChange(event) { // NEW
+handleTextChange(event) {
   this.setState({text: event.target.value});
 }
 
