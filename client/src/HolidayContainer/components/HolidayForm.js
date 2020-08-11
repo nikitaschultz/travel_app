@@ -56,7 +56,7 @@ class HolidayForm extends Component {
       )
     }else{
       return (
-        <Confirmation url="/holidays" />
+        <Confirmation url="/holidays" heading={true} />
       )
     }
 

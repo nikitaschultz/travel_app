@@ -1,5 +1,6 @@
 package com.codeclan.example.server.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -32,7 +33,7 @@ public class Trip {
     @OneToMany(mappedBy="trip", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Plan> plans;
 
-    @JsonIgnoreProperties({"trip"})
+    @JsonBackReference(value="comments")
     @OneToMany(mappedBy="trip", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comment> comments;
 
