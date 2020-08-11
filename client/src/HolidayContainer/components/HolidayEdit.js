@@ -69,14 +69,17 @@ class HolidayEdit extends Component {
     if(!this.state.confirmed){
       return (
         <Fragment>
-          <h3>Edit Holiday</h3>
+          <div className="container-header">
+            <h1 className="container-title">Edit Holiday</h1>
+          </div>
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="title">Holiday Title:</label>
             <input type="text"
               name="title"
               onChange={this.handleChange}
               value={this.state.holiday.title}/>
-            <ul>
+            <ul className="no-bullet">
+              <label htmlFor="travellers">Travellers:</label>
               {travellerCheckboxes}
             </ul>
             <button type="submit">Save</button>
