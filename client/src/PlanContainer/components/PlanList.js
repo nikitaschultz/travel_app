@@ -9,7 +9,10 @@ import DateFormat from '../../helpers/DateFormat.js';
 const PlanList = ({plans, handleTripSelected, trip}) => {
   const dateFormatter = new DateFormat();
 
-  const planList = plans.map((plan, index) => {
+  let planList = null;
+
+  if(plans){
+  planList = plans.map((plan, index) => {
     switch(plan.planType){
       case "FLIGHT":
         return (
@@ -45,8 +48,9 @@ const PlanList = ({plans, handleTripSelected, trip}) => {
         );
       default:
         return null
-    }
+      }
   })
+}
 
     return (
       <Timeline className="custom-timeline">

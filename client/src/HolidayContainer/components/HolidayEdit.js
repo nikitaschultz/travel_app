@@ -120,7 +120,7 @@ class HolidayEdit extends Component {
       )
     }else{
       return (
-        <Confirmation url={"/holidays/" + this.state.holiday.id} />
+        <Confirmation url={"/holidays/" + this.state.holiday.id} heading={true} />
       )
     }
 

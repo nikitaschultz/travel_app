@@ -76,7 +76,8 @@ class TripContainer extends Component {
           <Route path="/plans" render={(props) => {
             return <PlanContainer
               fetchHolidays={this.props.fetchHolidays}
-              selectedTrip={this.props.selectedTrip} />
+              selectedTrip={this.props.selectedTrip}
+              holiday={this.props.holiday} />
           }} />
           <Route render={() => {
             return <TripList

@@ -67,7 +67,8 @@ class PlanContainer extends Component {
             return <AccommodationEdit
               onDelete={this.handleDelete}
               accommodation={plan}
-              onUpdate={this.handlePut} />
+              onUpdate={this.handlePut}
+              holiday={this.props.holiday} />
           }} />
           <Route path="/plans/events/:id/edit" render={(props) => {
             const id = props.match.params.id;
@@ -75,7 +76,8 @@ class PlanContainer extends Component {
             return <EventEdit
               onDelete={this.handleDelete}
               event={plan}
-              onUpdate={this.handlePut} />
+              onUpdate={this.handlePut}
+              holiday={this.props.holiday} />
           }} />
           <Route path="/plans/flights/:id/edit" render={(props) => {
             const id = props.match.params.id;
@@ -83,7 +85,8 @@ class PlanContainer extends Component {
             return <FlightEdit
               flight={plan}
               onDelete={this.handleDelete}
-              onUpdate={this.handlePut} />
+              onUpdate={this.handlePut}
+              holiday={this.props.holiday} />
           }} />
           <Route path="/plans/trains/:id/edit" render={(props) => {
             const id = props.match.params.id;
@@ -91,12 +94,14 @@ class PlanContainer extends Component {
             return <TrainEdit
               train={plan}
               onUpdate={this.handlePut}
-              onDelete={this.handleDelete} />
+              onDelete={this.handleDelete}
+              holiday={this.props.holiday} />
           }} />
           <Route exact path="/plans/new" render={(props) => {
             return <PlanForm
               selectedTrip={this.props.selectedTrip}
-              onCreate={this.handlePost} />
+              onCreate={this.handlePost}
+              holiday={this.props.holiday} />
           }} />
           <Route render={() => {
             return <PlanList

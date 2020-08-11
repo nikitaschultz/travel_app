@@ -49,6 +49,7 @@ class HolidayContainer extends Component {
     .then((data) => {
       this.setState({holidays: data})
     })
+    console.log("Fetched");
   }
 
   findHolidayById(id){

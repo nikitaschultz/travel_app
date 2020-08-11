@@ -92,7 +92,7 @@ class TripForm extends Component {
       )
     }else{
       return (
-        <Confirmation url={"/holidays/" + this.props.holiday.id} />
+        <Confirmation url={"/holidays/" + this.props.holiday.id} heading={false} />
       )
     }
 

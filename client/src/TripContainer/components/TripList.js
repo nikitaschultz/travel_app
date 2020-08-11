@@ -15,7 +15,7 @@ const TripList = ({trips, handleTripSelected, selectedTrip, holiday, fetchHolida
   const allTrips = trips.map((trip, index) => {
     return (
       <Panel key={index} header={trip.location} defaultExpanded>
-        <Trip fetchHolidays={fetchHolidays} trip={trip} handleTripSelected={handleTripSelected} selectedTrip={selectedTrip} />
+        <Trip fetchHolidays={fetchHolidays} trip={trip} handleTripSelected={handleTripSelected} selectedTrip={selectedTrip} holiday={holiday} />
       </Panel>
     )
   })
