@@ -1,5 +1,6 @@
 import React from 'react';
 import { Timeline, Icon } from 'rsuite';
+import { Link } from 'react-router-dom';
 import Event from './Event.js';
 import Flight from './Flight.js';
 import Accommodation from './Accommodation.js';
@@ -35,7 +36,6 @@ const PlanList = ({plans}) => {
             <p>{dateFormatter.format(plan.date)}</p>
             <h5>Accommodation</h5>
             <Accommodation plan={plan} />
-            <button className="sml-white">Edit Plan</button>
           </Timeline.Item>
         );
       case "TRAIN":

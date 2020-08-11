@@ -26,6 +26,7 @@ class MainContainer extends Component {
       this.handleTripSelected = this.handleTripSelected.bind(this);
   }
 
+
   handleHolidaySelected(holiday){
     this.setState({selectedHoliday: holiday})
   }
@@ -69,7 +70,8 @@ class MainContainer extends Component {
                   handleTravellerChange={this.handleChange}
                   hasSelectedTraveller={this.hasSelectedTraveller}
                   selectedHoliday={this.state.selectedHoliday}
-                  selectedTrip={this.state.selectedTrip} />
+                  selectedTrip={this.state.selectedTrip}
+                   />
                 )}
             />
 

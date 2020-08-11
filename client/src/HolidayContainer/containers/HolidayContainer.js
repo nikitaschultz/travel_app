@@ -52,7 +52,7 @@ class HolidayContainer extends Component {
     const url = '/api/holidays'
     request.post(url, holiday)
     .then(() => {
-      window.location = "/holidays";
+
     })
   }
 
@@ -93,7 +93,7 @@ class HolidayContainer extends Component {
                 selectedTraveller={this.props.selectedTraveller}
                 findTravellerById={this.findTravellerById} />
             }} />
-            <Route path="/holidays/:id" render={(props) => {
+            <Route exact path="/holidays/:id" render={(props) => {
               const id = props.match.params.id;
               const holiday = this.findHolidayById(id);
               return <HolidayDetail
@@ -102,14 +102,14 @@ class HolidayContainer extends Component {
                 handleTripSelected={this.props.handleTripSelected}
                 selectedTrip={this.props.selectedTrip} />
             }} />
-            <Route exact path="/holidays" render={(props) => {
-              return <HolidayList holidays={this.state.holidays} />
-            }} />
             <Route path="/trips" render={(props) => {
               return <TripContainer
                 holiday={this.props.selectedHoliday}
                 trip={this.props.selectedTrip}
                 handleTripSelected={this.props.handleTripSelected} />
+            }} />
+            <Route render={(props) => {
+              return <HolidayList key={Math.random()} holidays={this.state.holidays} />
             }} />
           </Switch>
         </div>

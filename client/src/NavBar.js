@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { Icon } from 'rsuite';
 
 const NavBar = (props) => {
+  const linkTarget = {
+    pathname: "/holidays",
+    key: Math.random()
+  }
+
   return (
     <nav className="sidenav">
       <ul className="no-bullet">
@@ -23,7 +28,7 @@ const NavBar = (props) => {
           </Link>
         </li>
         <li className="navLink">
-          <Link className="nav-icon" to="/holidays">
+          <Link className="nav-icon" to={linkTarget}>
             <Icon icon="map" size="2x" />
           </Link>
         </li>

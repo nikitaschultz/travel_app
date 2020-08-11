@@ -5,6 +5,7 @@ import TripEdit from '../components/TripEdit.js';
 import Request from '../../helpers/request.js';
 import PlanContainer from '../../PlanContainer/containers/PlanContainer.js';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import AccommodationEdit from '../../PlanContainer/components/AccommodationEdit.js';
 
 class TripContainer extends Component {
   constructor(props){
@@ -23,7 +24,7 @@ class TripContainer extends Component {
     const url = '/api/trips';
     request.post(url, trip)
     .then(() => {
-      window.location = `/holidays/${holidayId}`
+
     })
   }
 
@@ -32,7 +33,7 @@ class TripContainer extends Component {
     const url = `/api/trips/${id}`;
     request.post(url, trip)
     .then(() => {
-      window.location = `/holidays/${holidayId}`
+
     })
   }
 
