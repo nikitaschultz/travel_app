@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import HomeWelcome from '../components/HomeWelcome.js';
 import Request from '../../helpers/request';
 import { Icon } from 'rsuite';
+import HomeNavBar from '../components/HomeNavBar.js';
 
 
 class HomeContainer extends Component {
@@ -37,6 +38,7 @@ class HomeContainer extends Component {
         } else {
             return(
               <div className="extended-container">
+              <HomeNavBar selectedTraveller={this.props.selectedTraveller} />
                 <div className="container">
 
                 <HomeWelcome selectedTraveller={this.props.selectedTraveller}/>
