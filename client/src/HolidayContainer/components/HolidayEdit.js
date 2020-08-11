@@ -65,7 +65,7 @@ class HolidayEdit extends Component {
 
     return (
       <Fragment>
-        <h1>Edit Holiday</h1>
+        <h3>Edit Holiday</h3>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="title">Holiday Title:</label>
           <input type="text"

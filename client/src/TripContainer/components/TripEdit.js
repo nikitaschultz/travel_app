@@ -26,7 +26,7 @@ class TripEdit extends Component {
   handleSubmit(event){
     event.preventDefault();
     if(this.state.showMap){
-      this.props.onUpdate(this.state.trip.id, this.state.trip, this.props.holiday.id)
+      this.props.onUpdate(this.state.trip.id, this.state.trip)
     }else{
       this.setState({submissionError: "Please search for the trip location and ensure the map displays correctly before submitting."})
     }

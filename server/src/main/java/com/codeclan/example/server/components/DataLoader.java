@@ -92,31 +92,31 @@ public class DataLoader implements ApplicationRunner {
         holiday7.addTraveller(washington);
         holidayRepository.save(holiday7);
 
-        Trip trip1 = new Trip(40.7128, 74.0060, "New York", holiday6);
+        Trip trip1 = new Trip(40.7128, -74.0060, "New York", holiday6);
         tripRepository.save(trip1);
 
-        Trip trip2 = new Trip(39.9526,75.1652, "Philadelphia", holiday4);
+        Trip trip2 = new Trip(39.9526,-75.1652, "Philadelphia", holiday4);
         tripRepository.save(trip2);
 
-        Trip trip3 = new Trip(40.9126,73.8371, "Mount Vernon", holiday2);
+        Trip trip3 = new Trip(40.9126,-84.340492, "Mount Vernon", holiday2);
         tripRepository.save(trip3);
 
-        Trip trip4 = new Trip(37.4316, 78.6569, "Virginia", holiday3);
+        Trip trip4 = new Trip(37.4316, -78.6569, "Virginia", holiday3);
         tripRepository.save(trip4);
 
         Trip trip5 = new Trip(48.8566, 2.3522, "Paris", holiday3);
         tripRepository.save(trip5);
 
-        Trip trip6 = new Trip(40.7128, 74.0060, "New York", holiday3);
+        Trip trip6 = new Trip(40.7128, -74.0060, "New York", holiday3);
         tripRepository.save(trip6);
 
-        Trip trip7 = new Trip(17.1554, 62.5796, "Caribbean", holiday1);
+        Trip trip7 = new Trip(17.1554, -62.5796, "Caribbean", holiday1);
         tripRepository.save(trip7);
 
-        Trip trip8 = new Trip(40.7128, 74.0060, "New York", holiday1);
+        Trip trip8 = new Trip(40.7128, -74.0060, "New York", holiday1);
         tripRepository.save(trip8);
 
-        Trip trip9 = new Trip(40.7128, 74.0060, "New York", holiday7);
+        Trip trip9 = new Trip(40.7128, -74.0060, "New York", holiday7);
         tripRepository.save(trip9);
 
         Date d1773 = new Date(-6216652725000L);

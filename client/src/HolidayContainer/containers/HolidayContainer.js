@@ -22,7 +22,7 @@ class HolidayContainer extends Component {
   componentDidMount(){
     const request = new Request();
 
-    let url = 'api/holidays?travellerId=' + this.props.selectedTraveller.id
+    let url = '/api/holidays?travellerId=' + this.props.selectedTraveller.id
     request.get(url)
     .then((data) => {
       this.setState({holidays: data})
@@ -52,7 +52,7 @@ class HolidayContainer extends Component {
     const url = '/api/holidays'
     request.post(url, holiday)
     .then(() => {
-      window.location = "/holidays";
+
     })
   }
 
@@ -63,9 +63,9 @@ class HolidayContainer extends Component {
     request.post(url, holiday)
     .then(() => {
       window.location = `/holidays/${id}`
+      console.log(this.props.hasSelectedTraveller);
       this.props.hasSelectedTraveller();
       this.props.handleTravellerChange(selectedTraveller);
-      console.log("this is making the change");
     })
   }
 
@@ -93,18 +93,23 @@ class HolidayContainer extends Component {
                 selectedTraveller={this.props.selectedTraveller}
                 findTravellerById={this.findTravellerById} />
             }} />
-            <Route path="/holidays/:id" render={(props) => {
+            <Route exact path="/holidays/:id" render={(props) => {
               const id = props.match.params.id;
               const holiday = this.findHolidayById(id);
               return <HolidayDetail
                 holiday={holiday}
-                handleHolidaySelected={this.props.handleHolidaySelected} />
-            }} />
-            <Route exact path="/holidays" render={(props) => {
-              return <HolidayList holidays={this.state.holidays} />
+                handleHolidaySelected={this.props.handleHolidaySelected}
+                handleTripSelected={this.props.handleTripSelected}
+                selectedTrip={this.props.selectedTrip} />
             }} />
             <Route path="/trips" render={(props) => {
-              return <TripContainer holiday={this.props.selectedHoliday} />
+              return <TripContainer
+                holiday={this.props.selectedHoliday}
+                trip={this.props.selectedTrip}
+                handleTripSelected={this.props.handleTripSelected} />
+            }} />
+            <Route render={(props) => {
+              return <HolidayList key={Math.random()} holidays={this.state.holidays} />
             }} />
           </Switch>
         </div>
