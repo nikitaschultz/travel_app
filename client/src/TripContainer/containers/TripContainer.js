@@ -10,6 +10,8 @@ class TripContainer extends Component {
   constructor(props){
     super(props);
     this.findTripById = this.findTripById.bind(this);
+    this.handlePut = this.handlePut.bind(this);
+    this.handlePost = this.handlePost.bind(this);
   }
 
   findTripById(id){
@@ -21,15 +23,22 @@ class TripContainer extends Component {
   handlePost(trip, holidayId){
     const request = new Request();
     const url = '/api/trips';
+    let holiday = this.props.holiday;
+    delete holiday.trips;
+    trip.holiday = holiday;
     request.post(url, trip)
     .then(() => {
 
     })
   }
 
-  handlePut(id, trip, holidayId){
+  handlePut(id, trip){
     const request = new Request();
     const url = `/api/trips/${id}`;
+    let holiday = this.props.holiday;
+    delete holiday.trips;
+    trip.holiday = holiday;
+    delete trip.plans;
     request.post(url, trip)
     .then(() => {
 
