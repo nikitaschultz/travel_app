@@ -25,7 +25,7 @@ class Trip extends Component {
         <Link to={"/plans/new"} onClick={this.handleAddPlan} className="nav-buttons-green">Add a Plan</Link>
         <button className="main-green">Add a Comment</button>
         <Link to={"/trips/" + this.props.trip.id + "/edit"} className="nav-buttons-white">Edit Trip</Link>
-        <PlanContainer plans={this.props.trip.plans} />
+        <PlanContainer selectedTrip={this.props.selectedTrip} plans={this.props.trip.plans} handleTripSelected={this.props.handleTripSelected} trip={this.props.trip} />
       </div>
     )
   }
