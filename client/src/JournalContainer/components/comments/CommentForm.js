@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-//this needs a date, and a way to effectively get selected traveller gonna look at the trip stuff for inspiration
+//this needs a date, and a way to effectively get selected traveller
 
 class CommentForm extends Component {
   constructor(props) { // NEW
@@ -8,6 +8,7 @@ class CommentForm extends Component {
   this.state = {
     author: '',
     text: ''
+    date: ''
   };
   this.handleAuthorChange = this.handleAuthorChange.bind(this);
 this.handleTextChange = this.handleTextChange.bind(this);
@@ -21,12 +22,12 @@ handleTextChange(event) { // NEW
 
 handleSubmit(event) {
   event.preventDefault();
-
+  const date = new Date();
   const text = this.state.text.trim();
 
   this.setState({
-
-  text: ''
+  date: date;,
+  text: text
 });
 }
 
