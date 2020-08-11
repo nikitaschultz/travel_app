@@ -180,8 +180,43 @@ code {
     height: 30vh;
 }
 
+.holidayWelcome {
+    display: flex;
+    font-size: 2rem;
+    text-align: center;
+    justify-content: center;
+    border-bottom: 5px solid #8EAA7B ;
+    background-image: url("https://www.virginia.org/-/media/blueridgeparkway-scenicdrive.ashx");
+    background-size: cover;
+    height: 30vh;
+}
+
+.holidayWelcome h2{
+    color: white;
+    display: flex;
+    align-items: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
 .homeIcon {
     margin: 2vh;
+}
+
+.getGoing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    background-color: #8EAA7B;
+    color: white;
+    font-size: 2.5em;
+    padding: 1vh;
+}
+
+.getGoingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .homePanels {

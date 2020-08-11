@@ -1,11 +1,7 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import ProfileInfo from '../components/ProfileInfo.js';
 import ProfileEditPage from '../components/ProfileEditPage.js';
-<<<<<<< HEAD
-import ProfileNavBar from '../components/ProfileNavBar.js';
-=======
 import Request from '../../helpers/request.js';
->>>>>>> development
 
 class ProfileContainer extends Component{
     constructor(props){
@@ -43,23 +39,12 @@ class ProfileContainer extends Component{
 
     render(){
         return (
-<<<<<<< HEAD
-          <Fragment>
-            <div className="extended-container">
-              <ProfileNavBar selectedTraveller={this.props.selectedTraveller} logOut={this.props.logOut} />
-              <div className="container">
-                <ProfileEditPage onToggle={this.isEditingUser} isEditingUser={this.state.isEditingUser} profile={this.props.selectedTraveller} />
-                <ProfileInfo profile={this.props.selectedTraveller}/>
-              </div>
-=======
             <div className="extended-container">
                 <div className="container">
                     <ProfileEditPage onEditTraveller={this.handlePut} onToggle={this.isEditingUser} isEditingUser={this.state.isEditingUser} profile={this.props.selectedTraveller} />
                     <ProfileInfo onToggle={this.isEditingUser} profile={this.props.selectedTraveller}/>
                 </div>
->>>>>>> development
             </div>
-          </Fragment>
         )
     }
 
