@@ -75,6 +75,8 @@ class TrainEdit extends Component {
             <input type="text" name="arrivalTime" onChange={this.handleChange} value={this.state.train.arrivalTime} /><br />
             <input type="submit" value="Update" />
           </form>
+          <button onClick={this.handleWarning} className="nav-buttons-white">Delete Plan</button>
+          {warning}
         </Fragment>
       )
     }else{
