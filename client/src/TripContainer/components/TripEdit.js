@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import LocationMap from './LocationMap.js';
 import apiKey from '../../helpers/apiKey.js';
 import Geocode from 'react-geocode';
+import Confirmation from '../../MainContainer/components/Confirmation.js';
+
 
 class TripEdit extends Component {
   constructor(props){
@@ -9,11 +11,16 @@ class TripEdit extends Component {
     this.state = {
       trip: this.props.trip,
       showMap: true,
-      submissionError: null
+      submissionError: null,
+      confirmed: false,
+      warned: false,
+      deleted: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.findLocation = this.findLocation.bind(this);
+    this.handleWarning = this.handleWarning.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleChange(event){
@@ -27,6 +34,7 @@ class TripEdit extends Component {
     event.preventDefault();
     if(this.state.showMap){
       this.props.onUpdate(this.state.trip.id, this.state.trip)
+      this.setState({confirmed: true})
     }else{
       this.setState({submissionError: "Please search for the trip location and ensure the map displays correctly before submitting."})
     }
@@ -48,7 +56,22 @@ class TripEdit extends Component {
     })
   }
 
+  handleWarning(){
+    this.setState({warned: true})
+  }
+
+  handleDelete(){
+    this.props.onDelete(this.state.trip.id)
+    this.setState({deleted: true})
+  }
+
   render(){
+    if(this.state.deleted){
+      return (
+        <Confirmation url={"/holidays/" + this.props.holiday.id} />
+      )
+    }
+
     let map = () => {
       if(!this.state.showMap){
         return <p>Please search for a location...</p>
@@ -64,22 +87,43 @@ class TripEdit extends Component {
       }
     }
 
-    return (
-      <Fragment>
-        <h3>Edit</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="location">Trip Location:</label>
-          <input type="text"
-            name="location"
-            onChange={this.handleChange}
-            value={this.state.trip.location} />
-          <button onClick={this.findLocation}>Find Location</button>
-          {map()}
-          <p>{this.state.submissionError}</p>
-          <input type="submit" value="Update" />
-        </form>
-      </Fragment>
-    )
+    let warning;
+
+    if(this.state.warned){
+      warning = (
+        <Fragment>
+          <p>Warning!  This will permanently delete this trip.  Are you sure you wish to proceed?</p>
+          <button onClick={this.handleDelete} className="nav-buttons-white">Yes</button>
+        </Fragment>
+      )
+    }
+
+    if(!this.state.confirmed){
+      return (
+        <Fragment>
+          <h3>Edit</h3>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="location">Trip Location:</label>
+            <input type="text"
+              name="location"
+              onChange={this.handleChange}
+              value={this.state.trip.location} />
+            <button onClick={this.findLocation}>Find Location</button>
+            {map()}
+            <p>{this.state.submissionError}</p>
+            <input type="submit" value="Update" />
+          </form>
+          <button onClick={this.handleWarning} className="nav-buttons-white">Delete Trip</button>
+          {warning}
+        </Fragment>
+      )
+    }else{
+      return (
+        <Confirmation url={"/holidays/" + this.props.holiday.id} />
+      )
+    }
+
+
   }
 }
 

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Geocode from 'react-geocode';
 import apiKey from '../../helpers/apiKey.js';
 import LocationMap from './LocationMap.js';
+import Confirmation from '../../MainContainer/components/Confirmation.js';
 
 class TripForm extends Component {
   constructor(props){
@@ -10,12 +11,13 @@ class TripForm extends Component {
       trip: {
         latitude: null,
         longitude: null,
-        location: "",
-        submissionError: null
+        location: ""
       },
       lat: null,
       lng: null,
-      showMap: false
+      showMap: false,
+      submissionError: null,
+      confirmed: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,6 +35,7 @@ class TripForm extends Component {
     event.preventDefault();
     if(this.state.showMap){
       this.props.onCreate(this.state.trip)
+      this.setState({confirmed: true})
     }else{
       this.setState({submissionError: "Please search for the trip location and ensure the map displays correctly before submitting."})
     }
@@ -67,22 +70,29 @@ class TripForm extends Component {
       }
     }
 
-    return (
-      <Fragment>
-        <h3>Add a Trip</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="location">Trip Location:</label>
-          <input type="text"
-            name="location"
-            onChange={this.handleChange}
-            value={this.state.trip.location} />
-          <button onClick={this.findLocation}>Find Location</button>
-          {map()}
-          <p>{this.state.submissionError}</p>
-          <input type="submit" value="Create" />
-        </form>
-      </Fragment>
-    )
+    if(!this.state.confirmed){
+      return (
+        <Fragment>
+          <h3>Add a Trip</h3>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="location">Trip Location:</label>
+            <input type="text"
+              name="location"
+              onChange={this.handleChange}
+              value={this.state.trip.location} />
+            <button onClick={this.findLocation}>Find Location</button>
+            {map()}
+            <p>{this.state.submissionError}</p>
+            <input type="submit" value="Create" />
+          </form>
+        </Fragment>
+      )
+    }else{
+      return (
+        <Confirmation url={"/holidays/" + this.props.holiday.id} />
+      )
+    }
+
   }
 }
 

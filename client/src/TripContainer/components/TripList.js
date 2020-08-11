@@ -4,7 +4,7 @@ import { PanelGroup, Panel } from 'rsuite';
 import { Link } from 'react-router-dom';
 
 const TripList = ({trips, handleTripSelected, selectedTrip, holiday}) => {
-  if(trips.length === 0){
+  if(!trips || trips.length === 0){
     return (
       <div className="buttons-centered">
         <Link to={"/trips/new"} className="nav-buttons-green">Add Trip</Link>

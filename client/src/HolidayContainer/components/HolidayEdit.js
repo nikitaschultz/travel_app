@@ -123,6 +123,7 @@ class HolidayEdit extends Component {
         <Confirmation url={"/holidays/" + this.state.holiday.id} />
       )
     }
+
   }
 
 }

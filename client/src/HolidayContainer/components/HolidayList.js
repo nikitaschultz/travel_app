@@ -8,7 +8,7 @@ const Holidays = (props) => {
     return (
       <Fragment>
         <div className="container-header">
-          <h1 className="container-title">Your Holidays</h1>
+          <h1 className="container-title">My Holidays</h1>
         </div>
         <div className="component">
           <Holiday holiday={null} />

@@ -12,6 +12,7 @@ class TripContainer extends Component {
     this.findTripById = this.findTripById.bind(this);
     this.handlePut = this.handlePut.bind(this);
     this.handlePost = this.handlePost.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   findTripById(id){
@@ -28,7 +29,7 @@ class TripContainer extends Component {
     trip.holiday = holiday;
     request.post(url, trip)
     .then(() => {
-
+      this.props.fetchHolidays()
     })
   }
 
@@ -38,10 +39,18 @@ class TripContainer extends Component {
     let holiday = this.props.holiday;
     delete holiday.trips;
     trip.holiday = holiday;
-    delete trip.plans;
     request.post(url, trip)
     .then(() => {
+      this.props.fetchHolidays()
+    })
+  }
 
+  handleDelete(id){
+    const request = new Request();
+    const url = `/api/trips/${id}`
+    request.delete(url)
+    .then(() => {
+      this.props.fetchHolidays()
     })
   }
 
@@ -60,7 +69,8 @@ class TripContainer extends Component {
             return <TripEdit
               trip={trip}
               holiday={this.props.holiday}
-              onUpdate={this.handlePut} />
+              onUpdate={this.handlePut}
+              onDelete={this.handleDelete} />
           }} />
           <Route path="/plans" render={(props) => {
             return <PlanContainer selectedTrip={this.props.selectedTrip} />
