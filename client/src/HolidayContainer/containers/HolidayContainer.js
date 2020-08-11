@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component, Fragment } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../../helpers/request';
 import HolidayList from '../components/HolidayList.js';
@@ -6,6 +6,8 @@ import HolidayDetail from '../components/HolidayDetail.js';
 import HolidayForm from '../components/HolidayForm.js';
 import HolidayEdit from '../components/HolidayEdit.js';
 import TripContainer from '../../TripContainer/containers/TripContainer.js';
+import HolidayNavBar from '../components/HolidayNavBar.js';
+import HolidayWelcome from '../components/HolidayWelcome.js';
 
 class HolidayContainer extends Component {
   constructor(props){
@@ -57,15 +59,12 @@ class HolidayContainer extends Component {
   }
 
   handlePut(id, holiday){
-    const selectedTraveller = this.props.selectedTraveller;
     const request = new Request();
     const url = `/api/holidays/${id}`
+    delete holiday.trips;
     request.post(url, holiday)
     .then(() => {
-      window.location = `/holidays/${id}`
-      console.log(this.props.hasSelectedTraveller);
-      this.props.hasSelectedTraveller();
-      this.props.handleTravellerChange(selectedTraveller);
+
     })
   }
 
@@ -76,12 +75,17 @@ class HolidayContainer extends Component {
 
     return (
       <Router>
+        <div className="extended-container">
+        <HolidayNavBar selectedTraveller={this.props.selectedTraveller} />
         <div className="container">
           <Switch>
             <Route exact path="/holidays/new" render={(props) => {
               return <HolidayForm
                 selectedTraveller={this.props.selectedTraveller}
                 onCreate={this.handlePost} />
+            }} />
+            <Route exact path="/holidays/welcome" render={(props) => {
+              return <HolidayWelcome />
             }} />
             <Route exact path="/holidays/:id/edit" render={(props) => {
               const id = props.match.params.id;
@@ -112,6 +116,7 @@ class HolidayContainer extends Component {
               return <HolidayList key={Math.random()} holidays={this.state.holidays} />
             }} />
           </Switch>
+        </div>
         </div>
       </Router>
     )

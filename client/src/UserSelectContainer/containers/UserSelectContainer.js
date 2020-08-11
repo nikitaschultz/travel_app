@@ -40,11 +40,11 @@ class UserSelectContainer extends Component {
 
     handlePost(newTraveller){
         console.log(newTraveller);
-    // const request = new Request();
-    // request.post('/api/travellers', newTraveller)
-    // .then(() => {
-    //     window.location = '/pirates';
-    // })
+    const request = new Request();
+    request.post('/api/travellers', newTraveller)
+    .then(() => {
+        window.location = '/';
+    })
     }
 
     isAddingUser(){

@@ -5,7 +5,8 @@ import TripContainer from '../../TripContainer/containers/TripContainer.js';
 import UserSelectContainer from '../../UserSelectContainer/containers/UserSelectContainer.js'
 import HomeContainer from '../../HomeContainer/containers/HomeContainer.js';
 import JournalContainer from '../../JournalContainer/containers/JournalContainer.js';
-import Profile from '../components/Profile.js';
+import ProfileContainer from '../../ProfileContainer/containers/ProfileContainer.js';
+
 import NavBar from '../../NavBar.js';
 
 class MainContainer extends Component {
@@ -58,7 +59,7 @@ class MainContainer extends Component {
             />
 
             <Route path="/profile" render={(props) => (
-                <Profile selectedTraveller={this.state.selectedTraveller} />
+                <ProfileContainer selectedTraveller={this.state.selectedTraveller} />
                 )}
             />
 

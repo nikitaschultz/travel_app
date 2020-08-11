@@ -20,7 +20,7 @@ class TripContainer extends Component {
     })
   }
 
-  handlePost(trip, holidayId){
+  handlePost(trip){
     const request = new Request();
     const url = '/api/trips';
     let holiday = this.props.holiday;

@@ -32,9 +32,8 @@ class TripForm extends Component {
   handleSubmit(event){
     event.preventDefault();
     let trip = this.state.trip;
-    trip.holiday = this.props.holiday;
     if(this.state.showMap){
-      this.props.onCreate(trip, trip.holiday.id)
+      this.props.onCreate(this.state.trip)
     }else{
       this.setState({submissionError: "Please search for the trip location and ensure the map displays correctly before submitting."})
     }
