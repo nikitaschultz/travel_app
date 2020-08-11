@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import LocationMap from './LocationMap.js';
 import PlanContainer from '../../PlanContainer/containers/PlanContainer.js';
 import { Link } from 'react-router-dom';
 
-const Trip = ({trip}) => {
-  const position = [trip.latitude, -trip.longitude];
+class Trip extends Component {
+  constructor(props){
+    super(props);
+    this.handleAddPlan = this.handleAddPlan.bind(this);
+  }
 
-  return (
-    <div className="trip">
-      <div className="map-container">
-        <LocationMap position={position} />
+  handleAddPlan(){
+    this.props.handleTripSelected(this.props.trip);
+  }
+
+  render(){
+    const position = [this.props.trip.latitude, this.props.trip.longitude];
+
+    return (
+      <div className="trip">
+        <div className="map-container">
+          <LocationMap position={position} />
+        </div>
+        <h4>{this.props.trip.location}</h4>
+        <Link to={"/plans/new"} onClick={this.handleAddPlan} className="nav-buttons-green">Add a Plan</Link>
+        <button className="main-green">Add a Comment</button>
+        <Link to={"/trips/" + this.props.trip.id + "/edit"} className="nav-buttons-white">Edit Trip</Link>
+        <PlanContainer selectedTrip={this.props.selectedTrip} plans={this.props.trip.plans} handleTripSelected={this.props.handleTripSelected} trip={this.props.trip} />
       </div>
-      <h4>{trip.location}</h4>
-      <button className="main-green">Add a Plan</button>
-      <button className="main-green">Add a Comment</button>
-      <Link to={"/trips/" + trip.id + "/edit"} className="nav-buttons-white">Edit Trip</Link>
-      <PlanContainer plans={trip.plans} />
-    </div>
-  )
+    )
+  }
 }
 
 export default Trip;

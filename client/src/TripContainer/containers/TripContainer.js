@@ -3,12 +3,15 @@ import TripList from '../components/TripList.js';
 import TripForm from '../components/TripForm.js';
 import TripEdit from '../components/TripEdit.js';
 import Request from '../../helpers/request.js';
+import PlanContainer from '../../PlanContainer/containers/PlanContainer.js';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class TripContainer extends Component {
   constructor(props){
     super(props);
     this.findTripById = this.findTripById.bind(this);
+    this.handlePut = this.handlePut.bind(this);
+    this.handlePost = this.handlePost.bind(this);
   }
 
   findTripById(id){
@@ -20,19 +23,25 @@ class TripContainer extends Component {
   handlePost(trip){
     const request = new Request();
     const url = '/api/trips';
+    let holiday = this.props.holiday;
+    delete holiday.trips;
+    trip.holiday = holiday;
     request.post(url, trip)
     .then(() => {
-      window.location = "/trips";
+
     })
   }
 
-  handlePut(id, trip, holidayId){
-    console.log(trip);
+  handlePut(id, trip){
     const request = new Request();
     const url = `/api/trips/${id}`;
-    request.put(url, trip)
+    let holiday = this.props.holiday;
+    delete holiday.trips;
+    trip.holiday = holiday;
+    delete trip.plans;
+    request.post(url, trip)
     .then(() => {
-      window.location = `/holidays/${holidayId}`
+
     })
   }
 
@@ -53,8 +62,14 @@ class TripContainer extends Component {
               holiday={this.props.holiday}
               onUpdate={this.handlePut} />
           }} />
+          <Route path="/plans" render={(props) => {
+            return <PlanContainer selectedTrip={this.props.selectedTrip} />
+          }} />
           <Route render={() => {
-            return <TripList trips={this.props.holiday.trips} />
+            return <TripList
+              trips={this.props.holiday.trips}
+              handleTripSelected={this.props.handleTripSelected}
+              selectedTrip={this.props.selectedTrip} />
           }} />
         </Switch>
       </Router>

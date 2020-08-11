@@ -44,7 +44,7 @@ public class TrainController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @PatchMapping(value="/trains/{id}")
+    @PostMapping(value="/trains/{id}")
     public ResponseEntity<Train> updateTrain(
             @RequestBody Train train
     ){

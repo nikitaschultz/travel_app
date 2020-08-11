@@ -16,10 +16,10 @@ class HolidayDetail extends React.Component{
       <React.Fragment>
         <div className="sticky-heading">
           <h2>{this.props.holiday.title}</h2>
-          <Link to={"/trips/new"} holiday={this.props.holiday} className="nav-buttons-green">Add Trip</Link>
+          <Link to={"/trips/new"} className="nav-buttons-green">Add Trip</Link>
           <Link to={"/holidays/" + this.props.holiday.id + "/edit"} className="nav-buttons-white">Edit Holiday</Link>
         </div>
-        <TripContainer holiday={this.props.holiday} />
+        <TripContainer handleTripSelected={this.props.handleTripSelected} holiday={this.props.holiday} selectedTrip={this.props.selectedTrip} />
       </React.Fragment>
     )
   }

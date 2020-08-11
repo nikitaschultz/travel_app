@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import HomeWelcome from '../components/HomeWelcome.js';
 import Request from '../../helpers/request';
 import { Icon } from 'rsuite';
+import HomeNavBar from '../components/HomeNavBar.js';
 
 
 class HomeContainer extends Component {
@@ -36,6 +37,8 @@ class HomeContainer extends Component {
             return null
         } else {
             return(
+              <div className="extended-container">
+              <HomeNavBar selectedTraveller={this.props.selectedTraveller} />
                 <div className="container">
 
                 <HomeWelcome selectedTraveller={this.props.selectedTraveller}/>
@@ -57,6 +60,7 @@ class HomeContainer extends Component {
                         <p className="homePanel"> <span className="boldNumber">{total_published}</span> of these holidays are published </p>
 
                     </div>
+                </div>
                 </div>
 
             )

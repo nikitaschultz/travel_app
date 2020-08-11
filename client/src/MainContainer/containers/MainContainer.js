@@ -17,17 +17,22 @@ class MainContainer extends Component {
             image: "beach",
             name: "Alexander Hamilton"},
           isSelectingTraveller: true,
-          selectedHoliday: null
+          selectedHoliday: null,
+          selectedTrip: null
       }
       this.handleChange = this.handleChange.bind(this);
       this.hasSelectedTraveller = this.hasSelectedTraveller.bind(this);
       this.handleHolidaySelected = this.handleHolidaySelected.bind(this);
-      console.log("RELOADED");
+      this.handleTripSelected = this.handleTripSelected.bind(this);
   }
 
 
   handleHolidaySelected(holiday){
     this.setState({selectedHoliday: holiday})
+  }
+
+  handleTripSelected(trip){
+    this.setState({selectedTrip: trip})
   }
 
   hasSelectedTraveller(){
@@ -42,7 +47,7 @@ class MainContainer extends Component {
     return (
       <Router>
         <Fragment>
-          <NavBar className="sidenav"/>
+          <NavBar />
           <Switch>
             <Route exact path="/" render={(props) => (
                 <Fragment>
@@ -58,7 +63,15 @@ class MainContainer extends Component {
             />
 
             <Route path="/holidays" render={(props) => (
-                <HolidayContainer selectedTraveller={this.state.selectedTraveller} handleHolidaySelected={this.handleHolidaySelected} handleTravellerChange={this.handleChange} hasSelectedTraveller={this.hasSelectedTraveller} />
+                <HolidayContainer
+                  selectedTraveller={this.state.selectedTraveller}
+                  handleHolidaySelected={this.handleHolidaySelected}
+                  handleTripSelected={this.handleTripSelected}
+                  handleTravellerChange={this.handleChange}
+                  hasSelectedTraveller={this.hasSelectedTraveller}
+                  selectedHoliday={this.state.selectedHoliday}
+                  selectedTrip={this.state.selectedTrip}
+                   />
                 )}
             />
 

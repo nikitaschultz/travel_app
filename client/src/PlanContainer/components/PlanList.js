@@ -6,7 +6,7 @@ import Accommodation from './Accommodation.js';
 import Train from './Train.js';
 import DateFormat from '../../helpers/DateFormat.js';
 
-const PlanList = ({plans}) => {
+const PlanList = ({plans, handleTripSelected, trip}) => {
   const dateFormatter = new DateFormat();
 
   const planList = plans.map((plan, index) => {
@@ -16,8 +16,7 @@ const PlanList = ({plans}) => {
           <Timeline.Item key={index} dot={<Icon icon="plane" size="2x" />}>
             <p>{dateFormatter.format(plan.date)}</p>
             <h5>Flight</h5>
-            <Flight plan={plan} />
-            <button className="sml-white">Edit Plan</button>
+            <Flight handleTripSelected={handleTripSelected} trip={trip} plan={plan} />
           </Timeline.Item>
         );
       case "EVENT":
@@ -25,8 +24,7 @@ const PlanList = ({plans}) => {
           <Timeline.Item key={index} dot={<Icon icon="calendar" size="2x"/>}>
             <p>{dateFormatter.format(plan.date)}</p>
             <h5>Event</h5>
-            <Event plan={plan} />
-            <button className="sml-white">Edit Plan</button>
+            <Event handleTripSelected={handleTripSelected} trip={trip} plan={plan} />
           </Timeline.Item>
         );
       case "ACCOMMODATION":
@@ -34,8 +32,7 @@ const PlanList = ({plans}) => {
           <Timeline.Item key={index} dot={<Icon icon="bed" size="2x" />}>
             <p>{dateFormatter.format(plan.date)}</p>
             <h5>Accommodation</h5>
-            <Accommodation plan={plan} />
-            <button className="sml-white">Edit Plan</button>
+            <Accommodation handleTripSelected={handleTripSelected} trip={trip} plan={plan} />
           </Timeline.Item>
         );
       case "TRAIN":
@@ -43,8 +40,7 @@ const PlanList = ({plans}) => {
           <Timeline.Item key={index} dot={<Icon icon="train" size="2x" />}>
             <p>{dateFormatter.format(plan.date)}</p>
             <h5>Train</h5>
-            <Train plan={plan} />
-            <button className="sml-white">Edit Plan</button>
+            <Train handleTripSelected={handleTripSelected} trip={trip} plan={plan} />
           </Timeline.Item>
         );
       default:

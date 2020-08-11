@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component, Fragment } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../../helpers/request';
 import HolidayList from '../components/HolidayList.js';
@@ -6,6 +6,8 @@ import HolidayDetail from '../components/HolidayDetail.js';
 import HolidayForm from '../components/HolidayForm.js';
 import HolidayEdit from '../components/HolidayEdit.js';
 import TripContainer from '../../TripContainer/containers/TripContainer.js';
+import HolidayNavBar from '../components/HolidayNavBar.js';
+import HolidayWelcome from '../components/HolidayWelcome.js';
 
 class HolidayContainer extends Component {
   constructor(props){
@@ -22,7 +24,7 @@ class HolidayContainer extends Component {
   componentDidMount(){
     const request = new Request();
 
-    let url = 'api/holidays?travellerId=' + this.props.selectedTraveller.id
+    let url = '/api/holidays?travellerId=' + this.props.selectedTraveller.id
     request.get(url)
     .then((data) => {
       this.setState({holidays: data})
@@ -52,20 +54,17 @@ class HolidayContainer extends Component {
     const url = '/api/holidays'
     request.post(url, holiday)
     .then(() => {
-      window.location = "/holidays";
+
     })
   }
 
   handlePut(id, holiday){
-    const selectedTraveller = this.props.selectedTraveller;
     const request = new Request();
     const url = `/api/holidays/${id}`
+    delete holiday.trips;
     request.post(url, holiday)
     .then(() => {
-      window.location = `/holidays/${id}`
-      this.props.hasSelectedTraveller();
-      this.props.handleTravellerChange(selectedTraveller);
-      console.log("this is making the change");
+
     })
   }
 
@@ -76,12 +75,17 @@ class HolidayContainer extends Component {
 
     return (
       <Router>
+        <div className="extended-container">
+        <HolidayNavBar selectedTraveller={this.props.selectedTraveller} />
         <div className="container">
           <Switch>
             <Route exact path="/holidays/new" render={(props) => {
               return <HolidayForm
                 selectedTraveller={this.props.selectedTraveller}
                 onCreate={this.handlePost} />
+            }} />
+            <Route exact path="/holidays/welcome" render={(props) => {
+              return <HolidayWelcome />
             }} />
             <Route exact path="/holidays/:id/edit" render={(props) => {
               const id = props.match.params.id;
@@ -93,20 +97,26 @@ class HolidayContainer extends Component {
                 selectedTraveller={this.props.selectedTraveller}
                 findTravellerById={this.findTravellerById} />
             }} />
-            <Route path="/holidays/:id" render={(props) => {
+            <Route exact path="/holidays/:id" render={(props) => {
               const id = props.match.params.id;
               const holiday = this.findHolidayById(id);
               return <HolidayDetail
                 holiday={holiday}
-                handleHolidaySelected={this.props.handleHolidaySelected} />
-            }} />
-            <Route exact path="/holidays" render={(props) => {
-              return <HolidayList holidays={this.state.holidays} />
+                handleHolidaySelected={this.props.handleHolidaySelected}
+                handleTripSelected={this.props.handleTripSelected}
+                selectedTrip={this.props.selectedTrip} />
             }} />
             <Route path="/trips" render={(props) => {
-              return <TripContainer holiday={this.props.holiday} />
+              return <TripContainer
+                holiday={this.props.selectedHoliday}
+                trip={this.props.selectedTrip}
+                handleTripSelected={this.props.handleTripSelected} />
+            }} />
+            <Route render={(props) => {
+              return <HolidayList key={Math.random()} holidays={this.state.holidays} />
             }} />
           </Switch>
+        </div>
         </div>
       </Router>
     )

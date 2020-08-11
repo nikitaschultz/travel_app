@@ -35,7 +35,7 @@ class HolidayForm extends Component {
   render(){
     return (
       <Fragment>
-        <h1>Create a New Holiday</h1>
+        <h3>Create a New Holiday</h3>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="title">Holiday Title:</label>
           <input type="text"
