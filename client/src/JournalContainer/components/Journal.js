@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Holiday = ({holiday}) => {
+const Journal = ({holiday}) => {
 
   if (!holiday){
     return "Loading..."
@@ -32,4 +32,4 @@ const Holiday = ({holiday}) => {
   )
 }
 
-export default Holiday;
+export default Journal;

@@ -1,10 +1,15 @@
 import React, { Fragment } from 'react';
 import Trip from './Trip.js';
 import { PanelGroup, Panel } from 'rsuite';
+import { Link } from 'react-router-dom';
 
-const TripList = ({trips, handleTripSelected, selectedTrip}) => {
+const TripList = ({trips, handleTripSelected, selectedTrip, holiday}) => {
   if(trips.length === 0){
-    return null
+    return (
+      <div className="buttons-centered">
+        <Link to={"/trips/new"} className="nav-buttons-green">Add Trip</Link>
+      </div>
+    )
   }
 
   const allTrips = trips.map((trip, index) => {
@@ -17,9 +22,12 @@ const TripList = ({trips, handleTripSelected, selectedTrip}) => {
 
   return (
     <Fragment>
-      <PanelGroup accordion bordered>
-        {allTrips}
-      </PanelGroup>
+      <div className="buttons-centered">
+        <Link to={"/trips/new"} className="nav-buttons-green">Add Trip</Link>
+      </div>
+        <PanelGroup accordion bordered>
+          {allTrips}
+        </PanelGroup>
     </Fragment>
   )
 }

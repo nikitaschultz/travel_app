@@ -3,15 +3,15 @@ import LocationMap from './LocationMap.js';
 import CommentBox from '../../containers/CommentBox.js'
 
 
-const Trip = ({trip}) => {
-  const position = [trip.latitude, -trip.longitude];
+const Trip = (props) => {
+  const position = [props.trip.latitude, -props.trip.longitude];
 
   return (
     <div className="trip">
       <div className="map-container">
         <LocationMap position={position} />
       </div>
-      <CommentBox comments = {trip.comments}/>
+      <CommentBox selectedTraveller={props.selectedTraveller} comments = {props.trip.comments}/>
     </div>
   )
 }

@@ -491,9 +491,6 @@ button.sml-green, button.sml-white:hover {
 }
 
 .sticky-heading {
-    background-color: white;
-    box-shadow: 0 1px 5px 0 lightgrey;
-    padding: 10px;
     position: sticky;
     top: 0;
     z-index: 2000;
@@ -505,7 +502,7 @@ button.sml-green, button.sml-white:hover {
     justify-content: space-between;
     width: 100%;
     border-bottom: 1px solid grey;
-    padding: 5px;
+    padding: 5px 20px;
     margin: 0px;
 }
 
@@ -534,6 +531,8 @@ div.secondary-nav-bar {
   height: 100vh;
   background-color: #EFEEF0;
   width: 250px;
+  text-align: left;
+  box-shadow: 0 0 5px 0 lightgrey;
 }
 
 div.nav-bar-heading {
@@ -551,4 +550,65 @@ h3.nav-bar-title {
 div.extended-container {
   display: flex;
   flex-direction: row;
+}
+
+.nav-bar-links {
+  display: flex;
+  flex-direction: column;
+}
+
+a.nav-bar-link, a.nav-bar-link:active, a.nav-bar-link:visited, a.nav-bar-link:focus {
+  color: grey;
+  font-size: 17px;
+  padding: 0 0 2px 0;
+  text-decoration: none;
+}
+
+a.focus {
+  text-decoration: none;
+  color: grey;
+}
+
+a.nav-bar-link:hover {
+  color: lightgrey;
+  text-decoration: none;
+}
+
+hr.nav-horizontal-line {
+  border: 1px solid darkgrey;
+  width: 100%;
+}
+
+div.container-header {
+  background-color: white;
+  box-shadow: 0 1px 5px 0 lightgrey;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1.container-title {
+  font-size: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.buttons-centered {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmation-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30vh 0 0 0;
+}
+
+.right-align-button {
+  right: 0px;
 }

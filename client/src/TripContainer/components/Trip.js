@@ -22,9 +22,11 @@ class Trip extends Component {
           <LocationMap position={position} />
         </div>
         <h4>{this.props.trip.location}</h4>
-        <Link to={"/plans/new"} onClick={this.handleAddPlan} className="nav-buttons-green">Add a Plan</Link>
-        <button className="main-green">Add a Comment</button>
-        <Link to={"/trips/" + this.props.trip.id + "/edit"} className="nav-buttons-white">Edit Trip</Link>
+        <div className="buttons-centered">
+          <Link to={"/plans/new"} onClick={this.handleAddPlan} className="nav-buttons-green">Add a Plan</Link>
+          <button className="main-green">Add a Comment</button>
+          <Link to={"/trips/" + this.props.trip.id + "/edit"} className="nav-buttons-white">Edit Trip</Link>
+        </div>
         <PlanContainer selectedTrip={this.props.selectedTrip} plans={this.props.trip.plans} handleTripSelected={this.props.handleTripSelected} trip={this.props.trip} />
       </div>
     )

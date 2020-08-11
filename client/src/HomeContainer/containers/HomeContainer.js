@@ -38,7 +38,7 @@ class HomeContainer extends Component {
         } else {
             return(
               <div className="extended-container">
-              <HomeNavBar selectedTraveller={this.props.selectedTraveller} />
+              <HomeNavBar selectedTraveller={this.props.selectedTraveller} logOut={this.props.logOut} />
                 <div className="container">
 
                 <HomeWelcome selectedTraveller={this.props.selectedTraveller}/>

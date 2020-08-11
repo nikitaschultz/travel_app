@@ -25,6 +25,7 @@ class MainContainer extends Component {
       this.hasSelectedTraveller = this.hasSelectedTraveller.bind(this);
       this.handleHolidaySelected = this.handleHolidaySelected.bind(this);
       this.handleTripSelected = this.handleTripSelected.bind(this);
+      this.logOut = this.logOut.bind(this);
   }
 
 
@@ -44,6 +45,10 @@ class MainContainer extends Component {
       this.setState({selectedTraveller: selectedTraveller});
   };
 
+  logOut(){
+    this.setState({isSelectingTraveller: true, selectTraveller: null})
+  }
+
   render(){
     return (
       <Router>
@@ -53,7 +58,7 @@ class MainContainer extends Component {
             <Route exact path="/" render={(props) => (
                 <Fragment>
                     <UserSelectContainer sendNewTravellerToMain={this.handleChange} isSelectingTraveller={this.state.isSelectingTraveller} hasSelectedTraveller={this.hasSelectedTraveller}/>
-                    <HomeContainer selectedTraveller={this.state.selectedTraveller}/>
+                    <HomeContainer logOut={this.logOut} selectedTraveller={this.state.selectedTraveller}/>
                 </Fragment>
               )}
             />
@@ -72,7 +77,7 @@ class MainContainer extends Component {
                   hasSelectedTraveller={this.hasSelectedTraveller}
                   selectedHoliday={this.state.selectedHoliday}
                   selectedTrip={this.state.selectedTrip}
-                   />
+                  logOut={this.logOut} />
                 )}
             />
 

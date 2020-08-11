@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../../helpers/request';
-import HolidayList from '../components/HolidayList.js';
-import HolidayDetail from '../components/HolidayDetail.js';
+import JournalList from '../components/JournalList.js';
+import JournalDetail from '../components/JournalDetail.js';
 
 class JournalContainer extends Component {
   constructor(props){
@@ -15,7 +15,7 @@ class JournalContainer extends Component {
 
   componentDidMount(){
     const request = new Request();
-    
+
 
     const url = '/api/holidays?travellerId=' + this.props.selectedTraveller.id
     request.get(url)
@@ -48,12 +48,12 @@ class JournalContainer extends Component {
         <div className="container">
           <Switch>
             <Route exact path="/journal" render={(props) => {
-              return <HolidayList holidays={published}/>
+              return <JournalList holidays={published}/>
             }} />
             <Route exact path="/journal/:id" render={(props) => {
               const id = props.match.params.id;
               const holiday = this.findHolidayById(id);
-              return <HolidayDetail holiday={holiday} />
+              return <JournalDetail selectedTraveller={this.props.selectedTraveller} holiday={holiday} />
             }} />
           </Switch>
         </div>
