@@ -5,6 +5,11 @@ import { Link } from 'react-router-dom';
 class HomeNavBar extends Component {
   constructor(props){
     super(props);
+    this.handleLogOut = this.handleLogOut.bind(this);
+  }
+
+  handleLogOut(){
+    this.props.logOut();
   }
 
   render(){
@@ -22,7 +27,7 @@ class HomeNavBar extends Component {
         </nav>
         <div>
           <p>Logged in as {this.props.selectedTraveller.name}</p>
-          <button className="main-green">Logout</button>
+          <Link to={"/"} className="nav-buttons-green" onClick={this.handleLogOut}>Logout</Link>
         </div>
       </div>
     )

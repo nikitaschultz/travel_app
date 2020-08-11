@@ -87,7 +87,7 @@ class HolidayContainer extends Component {
     return (
       <Router>
         <div className="extended-container">
-        <HolidayNavBar selectedTraveller={this.props.selectedTraveller} />
+        <HolidayNavBar logOut={this.props.logOut} selectedTraveller={this.props.selectedTraveller} />
         <div className="container">
           <Switch>
             <Route exact path="/holidays/new" render={(props) => {
