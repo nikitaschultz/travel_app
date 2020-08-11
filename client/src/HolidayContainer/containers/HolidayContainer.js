@@ -20,6 +20,7 @@ class HolidayContainer extends Component {
     this.findTravellerById = this.findTravellerById.bind(this);
     this.handlePut = this.handlePut.bind(this);
     this.handlePost = this.handlePost.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.fetchHolidays = this.fetchHolidays.bind(this);
   }
 
@@ -74,6 +75,15 @@ class HolidayContainer extends Component {
     const url = `/api/holidays/${id}`
     delete holiday.trips;
     request.post(url, holiday)
+    .then(() => {
+      this.fetchHolidays()
+    })
+  }
+
+  handleDelete(id){
+    const request = new Request();
+    const url = `/api/holidays/${id}`
+    request.delete(url)
     .then(() => {
       this.fetchHolidays()
     })

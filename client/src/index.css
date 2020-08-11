@@ -564,6 +564,11 @@ a.nav-bar-link, a.nav-bar-link:active, a.nav-bar-link:visited, a.nav-bar-link:fo
   text-decoration: none;
 }
 
+a.focus {
+  text-decoration: none;
+  color: grey;
+}
+
 a.nav-bar-link:hover {
   color: lightgrey;
   text-decoration: none;
