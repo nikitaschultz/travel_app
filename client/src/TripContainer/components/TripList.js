@@ -3,8 +3,8 @@ import Trip from './Trip.js';
 import { PanelGroup, Panel } from 'rsuite';
 import { Link } from 'react-router-dom';
 
-const TripList = ({trips, handleTripSelected, selectedTrip, holiday}) => {
-  if(trips.length === 0){
+const TripList = ({trips, handleTripSelected, selectedTrip, holiday, fetchHolidays}) => {
+  if(!trips || trips.length === 0){
     return (
       <div className="buttons-centered">
         <Link to={"/trips/new"} className="nav-buttons-green">Add Trip</Link>
@@ -15,7 +15,7 @@ const TripList = ({trips, handleTripSelected, selectedTrip, holiday}) => {
   const allTrips = trips.map((trip, index) => {
     return (
       <Panel key={index} header={trip.location} defaultExpanded>
-        <Trip trip={trip} handleTripSelected={handleTripSelected} selectedTrip={selectedTrip} />
+        <Trip fetchHolidays={fetchHolidays} trip={trip} handleTripSelected={handleTripSelected} selectedTrip={selectedTrip} holiday={holiday} />
       </Panel>
     )
   })

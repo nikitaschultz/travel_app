@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ProfileInfo from '../components/ProfileInfo.js';
 import ProfileEditPage from '../components/ProfileEditPage.js';
+import ProfileNavBar from '../components/ProfileNavBar.js';
 import Request from '../../helpers/request.js';
 
 class ProfileContainer extends Component{
@@ -39,11 +40,13 @@ class ProfileContainer extends Component{
 
     render(){
         return (
+          <Fragment>
             <div className="extended-container">
-                <div className="container">
-                    <ProfileEditPage onEditTraveller={this.handlePut} onToggle={this.isEditingUser} isEditingUser={this.state.isEditingUser} profile={this.props.selectedTraveller} />
-                    <ProfileInfo onToggle={this.isEditingUser} profile={this.props.selectedTraveller}/>
-                </div>
+              <ProfileNavBar selectedTraveller={this.props.selectedTraveller} logOut={this.props.logOut} />
+              <div className="container">
+                <ProfileEditPage onEditTraveller={this.handlePut} onToggle={this.isEditingUser} isEditingUser={this.state.isEditingUser} profile={this.props.selectedTraveller} />
+                <ProfileInfo profile={this.props.selectedTraveller}/>
+              </div>
             </div>
         )
     }

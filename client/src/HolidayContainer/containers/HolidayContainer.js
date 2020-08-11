@@ -49,6 +49,7 @@ class HolidayContainer extends Component {
     .then((data) => {
       this.setState({holidays: data})
     })
+    console.log("Fetched");
   }
 
   findHolidayById(id){
@@ -131,10 +132,12 @@ class HolidayContainer extends Component {
                 holiday={holiday}
                 handleHolidaySelected={this.props.handleHolidaySelected}
                 handleTripSelected={this.props.handleTripSelected}
-                selectedTrip={this.props.selectedTrip} />
+                selectedTrip={this.props.selectedTrip}
+                fetchHolidays={this.fetchHolidays} />
             }} />
             <Route path="/trips" render={(props) => {
               return <TripContainer
+                fetchHolidays={this.fetchHolidays}
                 holiday={this.props.selectedHoliday}
                 trip={this.props.selectedTrip}
                 handleTripSelected={this.props.handleTripSelected} />

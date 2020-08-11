@@ -12,6 +12,7 @@ class TripContainer extends Component {
     this.findTripById = this.findTripById.bind(this);
     this.handlePut = this.handlePut.bind(this);
     this.handlePost = this.handlePost.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   findTripById(id){
@@ -28,7 +29,7 @@ class TripContainer extends Component {
     trip.holiday = holiday;
     request.post(url, trip)
     .then(() => {
-
+      this.props.fetchHolidays()
     })
   }
 
@@ -41,7 +42,16 @@ class TripContainer extends Component {
     delete trip.plans;
     request.post(url, trip)
     .then(() => {
+      this.props.fetchHolidays()
+    })
+  }
 
+  handleDelete(id){
+    const request = new Request();
+    const url = `/api/trips/${id}`
+    request.delete(url)
+    .then(() => {
+      this.props.fetchHolidays()
     })
   }
 
@@ -60,13 +70,18 @@ class TripContainer extends Component {
             return <TripEdit
               trip={trip}
               holiday={this.props.holiday}
-              onUpdate={this.handlePut} />
+              onUpdate={this.handlePut}
+              onDelete={this.handleDelete} />
           }} />
           <Route path="/plans" render={(props) => {
-            return <PlanContainer selectedTrip={this.props.selectedTrip} />
+            return <PlanContainer
+              fetchHolidays={this.props.fetchHolidays}
+              selectedTrip={this.props.selectedTrip}
+              holiday={this.props.holiday} />
           }} />
           <Route render={() => {
             return <TripList
+              fetchHolidays={this.props.fetchHolidays}
               trips={this.props.holiday.trips}
               handleTripSelected={this.props.handleTripSelected}
               selectedTrip={this.props.selectedTrip}
