@@ -2,7 +2,6 @@ package com.codeclan.example.server.controllers;
 
 import com.codeclan.example.server.models.Traveller;
 import com.codeclan.example.server.repositories.TravellerRepository;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -45,7 +44,7 @@ public class TravellerController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @PatchMapping(value = "/travellers/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/travellers/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Traveller> updateTraveller(
             @RequestBody Traveller traveller
     ){

@@ -3,6 +3,7 @@ import UserSelectTitle from '../components/UserSelectTitle.js';
 import UserSelectSearch from '../components/UserSelectSearch.js';
 import UserSelectGo from '../components/UserSelectGo.js';
 import UserSelectNewUser from '../components/UserSelectNewUser.js';
+import UserSelectImage from '../components/UserSelectImage.js'
 import Request from '../../helpers/request.js';
 
 
@@ -66,8 +67,8 @@ class UserSelectContainer extends Component {
                     <UserSelectNewUser isAddingUser={this.state.isAddingUser} onNewTraveller={this.handlePost} onToggle={this.isAddingUser}/>
                     <UserSelectTitle />
                     <UserSelectSearch travellers={this.state.allTravellers} onToggle={this.isAddingUser}onSelectTraveller={this.handleChange}/>
+                    <UserSelectImage selectedTraveller={this.state.selectedTraveller} />
                     <UserSelectGo selectedTraveller={this.state.selectedTraveller} hasSelectedTraveller={this.hasSelectedTraveller}/>
-
                 </div>
             )
         } else {

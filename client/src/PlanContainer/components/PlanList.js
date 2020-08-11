@@ -17,6 +17,7 @@ const PlanList = ({plans}) => {
             <p>{dateFormatter.format(plan.date)}</p>
             <h5>Flight</h5>
             <Flight plan={plan} />
+            <button className="sml-white">Edit Plan</button>
           </Timeline.Item>
         );
       case "EVENT":
@@ -25,6 +26,7 @@ const PlanList = ({plans}) => {
             <p>{dateFormatter.format(plan.date)}</p>
             <h5>Event</h5>
             <Event plan={plan} />
+            <button className="sml-white">Edit Plan</button>
           </Timeline.Item>
         );
       case "ACCOMMODATION":
@@ -33,6 +35,7 @@ const PlanList = ({plans}) => {
             <p>{dateFormatter.format(plan.date)}</p>
             <h5>Accommodation</h5>
             <Accommodation plan={plan} />
+            <button className="sml-white">Edit Plan</button>
           </Timeline.Item>
         );
       case "TRAIN":
@@ -41,6 +44,7 @@ const PlanList = ({plans}) => {
             <p>{dateFormatter.format(plan.date)}</p>
             <h5>Train</h5>
             <Train plan={plan} />
+            <button className="sml-white">Edit Plan</button>
           </Timeline.Item>
         );
       default:
