@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import ProfileInfo from '../components/ProfileInfo.js';
 import ProfileEditPage from '../components/ProfileEditPage.js';
 import ProfileNavBar from '../components/ProfileNavBar.js';
@@ -45,9 +45,10 @@ class ProfileContainer extends Component{
               <ProfileNavBar selectedTraveller={this.props.selectedTraveller} logOut={this.props.logOut} />
               <div className="container">
                 <ProfileEditPage onEditTraveller={this.handlePut} onToggle={this.isEditingUser} isEditingUser={this.state.isEditingUser} profile={this.props.selectedTraveller} />
-                <ProfileInfo profile={this.props.selectedTraveller}/>
+                <ProfileInfo onToggle={this.isEditingUser} profile={this.props.selectedTraveller}/>
               </div>
             </div>
+            </Fragment>
         )
     }
 
