@@ -102,7 +102,9 @@ class HolidayContainer extends Component {
             <Route exact path="/holidays/new" render={(props) => {
               return <HolidayForm
                 selectedTraveller={this.props.selectedTraveller}
-                onCreate={this.handlePost} />
+                onCreate={this.handlePost}
+                travellers={this.state.travellers}
+                findTravellerById={this.findTravellerById} />
             }} />
             <Route exact path="/holidays/welcome" render={(props) => {
               return <HolidayWelcome />
