@@ -80,13 +80,6 @@ class MainContainer extends Component {
                 <Fragment>
                 <NavBar />
                 <Switch>
-                <Route exact path="/" render={(props) => (
-                    <Fragment>
-                    <UserSelectContainer sendNewTravellerToMain={this.handleChange} isSelectingTraveller={this.state.isSelectingTraveller} hasSelectedTraveller={this.hasSelectedTraveller}/>
-                    <HomeContainer logOut={this.logOut} selectedTraveller={this.state.selectedTraveller}/>
-                    </Fragment>
-                )}
-                />
 
                 <Route path="/profile" render={(props) => (
                     <ProfileContainer renderNewDetails={this.renderNewDetails} selectedTraveller={this.state.selectedTraveller} />
@@ -116,6 +109,14 @@ class MainContainer extends Component {
 
                 <Route path="/journal" render={(props) => (
                     <JournalContainer {...props} selectedTraveller={this.state.selectedTraveller} />
+                )}
+                />
+
+                <Route path="/" render={(props) => (
+                    <Fragment>
+                    <UserSelectContainer sendNewTravellerToMain={this.handleChange} isSelectingTraveller={this.state.isSelectingTraveller} hasSelectedTraveller={this.hasSelectedTraveller}/>
+                    <HomeContainer logOut={this.logOut} selectedTraveller={this.state.selectedTraveller}/>
+                    </Fragment>
                 )}
                 />
 
