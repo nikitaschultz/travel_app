@@ -18,6 +18,7 @@ class UserSelectContainer extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.isAddingUser = this.isAddingUser.bind(this);
         this.hasSelectedTraveller = this.hasSelectedTraveller.bind(this);
+        this.sendNewTravellerToMain = this.sendNewTravellerToMain.bind(this);
     }
 
     componentDidMount() {
@@ -34,9 +35,13 @@ class UserSelectContainer extends Component {
     }
 
     handleChange(selectedTraveller){
-        this.props.sendNewTravellerToMain(selectedTraveller);
+        // this.props.sendNewTravellerToMain(selectedTraveller);
         this.setState({selectedTraveller: selectedTraveller});
     };
+
+    sendNewTravellerToMain(){
+        this.props.sendNewTravellerToMain(this.state.selectedTraveller);
+    }
 
     handlePost(newTraveller){
         console.log(newTraveller);
@@ -58,6 +63,7 @@ class UserSelectContainer extends Component {
     hasSelectedTraveller(){
         // unrenders the whole user select container
         this.props.hasSelectedTraveller();
+        this.sendNewTravellerToMain();
     }
 
     render(){

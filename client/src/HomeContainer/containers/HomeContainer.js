@@ -25,17 +25,17 @@ class HomeContainer extends Component {
 
     render(){
 
-        let total_published = 0;
-        for (let holiday of this.state.holidays){
-            if (holiday.published === true){
-                total_published += 1
-            }
-        }
-
 
         if (this.props.selectedTraveller === ""){
             return null
         } else {
+            let total_published = 0;
+            for (let holiday of this.state.holidays){
+                if (holiday.published === true){
+                    total_published += 1
+                }
+            }
+
             return(
               <div className="extended-container">
               <HomeNavBar selectedTraveller={this.props.selectedTraveller} logOut={this.props.logOut} />

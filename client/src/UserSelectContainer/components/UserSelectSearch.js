@@ -24,7 +24,7 @@ class UserSelectSearch extends Component {
         if(this.props.travellers.length===0){
             return(
                 <div>
-                    <select className="selectTraveller" name="travellersList"defaultValue="select-traveller">
+                    <select className="selectTraveller searchAndAdd" name="travellersList"defaultValue="select-traveller">
                         <option disabled value="select-traveller">No travellers registered</option>
                     </select>
                 </div>

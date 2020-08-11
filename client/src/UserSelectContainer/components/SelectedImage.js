@@ -7,6 +7,7 @@ class SelectedImage extends Component {
 
 
     render(){
+
         if (this.props.selectedImage === ""){
             return (
                 <img className="selectableImage" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=" name="imageHolder" alt=""/>
