@@ -14,6 +14,11 @@ class ProfileEditPage extends Component {
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleImageSelect = this.handleImageSelect.bind(this);
+        this.handlePopUp = this.handlePopUp.bind(this);
+    }
+
+    handlePopUp(){
+        this.props.onToggle();
     }
 
     handleNameChange(event){
@@ -32,7 +37,8 @@ class ProfileEditPage extends Component {
 
     handleSubmit(event){
         event.preventDefault();
-        this.props.onNewTraveller(this.state.newTraveller);
+        let id = this.props.profile.id;
+        this.props.onEditTraveller(id, this.state.newTraveller);
         this.props.onToggle();
     }
 
@@ -41,7 +47,8 @@ class ProfileEditPage extends Component {
         if (this.props.isEditingUser === true){
             return(
 
-                <div className="addUserBackground">
+
+                <div className="editUserBackground">
                     <form className="addUserForm" onSubmit={this.handleSubmit}>
 
                         <div className="enterName">
@@ -66,7 +73,7 @@ class ProfileEditPage extends Component {
                         </div>
 
                         <div>
-                            <button className="nav-buttons-white" type="submit"> Add User</button>
+                            <button className="nav-buttons-white" type="submit"> Edit Details</button>
                             <button className="nav-buttons-white" type="button" onClick={this.handlePopUp}>Cancel</button>
                         </div>
                     </form>

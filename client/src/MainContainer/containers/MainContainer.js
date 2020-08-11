@@ -9,87 +9,110 @@ import ProfileContainer from '../../ProfileContainer/containers/ProfileContainer
 import NavBar from '../../NavBar.js';
 
 class MainContainer extends Component {
-  constructor(props){
-      super(props);
-      this.state = {
-          selectedTraveller:
-            {id: 1,
-            image: "beach",
-            name: "Alexander Hamilton"},
-          isSelectingTraveller: true,
-          selectedHoliday: null,
-          selectedTrip: null
-      }
-      this.handleChange = this.handleChange.bind(this);
-      this.hasSelectedTraveller = this.hasSelectedTraveller.bind(this);
-      this.handleHolidaySelected = this.handleHolidaySelected.bind(this);
-      this.handleTripSelected = this.handleTripSelected.bind(this);
-  }
+    constructor(props){
+        super(props);
+        this.state = {
+            selectedTraveller: "",
+            isSelectingTraveller: true,
+            selectedHoliday: null,
+            selectedTrip: null
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.hasSelectedTraveller = this.hasSelectedTraveller.bind(this);
+        this.handleHolidaySelected = this.handleHolidaySelected.bind(this);
+        this.handleTripSelected = this.handleTripSelected.bind(this);
+        this.renderNewDetails = this.renderNewDetails.bind(this);
+    }
 
 
-  handleHolidaySelected(holiday){
-    this.setState({selectedHoliday: holiday})
-  }
+    handleHolidaySelected(holiday){
+        this.setState({selectedHoliday: holiday})
+    }
 
-  handleTripSelected(trip){
-    this.setState({selectedTrip: trip})
-  }
+    handleTripSelected(trip){
+        this.setState({selectedTrip: trip})
+    }
 
-  hasSelectedTraveller(){
-      this.setState({isSelectingTraveller: false});
-  };
+    hasSelectedTraveller(){
+        this.setState({isSelectingTraveller: false});
+    };
 
-  handleChange(selectedTraveller){
-      this.setState({selectedTraveller: selectedTraveller});
-  };
+    handleChange(selectedTraveller){
+        this.setState({selectedTraveller: selectedTraveller});
+    };
 
-  render(){
-    return (
-      <Router>
-        <Fragment>
-          <NavBar />
-          <Switch>
-            <Route exact path="/" render={(props) => (
+    renderNewDetails(newTravellerInfo){
+        this.setState({selectedTraveller: newTravellerInfo});
+    }
+
+    render(){
+
+        if (this.state.selectedTraveller === ""){
+            return(
+                <Router>
                 <Fragment>
+                <Switch>
+
+                <Route path="/" render={(props) => (
+                    <Fragment>
                     <UserSelectContainer sendNewTravellerToMain={this.handleChange} isSelectingTraveller={this.state.isSelectingTraveller} hasSelectedTraveller={this.hasSelectedTraveller}/>
                     <HomeContainer selectedTraveller={this.state.selectedTraveller}/>
+                    </Fragment>
+                )}
+                />
+                </Switch>
                 </Fragment>
-              )}
-            />
+                </Router>
+            )
+        } else {
 
-            <Route path="/profile" render={(props) => (
-                <ProfileContainer selectedTraveller={this.state.selectedTraveller} />
+            return (
+                <Router>
+                <Fragment>
+                <NavBar />
+                <Switch>
+                <Route exact path="/" render={(props) => (
+                    <Fragment>
+                    <UserSelectContainer sendNewTravellerToMain={this.handleChange} isSelectingTraveller={this.state.isSelectingTraveller} hasSelectedTraveller={this.hasSelectedTraveller}/>
+                    <HomeContainer selectedTraveller={this.state.selectedTraveller}/>
+                    </Fragment>
                 )}
-            />
+                />
 
-            <Route path="/holidays" render={(props) => (
-                <HolidayContainer
-                  selectedTraveller={this.state.selectedTraveller}
-                  handleHolidaySelected={this.handleHolidaySelected}
-                  handleTripSelected={this.handleTripSelected}
-                  handleTravellerChange={this.handleChange}
-                  hasSelectedTraveller={this.hasSelectedTraveller}
-                  selectedHoliday={this.state.selectedHoliday}
-                  selectedTrip={this.state.selectedTrip}
-                   />
+                <Route path="/profile" render={(props) => (
+                    <ProfileContainer renderNewDetails={this.renderNewDetails} selectedTraveller={this.state.selectedTraveller} />
                 )}
-            />
+                />
 
-            <Route path="/journal" render={(props) => (
-                <Journal selectedTraveller={this.state.selectedTraveller} />
+                <Route path="/holidays" render={(props) => (
+                    <HolidayContainer
+                    selectedTraveller={this.state.selectedTraveller}
+                    handleHolidaySelected={this.handleHolidaySelected}
+                    handleTripSelected={this.handleTripSelected}
+                    handleTravellerChange={this.handleChange}
+                    hasSelectedTraveller={this.hasSelectedTraveller}
+                    selectedHoliday={this.state.selectedHoliday}
+                    selectedTrip={this.state.selectedTrip}
+                    />
                 )}
-            />
+                />
 
-            <Route path="/trips" render={(props) => (
-              <TripContainer selectedTraveller={this.state.selectedTraveller} selectedHoliday={this.state.selectedHoliday} />
-            )}
-            />
+                <Route path="/journal" render={(props) => (
+                    <Journal selectedTraveller={this.state.selectedTraveller} />
+                )}
+                />
 
-          </Switch>
-        </Fragment>
-      </Router>
-    )
-  }
+                <Route path="/trips" render={(props) => (
+                    <TripContainer selectedTraveller={this.state.selectedTraveller} selectedHoliday={this.state.selectedHoliday} />
+                )}
+                />
+
+                </Switch>
+                </Fragment>
+                </Router>
+            )
+        }
+    }
 }
 
 export default MainContainer;
