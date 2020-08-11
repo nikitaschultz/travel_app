@@ -6,6 +6,7 @@ import Request from '../../helpers/request.js';
 import AccommodationEdit from '../components/AccommodationEdit.js';
 import EventEdit from '../components/EventEdit.js';
 import FlightEdit from '../components/FlightEdit.js';
+import TrainEdit from '../components/TrainEdit.js';
 
 
 class PlanContainer extends Component {
@@ -64,6 +65,11 @@ class PlanContainer extends Component {
             const id = props.match.params.id;
             const plan = this.findPlanById("FLIGHT", id);
             return <FlightEdit flight={plan} onUpdate={this.handlePut} />
+          }} />
+          <Route path="/plans/trains/:id/edit" render={(props) => {
+            const id = props.match.params.id;
+            const plan = this.findPlanById("TRAIN", id);
+            return <TrainEdit train={plan} onUpdate={this.handlePut} />
           }} />
           <Route exact path="/plans/new" render={(props) => {
             return <PlanForm selectedTrip={this.props.selectedTrip} onCreate={this.handlePost} />

@@ -9,7 +9,6 @@ class Accommodation extends Component {
 
   handleClick(){
     this.props.handleTripSelected(this.props.trip);
-    console.log("hello");
   }
 
   render(){
