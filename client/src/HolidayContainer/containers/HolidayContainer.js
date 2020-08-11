@@ -84,6 +84,9 @@ class HolidayContainer extends Component {
                 selectedTraveller={this.props.selectedTraveller}
                 onCreate={this.handlePost} />
             }} />
+            <Route exact path="/holidays/welcome" render={(props) => {
+              return <HolidayWelcome />
+            }} />
             <Route exact path="/holidays/:id/edit" render={(props) => {
               const id = props.match.params.id;
               const holiday = this.findHolidayById(id);
@@ -108,9 +111,6 @@ class HolidayContainer extends Component {
                 holiday={this.props.selectedHoliday}
                 trip={this.props.selectedTrip}
                 handleTripSelected={this.props.handleTripSelected} />
-            }} />
-            <Route exact path="/holidays/welcome" render={(props) => {
-              return <HolidayWelcome />
             }} />
             <Route render={(props) => {
               return <HolidayList key={Math.random()} holidays={this.state.holidays} />
