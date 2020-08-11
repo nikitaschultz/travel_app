@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 const Holiday = ({holiday}) => {
 
   if (!holiday){
-    return "Loading..."
+    return (
+      <div className="confirmation-screen">
+        <p>Oops! Looks like you've not added any holidays yet.</p>
+        <Link to={"/holidays/new"} className="nav-buttons-green">Create a Holiday</Link>
+      </div>
+    )
   }
 
   let locations = "";

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../../helpers/request';
 import HolidayList from '../components/HolidayList.js';
@@ -8,6 +8,8 @@ import HolidayEdit from '../components/HolidayEdit.js';
 import TripContainer from '../../TripContainer/containers/TripContainer.js';
 import HolidayNavBar from '../components/HolidayNavBar.js';
 import HolidayWelcome from '../components/HolidayWelcome.js';
+import HolidayPublish from '../components/HolidayPublish.js';
+
 
 class HolidayContainer extends Component {
   constructor(props){
@@ -90,10 +92,6 @@ class HolidayContainer extends Component {
   }
 
   render(){
-    if(this.state.holidays.length === 0){
-      return null
-    }
-
     return (
       <Router>
         <div className="extended-container">
@@ -108,12 +106,20 @@ class HolidayContainer extends Component {
             <Route exact path="/holidays/welcome" render={(props) => {
               return <HolidayWelcome />
             }} />
+            <Route exact path="/holidays/publish/:id" render={(props) => {
+              const id = props.match.params.id;
+              const holiday = this.findHolidayById(id);
+              return <HolidayPublish
+                holiday={holiday}
+                onPublish={this.handlePut} />
+            }} />
             <Route exact path="/holidays/:id/edit" render={(props) => {
               const id = props.match.params.id;
               const holiday = this.findHolidayById(id);
               return <HolidayEdit
                 holiday={holiday}
                 onUpdate={this.handlePut}
+                onDelete={this.handleDelete}
                 travellers={this.state.travellers}
                 selectedTraveller={this.props.selectedTraveller}
                 findTravellerById={this.findTravellerById} />

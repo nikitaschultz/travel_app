@@ -16,7 +16,10 @@ class HolidayDetail extends React.Component{
       <React.Fragment>
         <div className={"sticky-heading", "container-header"}>
           <h1 className="container-title">{this.props.holiday.title}</h1>
-          <Link to={"/holidays/" + this.props.holiday.id + "/edit"} className={"right-align-button", "nav-buttons-white-sml"}>Edit Holiday</Link>
+        </div>
+        <div className="buttons-centered">
+          <Link to={"/holidays/publish/" + this.props.holiday.id} className="nav-buttons-green">Publish Holiday</Link>
+          <Link to={"/holidays/" + this.props.holiday.id + "/edit"} className="nav-buttons-white">Edit Holiday</Link>
         </div>
         <TripContainer handleTripSelected={this.props.handleTripSelected} holiday={this.props.holiday} selectedTrip={this.props.selectedTrip} />
       </React.Fragment>

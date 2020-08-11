@@ -6,10 +6,14 @@ class HolidayEdit extends Component {
     super(props);
     this.state = {
       holiday: this.props.holiday,
-      confirmed: false
+      confirmed: false,
+      warned: false,
+      deleted: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleWarning = this.handleWarning.bind(this);
     this.handleTravellerChange = this.handleTravellerChange.bind(this);
   }
 
@@ -37,6 +41,15 @@ class HolidayEdit extends Component {
     this.setState({holiday: holiday})
   }
 
+  handleWarning(){
+    this.setState({warned: true})
+  }
+
+  handleDelete(){
+    this.props.onDelete(this.state.holiday.id)
+    this.setState({deleted: true})
+  }
+
   handleSubmit(event){
     event.preventDefault();
     this.props.onUpdate(this.state.holiday.id, this.state.holiday);
@@ -44,6 +57,12 @@ class HolidayEdit extends Component {
   }
 
   render(){
+    if(this.state.deleted){
+      return (
+        <Confirmation url="/holidays" />
+      )
+    }
+
     let travellerCheckboxes = this.props.travellers.map((traveller, index) => {
       if(traveller.id !== this.props.selectedTraveller.id){
         if(this.props.holiday.travellers.some(includedTraveller => traveller.id === includedTraveller.id)){
@@ -66,6 +85,17 @@ class HolidayEdit extends Component {
       }
     })
 
+    let warning;
+
+    if(this.state.warned){
+      warning = (
+        <Fragment>
+          <p>Warning!  This will permanently delete the holiday from all associated traveller profiles.  Are you sure you wish to proceed?</p>
+          <button onClick={this.handleDelete} className="nav-buttons-white">Yes</button>
+        </Fragment>
+      )
+    }
+
     if(!this.state.confirmed){
       return (
         <Fragment>
@@ -82,8 +112,10 @@ class HolidayEdit extends Component {
               <label htmlFor="travellers">Travellers:</label>
               {travellerCheckboxes}
             </ul>
-            <button type="submit">Save</button>
+            <button type="submit" className="nav-buttons-green">Save</button>
           </form>
+          <button onClick={this.handleWarning} className="nav-buttons-white">Delete Holiday</button>
+          {warning}
         </Fragment>
       )
     }else{

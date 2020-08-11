@@ -82,7 +82,7 @@ class MainContainer extends Component {
                 <Switch>
 
                 <Route path="/profile" render={(props) => (
-                    <ProfileContainer renderNewDetails={this.renderNewDetails} selectedTraveller={this.state.selectedTraveller} />
+                    <ProfileContainer renderNewDetails={this.renderNewDetails} selectedTraveller={this.state.selectedTraveller} logOut={this.logOut} />
                 )}
 
                 />
@@ -101,14 +101,9 @@ class MainContainer extends Component {
                 />
 
 
-                <Route path="/trips" render={(props) => (
-                    <TripContainer selectedTraveller={this.state.selectedTraveller} selectedHoliday={this.state.selectedHoliday} />
-                )}
-                />
-
 
                 <Route path="/journal" render={(props) => (
-                    <JournalContainer {...props} selectedTraveller={this.state.selectedTraveller} />
+                    <JournalContainer {...props} logOut={this.logOut} selectedTraveller={this.state.selectedTraveller} />
                 )}
                 />
 
