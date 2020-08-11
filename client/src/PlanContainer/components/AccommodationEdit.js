@@ -19,7 +19,7 @@ class AccommodationEdit extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    this.props.onUpdate('accommodations', this.state.accommodation)
+    this.props.onUpdate('accommodations', this.state.accommodation, this.state.accommodation.id)
   }
 
   render(){
@@ -37,7 +37,7 @@ class AccommodationEdit extends Component {
           <input type="text" name="address" onChange={this.handleChange} value={this.state.accommodation.address} /><br />
           <label htmlFor="numOfNights">Number of Nights:</label>
           <input type="number" name="numOfNights" onChange={this.handleChange} value={this.state.accommodation.numOfNights} /><br />
-          <input type="submit" value="Create" />
+          <input type="submit" value="Update" />
         </form>
       </Fragment>
     )

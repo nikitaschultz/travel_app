@@ -323,13 +323,49 @@ li.holiday-list-item {
     text-decoration: none;
 }
 
-a.main-green {
+.nav-buttons-green-sml, .nav-buttons-white-sml:hover{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 30px;
+    border: solid 2px white;
+    border-radius: 15px;
+    margin: 5px;
+    color: white;
+    background-color: #8EAA7B;
+    width: 100px;
+    height: 25px;
+    font-weight: bold;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.nav-buttons-white-sml, .nav-buttons-green-sml:hover{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 30px;
+    border: solid 2px #8EAA7B;
+    border-radius: 15px;
+    margin: 5px;
+    color: #8EAA7B;
+    background-color: white;
+    width: 100px;
+    height: 25px;
+    font-weight: bold;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+a.main-green, a.main-green-sml, a.main-white:hover, a.main-white-sml:hover {
     color: white;
     font-weight: bold;
     text-decoration: none;
 }
 
-a.main-green:hover {
+a.main-green:hover, a.main-green-sml:hover, a.main-white, a.main-white-sml {
     color: #8EAA7B;
     font-weight: bold;
     text-decoration: none;

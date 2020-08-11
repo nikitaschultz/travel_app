@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PlanList from '../components/PlanList.js';
 import PlanForm from '../components/PlanForm.js';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Request from '../../helpers/request.js';
 import AccommodationEdit from '../components/AccommodationEdit.js';
-
+import EventEdit from '../components/EventEdit.js';
 
 class PlanContainer extends Component {
   constructor(props){
@@ -31,7 +31,12 @@ class PlanContainer extends Component {
   }
 
   handlePut(planType, plan, id){
+    const request = new Request();
+    const url = `/api/${planType}/${id}`;
+    request.post(url, plan)
+    .then(() => {
 
+    })
   }
 
   render(){
@@ -41,8 +46,12 @@ class PlanContainer extends Component {
           <Route path="/plans/accommmodations/:id/edit" render={(props) => {
             const id = props.match.params.id;
             const plan = this.findPlanById("ACCOMMODATION", id);
-            console.log(plan);
             return <AccommodationEdit accommodation={plan} onUpdate={this.handlePut} />
+          }} />
+          <Route path="/plans/events/:id/edit" render={(props) => {
+            const id = props.match.params.id;
+            const plan = this.findPlanById("EVENT", id);
+            return <EventEdit event={plan} onUpdate={this.handlePut} />
           }} />
           <Route exact path="/plans/new" render={(props) => {
             return <PlanForm selectedTrip={this.props.selectedTrip} onCreate={this.handlePost} />

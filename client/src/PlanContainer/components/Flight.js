@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 const Flight = ({plan}) => {
   return (
@@ -8,6 +9,7 @@ const Flight = ({plan}) => {
       <p>Arriving: {plan.arrivalTime}</p>
       <p>Flight: {plan.flightNumber}</p>
       <p>Booking Confirmation: {plan.bookingConfirmation}</p>
+      <Link to={"/plans/flights/" + plan.id + "/edit"} className="nav-buttons-white-sml">Edit Plan</Link>
     </Fragment>
   )
 }
