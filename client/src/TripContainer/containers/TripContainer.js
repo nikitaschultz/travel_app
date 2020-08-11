@@ -39,6 +39,7 @@ class TripContainer extends Component {
     let holiday = this.props.holiday;
     delete holiday.trips;
     trip.holiday = holiday;
+    delete trip.plans;
     request.post(url, trip)
     .then(() => {
       this.props.fetchHolidays()
@@ -73,10 +74,13 @@ class TripContainer extends Component {
               onDelete={this.handleDelete} />
           }} />
           <Route path="/plans" render={(props) => {
-            return <PlanContainer selectedTrip={this.props.selectedTrip} />
+            return <PlanContainer
+              fetchHolidays={this.props.fetchHolidays}
+              selectedTrip={this.props.selectedTrip} />
           }} />
           <Route render={() => {
             return <TripList
+              fetchHolidays={this.props.fetchHolidays}
               trips={this.props.holiday.trips}
               handleTripSelected={this.props.handleTripSelected}
               selectedTrip={this.props.selectedTrip}

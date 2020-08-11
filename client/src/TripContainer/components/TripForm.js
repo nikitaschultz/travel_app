@@ -47,7 +47,10 @@ class TripForm extends Component {
     Geocode.fromAddress(this.state.trip.location)
     .then((response) => {
         const { lat, lng } = response.results[0].geometry.location;
-        this.setState({lat: lat, lng: lng, showMap: true, submissionError: null})
+        let trip = this.state.trip;
+        trip.latitude = lat;
+        trip.longitude = lng;
+        this.setState({lat: lat, lng: lng, showMap: true, submissionError: null, trip: trip})
       },
       error => {
         console.error(error)
