@@ -114,6 +114,7 @@ class HolidayContainer extends Component {
               return <HolidayEdit
                 holiday={holiday}
                 onUpdate={this.handlePut}
+                onDelete={this.handleDelete}
                 travellers={this.state.travellers}
                 selectedTraveller={this.props.selectedTraveller}
                 findTravellerById={this.findTravellerById} />
