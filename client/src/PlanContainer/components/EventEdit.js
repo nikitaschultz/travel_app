@@ -26,6 +26,7 @@ class EventEdit extends Component {
   handleSubmit(event){
     event.preventDefault();
     this.props.onUpdate('events', this.state.event, this.state.event.id)
+    this.setState({confirmed: true})
   }
 
   handleWarning(){

@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../../helpers/request';
 import JournalList from '../components/JournalList.js';
 import JournalDetail from '../components/JournalDetail.js';
+import JournalNavBar from '../components/JournalNavBar.js';
 
 class JournalContainer extends Component {
   constructor(props){
@@ -45,17 +46,20 @@ class JournalContainer extends Component {
     return (
 
       <Router>
-        <div className="container">
-          <Switch>
-            <Route exact path="/journal" render={(props) => {
-              return <JournalList holidays={published}/>
-            }} />
-            <Route exact path="/journal/:id" render={(props) => {
-              const id = props.match.params.id;
-              const holiday = this.findHolidayById(id);
-              return <JournalDetail selectedTraveller={this.props.selectedTraveller} holiday={holiday} />
-            }} />
-          </Switch>
+        <div className="extended-container">
+          <JournalNavBar logOut={this.props.logOut} selectedTraveller={this.props.selectedTraveller} />
+          <div className="container">
+            <Switch>
+              <Route exact path="/journal" render={(props) => {
+                return <JournalList holidays={published}/>
+              }} />
+              <Route exact path="/journal/:id" render={(props) => {
+                const id = props.match.params.id;
+                const holiday = this.findHolidayById(id);
+                return <JournalDetail selectedTraveller={this.props.selectedTraveller} holiday={holiday} />
+              }} />
+            </Switch>
+          </div>
         </div>
       </Router>
     )
