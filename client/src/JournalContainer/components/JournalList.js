@@ -1,7 +1,7 @@
 import React from 'react';
-import Holiday from './Holiday.js';
+import Journal from './Journal.js';
 
-const Holidays = (props) => {
+const JournalList = (props) => {
 
   if (props.holidays.length === 0){
     return (<p>Loading...</p>)
@@ -11,18 +11,20 @@ const Holidays = (props) => {
 	  return (
         <li key={index} className="holiday-list-item">
     	    <div className="component">
-      	    <Holiday holiday={holiday} />
+      	    <Journal holiday={holiday} />
     	    </div>
   	    </li>
 	     )
 	})
 
 	return (
+
 	  <ul className="component-list">
 	    {holidays}
 	  </ul>
+
 	)
 }
 
 
-export default Holidays;
+export default JournalList;

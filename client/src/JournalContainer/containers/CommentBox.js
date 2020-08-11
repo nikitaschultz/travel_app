@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import CommentList from "../components/comments/CommentList";
-// import CommentForm from "../components/CommentForm";
+import CommentForm from "../components/comments/CommentForm";
 
-const CommentBox = ({comments}) => {
+const CommentBox = (props) => {
 
 
     return (
       <div className="comment-box">
 
-
+        <CommentForm selectedTraveller={props.selectedTraveller} comments = {props.comments} />
         <h2>Comments</h2>
-        <CommentList comments={comments} />
+        <CommentList comments={props.comments} />
+
       </div>
     )
 

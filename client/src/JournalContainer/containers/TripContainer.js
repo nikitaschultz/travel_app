@@ -1,10 +1,10 @@
 import React from 'react';
 import TripList from '../components/trips/TripList.js'
-
-const TripContainer = ({trips}) => {
+//this is exactly the smae and i'll probably refactor it to just use the usual tripContainer
+const TripContainer = (props) => {
 
   return(
-    <TripList trips={trips} />
+    <TripList selectedTraveller={props.selectedTraveller} trips={props.trips} />
   )
 }
 

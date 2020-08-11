@@ -6,11 +6,11 @@ class CommentForm extends Component {
   constructor(props) {
   super(props);
   this.state = {
-    author: '',//gonna be selectedTraveller after i follow the pathing down
+    author: props.selectTraveller,//gonna be selectedTraveller after i follow the pathing down
     text: '',
     date: ''
   };
-  this.handleAuthorChange = this.handleAuthorChange.bind(this);
+
 this.handleTextChange = this.handleTextChange.bind(this);
 }
 
@@ -24,9 +24,9 @@ handleSubmit(event) {
   event.preventDefault();
   const date = new Date();
   const text = this.state.text.trim();
-
+  //send
   this.setState({
-  date: date;,
+  date: date,
   text: text
 });
 }
@@ -35,7 +35,7 @@ handleSubmit(event) {
 
     return(
       <form className="comment-form">
-      <input type='text'placeholder = 'Say something'value={this.state.text}/>
+      <input type='text'placeholder = 'Say something'value={this.state.text} onChange={this.handleTextChange}/>
       <input type='submit'value = 'post'/>
       </form>
     )
