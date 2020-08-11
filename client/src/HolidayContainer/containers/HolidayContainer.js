@@ -19,21 +19,31 @@ class HolidayContainer extends Component {
     this.findHolidayById = this.findHolidayById.bind(this);
     this.findTravellerById = this.findTravellerById.bind(this);
     this.handlePut = this.handlePut.bind(this);
+    this.fetchHolidays = this.fetchHolidays.bind(this);
   }
 
   componentDidMount(){
+    this.fetchHolidays();
+    this.fetchTravellers();
+  }
+
+  fetchTravellers(){
+    const request = new Request();
+
+    let url = '/api/travellers'
+    request.get(url)
+    .then((data) => {
+      this.setState({travellers: data})
+    })
+  }
+
+  fetchHolidays(){
     const request = new Request();
 
     let url = '/api/holidays?travellerId=' + this.props.selectedTraveller.id
     request.get(url)
     .then((data) => {
       this.setState({holidays: data})
-    })
-
-    url = '/api/travellers'
-    request.get(url)
-    .then((data) => {
-      this.setState({travellers: data})
     })
   }
 
@@ -54,7 +64,7 @@ class HolidayContainer extends Component {
     const url = '/api/holidays'
     request.post(url, holiday)
     .then(() => {
-
+      this.fetchHolidays()
     })
   }
 
@@ -64,7 +74,7 @@ class HolidayContainer extends Component {
     delete holiday.trips;
     request.post(url, holiday)
     .then(() => {
-
+      this.fetchHolidays()
     })
   }
 

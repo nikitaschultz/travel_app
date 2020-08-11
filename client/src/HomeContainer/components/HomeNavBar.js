@@ -13,7 +13,11 @@ class HomeNavBar extends Component {
         <nav>
           <div className="nav-bar-heading">
             <Icon icon="home" size="2x" />
-            <h3 className="nav-bar-title">Home</h3>
+            <h3 className="nav-bar-title">TravelGo</h3>
+          </div>
+          <div className="nav-bar-links">
+            <hr className="nav-horizontal-line" />
+            <Link to={"/"} className="nav-bar-link">Welcome</Link>
           </div>
         </nav>
         <div>
