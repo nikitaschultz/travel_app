@@ -47,6 +47,7 @@ class MainContainer extends Component {
 
   logOut(){
     this.setState({isSelectingTraveller: true, selectTraveller: null})
+    window.location = "/"
   }
 
   render(){
@@ -64,7 +65,7 @@ class MainContainer extends Component {
             />
 
             <Route path="/profile" render={(props) => (
-                <ProfileContainer selectedTraveller={this.state.selectedTraveller} />
+                <ProfileContainer selectedTraveller={this.state.selectedTraveller} logOut={this.logOut} />
                 )}
             />
 
@@ -82,14 +83,10 @@ class MainContainer extends Component {
             />
 
             <Route path="/journal" render={(props) => (
-                <JournalContainer {...props} selectedTraveller={this.state.selectedTraveller} />
+                <JournalContainer {...props} selectedTraveller={this.state.selectedTraveller} logOut={this.logOut} />
                 )}
             />
 
-            <Route path="/trips" render={(props) => (
-              <TripContainer selectedTraveller={this.state.selectedTraveller} selectedHoliday={this.state.selectedHoliday} />
-            )}
-            />
 
           </Switch>
         </Fragment>

@@ -26,7 +26,9 @@ class PlanContainer extends Component {
   handlePost(planType, plan){
     const request = new Request();
     const url = `/api/${planType}`;
-    plan.trip = this.props.selectedTrip;
+    let trip = this.props.selectedTrip;
+    delete trip.plans;
+    plan.trip = trip;
     request.post(url, plan)
     .then(() => {
 

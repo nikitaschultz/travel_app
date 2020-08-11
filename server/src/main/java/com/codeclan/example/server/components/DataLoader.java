@@ -59,19 +59,19 @@ public class DataLoader implements ApplicationRunner {
         Traveller washington = new Traveller("George Washington", "image4");
         travellerRepository.save(washington);
 
-        Holiday holiday1 = new Holiday("Coming to the Mainland", true);
+        Holiday holiday1 = new Holiday("Coming to the Mainland", false);
         holiday1.addTraveller(hamilton);
         holidayRepository.save(holiday1);
 
-        Holiday holiday2 = new Holiday("Going Home", true);
+        Holiday holiday2 = new Holiday("Going Home", false);
         holiday2.addTraveller(washington);
         holidayRepository.save(holiday2);
 
-        Holiday holiday3 = new Holiday("Avoiding the War", true);
+        Holiday holiday3 = new Holiday("Avoiding the War", false);
         holiday3.addTraveller(jefferson);
         holidayRepository.save(holiday3);
 
-        Holiday holiday4 = new Holiday("Constitutional Convention Trip", true);
+        Holiday holiday4 = new Holiday("Constitutional Convention Trip", false);
         holiday4.addTraveller(hamilton);
         holidayRepository.save(holiday4);
 
@@ -80,7 +80,7 @@ public class DataLoader implements ApplicationRunner {
         holiday5.addTraveller(burr);
         holidayRepository.save(holiday5);
 
-        Holiday holiday6 = new Holiday("Debt Plan Negotiations", true);
+        Holiday holiday6 = new Holiday("Debt Plan Negotiations", false);
         holiday6.addTraveller(hamilton);
         holiday6.addTraveller(jefferson);
         holidayRepository.save(holiday6);

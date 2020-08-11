@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../../helpers/request';
 import HolidayList from '../components/HolidayList.js';
@@ -92,10 +92,6 @@ class HolidayContainer extends Component {
   }
 
   render(){
-    if(this.state.holidays.length === 0){
-      return null
-    }
-
     return (
       <Router>
         <div className="extended-container">

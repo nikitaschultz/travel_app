@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Icon } from 'rsuite';
 import { Link } from 'react-router-dom';
 
-class HolidayNavBar extends Component {
+class ProfileNavBar extends Component {
   constructor(props){
     super(props);
     this.handleLogOut = this.handleLogOut.bind(this);
@@ -17,15 +17,13 @@ class HolidayNavBar extends Component {
       <div className="secondary-nav-bar">
         <nav>
           <div className="nav-bar-heading">
-            <Icon icon="map" size="2x" />
-            <h3 className="nav-bar-title">Holidays</h3>
+            <Icon icon="user" size="2x" />
+            <h3 className="nav-bar-title">Traveller Profile</h3>
           </div>
           <div className="nav-bar-links">
             <hr className="nav-horizontal-line" />
-            <Link to={"/holidays/welcome"} className="nav-bar-link">Welcome</Link>
-            <Link to={"/holidays"} className="nav-bar-link">My Holidays</Link>
-            <Link to={"/holidays/new"} className="nav-bar-link">Create a Holiday</Link>
-            <hr className="nav-horizontal-line" />
+            <Link to={"/"} className="nav-bar-link">Welcome</Link>
+            <Link to={"/profile/" + this.props.selectedTraveller.id + "/edit"} className="nav-bar-link">Edit Profile</Link>
           </div>
         </nav>
         <div>
@@ -37,4 +35,4 @@ class HolidayNavBar extends Component {
   }
 }
 
-export default HolidayNavBar;
+export default ProfileNavBar;
