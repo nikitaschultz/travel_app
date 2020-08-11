@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import HolidayContainer from '../../HolidayContainer/containers/HolidayContainer.js';
 import UserSelectContainer from '../../UserSelectContainer/containers/UserSelectContainer.js'
 import HomeContainer from '../../HomeContainer/containers/HomeContainer.js';
-import Journal from '../components/Journal.js';
+import JournalContainer from '../../JournalContainer/containers/JournalContainer.js';
 import Profile from '../components/Profile.js';
 import NavBar from '../../NavBar.js';
 
@@ -54,7 +54,7 @@ class MainContainer extends Component {
                 )}
             />
             <Route path="/journal" render={(props) => (
-                <Journal {...props} selectedTraveller={this.state.selectedTraveller} />
+                <JournalContainer {...props} selectedTraveller={this.state.selectedTraveller} />
                 )}
             />
 
