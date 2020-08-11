@@ -36,6 +36,7 @@ class HomeContainer extends Component {
             return null
         } else {
             return(
+              <div className="extended-container">
                 <div className="container">
 
                 <HomeWelcome selectedTraveller={this.props.selectedTraveller}/>
@@ -57,6 +58,7 @@ class HomeContainer extends Component {
                         <p className="homePanel"> <span className="boldNumber">{total_published}</span> of these holidays are published </p>
 
                     </div>
+                </div>
                 </div>
 
             )

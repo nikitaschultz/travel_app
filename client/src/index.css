@@ -150,7 +150,8 @@ code {
 }
 
 .container {
-    margin: 0 0 0 70px;
+    margin: 0 0 0 320px;
+    width: 100%;
 }
 
 .homeWelcome {
@@ -432,7 +433,7 @@ button.sml-green, button.sml-white:hover {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    border: 1px solid grey;
+    border-bottom: 1px solid grey;
     padding: 5px;
     margin: 0px;
 }
@@ -450,4 +451,30 @@ h2.holiday-title {
 h3.holiday-locations {
     font-size: 15px;
     text-align: left;
+}
+
+div.secondary-nav-bar {
+    padding: 20px;
+    position: fixed;
+    left: 70px;
+    height: 100vh;
+    background-color: #EFEEF0;
+    width: 250px;
+}
+
+div.nav-bar-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+h3.nav-bar-title {
+  margin: 0 0 0 20px;
+  font-size: 20px;
+}
+
+div.extended-container {
+  display: flex;
+  flex-direction: row;
 }

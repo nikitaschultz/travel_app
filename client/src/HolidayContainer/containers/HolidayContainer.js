@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component, Fragment } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../../helpers/request';
 import HolidayList from '../components/HolidayList.js';
@@ -6,6 +6,7 @@ import HolidayDetail from '../components/HolidayDetail.js';
 import HolidayForm from '../components/HolidayForm.js';
 import HolidayEdit from '../components/HolidayEdit.js';
 import TripContainer from '../../TripContainer/containers/TripContainer.js';
+import HolidayNavBar from '../components/HolidayNavBar.js';
 
 class HolidayContainer extends Component {
   constructor(props){
@@ -76,6 +77,8 @@ class HolidayContainer extends Component {
 
     return (
       <Router>
+        <div className="extended-container">
+        <HolidayNavBar />
         <div className="container">
           <Switch>
             <Route exact path="/holidays/new" render={(props) => {
@@ -112,6 +115,7 @@ class HolidayContainer extends Component {
               return <HolidayList key={Math.random()} holidays={this.state.holidays} />
             }} />
           </Switch>
+        </div>
         </div>
       </Router>
     )
