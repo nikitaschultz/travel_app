@@ -191,6 +191,24 @@ code {
     height: 30vh;
 }
 
+.journalWelcome {
+    display: flex;
+    font-size: 2rem;
+    text-align: center;
+    justify-content: center;
+    border-bottom: 5px solid #8EAA7B ;
+    background-image: url("https://p0.pikist.com/photos/775/600/rainbow-landscape-scenic-colorful-panorama-nature-sky-clouds-mountains.jpg");
+    background-size: cover;
+    height: 30vh;
+}
+
+.journalWelcome h2{
+    color: white;
+    display: flex;
+    align-items: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
 .holidayWelcome h2{
     color: white;
     display: flex;

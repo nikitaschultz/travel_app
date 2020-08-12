@@ -54,7 +54,7 @@ class ProfileEditPage extends Component {
                         <div className="enterName">
                             <div>
                                 <label className="nameLabel"> Name </label>
-                                <input onChange={this.handleNameChange} value={this.state.newTraveller.name} name="name" />
+                                <input onChange={this.handleNameChange} value={this.state.newTraveller.name} placeholder={this.props.profile.name} name="name" />
                             </div>
                             <SelectedImage selectedImage={this.state.newTraveller["image"]}/>
                         </div>
