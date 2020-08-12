@@ -23,7 +23,8 @@ class ProfileNavBar extends Component {
           <div className="nav-bar-links">
             <hr className="nav-horizontal-line" />
             <Link to={"/"} className="nav-bar-link">Welcome</Link>
-            <Link to={"/profile/" + this.props.selectedTraveller.id + "/edit"} className="nav-bar-link">Edit Profile</Link>
+            <Link to={"/profile/edit"} className="nav-bar-link">Edit Profile</Link>
+            <hr className="nav-horizontal-line" />
           </div>
         </nav>
         <div>

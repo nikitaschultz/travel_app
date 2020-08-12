@@ -83,7 +83,7 @@ class EventEdit extends Component {
               </div>
               <div className="buttons-centered">
                 <input className="nav-buttons-green" type="submit" value="Update" />
-                <button onClick={this.handleWarning} className="nav-buttons-white">Delete Plan</button>
+                <button type="button" onClick={this.handleWarning} className="nav-buttons-white">Delete Plan</button>
               </div>
               {warning}
             </form>

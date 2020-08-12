@@ -3,6 +3,7 @@ import ProfileInfo from '../components/ProfileInfo.js';
 import ProfileEditPage from '../components/ProfileEditPage.js';
 import ProfileNavBar from '../components/ProfileNavBar.js';
 import Request from '../../helpers/request.js';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class ProfileContainer extends Component{
     constructor(props){
@@ -32,23 +33,27 @@ class ProfileContainer extends Component{
 
         request.post(url, newTraveller)
         .then(() => {
-
+          this.props.renderNewDetails(newTraveller);
         });
-
-        this.props.renderNewDetails(newTraveller);
     }
 
     render(){
         return (
-          <Fragment>
+          <Router>
             <div className="extended-container">
               <ProfileNavBar selectedTraveller={this.props.selectedTraveller} logOut={this.props.logOut} />
               <div className="container">
-                <ProfileEditPage onEditTraveller={this.handlePut} onToggle={this.isEditingUser} isEditingUser={this.state.isEditingUser} profile={this.props.selectedTraveller} />
-                <ProfileInfo onToggle={this.isEditingUser} profile={this.props.selectedTraveller}/>
+                <Switch>
+                  <Route exact path="/profile/edit" render={(props) => {
+                    return <ProfileEditPage onEditTraveller={this.handlePut} onToggle={this.isEditingUser} isEditingUser={this.state.isEditingUser} profile={this.props.selectedTraveller} />
+                  }} />
+                  <Route render={(props) => {
+                    return <ProfileInfo onToggle={this.isEditingUser} profile={this.props.selectedTraveller}/>
+                  }} />
+                </Switch>
               </div>
             </div>
-            </Fragment>
+          </Router>
         )
     }
 

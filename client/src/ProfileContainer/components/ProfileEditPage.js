@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import SelectedImage from '../../UserSelectContainer/components/SelectedImage.js';
+import Confirmation from '../../MainContainer/components/Confirmation.js';
 
 class ProfileEditPage extends Component {
     constructor(props){
         super(props);
         this.state = {
-            newTraveller: {
-                name: "",
-                image: ""
-
-            }
+            newTraveller: this.props.profile,
+            confirmed: false
         }
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleImageSelect = this.handleImageSelect.bind(this);
         this.handlePopUp = this.handlePopUp.bind(this);
+    }
+
+    componentDidMount(){
+      this.props.onToggle();
     }
 
     handlePopUp(){
@@ -40,15 +42,14 @@ class ProfileEditPage extends Component {
         let id = this.props.profile.id;
         this.props.onEditTraveller(id, this.state.newTraveller);
         this.props.onToggle();
+        this.setState({confirmed: true})
     }
 
     render(){
 
-        if (this.props.isEditingUser === true){
+          if(!this.state.confirmed){
             return(
-
-
-                <div className="editUserBackground">
+                <div className="container">
                     <form className="addUserForm" onSubmit={this.handleSubmit}>
 
                         <div className="enterName">
@@ -60,16 +61,16 @@ class ProfileEditPage extends Component {
                         </div>
 
                         <div className="selectableImages">
-                            <img className="selectableImage" onClick={this.handleImageSelect} src="./images/image1.jpg" name="image1" alt=""/>
-                            <img className="selectableImage" onClick={this.handleImageSelect} src="./images/image2.jpg" name="image2" alt=""/>
-                            <img className="selectableImage" onClick={this.handleImageSelect} src="./images/image3.jpg" name="image3" alt=""/>
-                            <img className="selectableImage" onClick={this.handleImageSelect} src="./images/image4.jpg" name="image4" alt=""/>
+                            <img className="selectableImage" onClick={this.handleImageSelect} src="/images/image1.jpg" name="image1" alt=""/>
+                            <img className="selectableImage" onClick={this.handleImageSelect} src="/images/image2.jpg" name="image2" alt=""/>
+                            <img className="selectableImage" onClick={this.handleImageSelect} src="/images/image3.jpg" name="image3" alt=""/>
+                            <img className="selectableImage" onClick={this.handleImageSelect} src="/images/image4.jpg" name="image4" alt=""/>
                         </div>
                         <div className="selectableImages">
-                            <img className="selectableImage" onClick={this.handleImageSelect} src="./images/image5.jpg" name="image5" alt=""/>
-                            <img className="selectableImage" onClick={this.handleImageSelect} src="./images/image6.jpg" name="image6" alt=""/>
-                            <img className="selectableImage" onClick={this.handleImageSelect} src="./images/image7.jpg" name="image7" alt=""/>
-                            <img className="selectableImage" onClick={this.handleImageSelect} src="./images/image8.jpg" name="image8" alt=""/>
+                            <img className="selectableImage" onClick={this.handleImageSelect} src="/images/image5.jpg" name="image5" alt=""/>
+                            <img className="selectableImage" onClick={this.handleImageSelect} src="/images/image6.jpg" name="image6" alt=""/>
+                            <img className="selectableImage" onClick={this.handleImageSelect} src="/images/image7.jpg" name="image7" alt=""/>
+                            <img className="selectableImage" onClick={this.handleImageSelect} src="/images/image8.jpg" name="image8" alt=""/>
                         </div>
 
                         <div>
@@ -79,9 +80,12 @@ class ProfileEditPage extends Component {
                     </form>
                 </div>
             )
+        }else{
+          return (
+            <Confirmation url="/profile" heading={true} />
+          )
         }
 
-        return null;
     }
 }
 

@@ -91,7 +91,7 @@ class FlightEdit extends Component {
               </div>
               <div className="buttons-centered">
                 <input type="submit" className="nav-buttons-green" value="Update" />
-                <button onClick={this.handleWarning} className="nav-buttons-white">Delete Plan</button>
+                <button type="button" onClick={this.handleWarning} className="nav-buttons-white">Delete Plan</button>
               </div>
               {warning}
             </form>

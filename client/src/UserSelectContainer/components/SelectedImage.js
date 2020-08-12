@@ -15,7 +15,7 @@ class SelectedImage extends Component {
         }
         else {
             return (
-                <img className="selectableImage" src={`./images/${this.props.selectedImage}.jpg`} name="image1" alt=""/>
+                <img className="selectableImage" src={`/images/${this.props.selectedImage}.jpg`} name="image1" alt=""/>
             )
         }
     }
