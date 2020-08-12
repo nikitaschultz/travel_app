@@ -12,7 +12,23 @@ const PlanList = ({plans, handleTripSelected, trip}) => {
   let planList = null;
 
   if(plans){
-  planList = plans.map((plan, index) => {
+
+  function compare(a, b){
+    const aDate = a.date
+    const bDate = b.date
+
+    let comparison = 0;
+    if(aDate > bDate){
+      comparison = 1;
+    }else if(aDate < bDate){
+      comparison = -1;
+    }
+    return comparison
+  }
+
+  let sortedPlans = plans.sort(compare) 
+
+  planList = sortedPlans.map((plan, index) => {
     switch(plan.planType){
       case "FLIGHT":
         return (

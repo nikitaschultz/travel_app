@@ -103,6 +103,7 @@ class PlanContainer extends Component {
               onCreate={this.handlePost}
               holiday={this.props.holiday} />
           }} />
+
           <Route render={() => {
             return <PlanList
               handleTripSelected={this.props.handleTripSelected}

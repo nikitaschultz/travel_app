@@ -12,6 +12,29 @@ const TripList = ({trips, handleTripSelected, selectedTrip, holiday, fetchHolida
     )
   }
 
+  function compare(a, b){
+    if(!a.plans || a.plans.length===0){
+      return 1
+    }
+
+    if(!b.plans ||b.plans.length===0){
+      return -1
+    }
+
+    const aDate = a.plans[0].date
+    const bDate = b.plans[0].date
+
+    let comparison = 0;
+    if(aDate > bDate){
+      comparison = 1;
+    }else if(aDate < bDate){
+      comparison = -1;
+    }
+    return comparison
+  }
+
+  let sortedTrips = trips.sort(compare)
+
   const allTrips = trips.map((trip, index) => {
     return (
       <Panel key={index} header={trip.location} defaultExpanded>
