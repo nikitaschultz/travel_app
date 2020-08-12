@@ -14,6 +14,7 @@ class ProfileInfo extends Component {
 
         render(){
             return (
+              <div className="container">
                 <div className="profileInfo">
                     <h3 className="profileTitle"> My Profile</h3>
                 <div className="profileSections">
@@ -33,6 +34,7 @@ class ProfileInfo extends Component {
                     <h3 className="editProfile" onClick={this.handlePopUp}>Edit Details</h3>
                 </div>
                 </div>
+              </div>
             )
         }
     }

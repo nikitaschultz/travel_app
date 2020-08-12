@@ -86,6 +86,27 @@ code {
     background-color: #f7f7f7;
 }
 
+.edit-user-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.edit-user-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 5px solid #8EAA7B;
+  border-radius: 20px;
+  background-color: white;
+  width: 30vw;
+  height: 50%;
+  padding: 20px;
+  z-index: 10;
+}
+
 
 .addUserForm {
     position: absolute;

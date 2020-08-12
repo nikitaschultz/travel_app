@@ -50,7 +50,8 @@ class ProfileEditPage extends Component {
           if(!this.state.confirmed){
             return(
                 <div className="container">
-                    <form className="addUserForm" onSubmit={this.handleSubmit}>
+                  <div className="edit-user-screen">
+                    <form className="edit-user-form" onSubmit={this.handleSubmit}>
 
                         <div className="enterName">
                             <div>
@@ -78,7 +79,8 @@ class ProfileEditPage extends Component {
                             <button className="nav-buttons-white" type="button" onClick={this.handlePopUp}>Cancel</button>
                         </div>
                     </form>
-                </div>
+                  </div>
+              </div>
             )
         }else{
           return (
