@@ -5,10 +5,15 @@ import Request from '../../helpers/request';
 
 const CommentBox = (props) => {
 
-   function  handlePost(holiday){
+   function  handlePost(comment){
       const request = new Request();
       const url = '/api/comments'
-      request.post(url, holiday)
+
+      let trip = props.selectedTrip;
+      delete trip.plans;
+      comment.trip = trip;
+      console.log(comment);
+      request.post(url, comment)
       .then(() => {
 
       })
