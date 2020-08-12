@@ -41,7 +41,6 @@ class ProfileContainer extends Component{
           <Router>
             <div className="extended-container">
               <ProfileNavBar selectedTraveller={this.props.selectedTraveller} logOut={this.props.logOut} />
-              <div className="container">
                 <Switch>
                   <Route exact path="/profile/edit" render={(props) => {
                     return <ProfileEditPage onEditTraveller={this.handlePut} onToggle={this.isEditingUser} isEditingUser={this.state.isEditingUser} profile={this.props.selectedTraveller} />
@@ -50,7 +49,6 @@ class ProfileContainer extends Component{
                     return <ProfileInfo onToggle={this.isEditingUser} profile={this.props.selectedTraveller}/>
                   }} />
                 </Switch>
-              </div>
             </div>
           </Router>
         )
