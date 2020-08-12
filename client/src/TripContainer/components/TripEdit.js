@@ -41,19 +41,24 @@ class TripEdit extends Component {
   }
 
   findLocation(){
-    Geocode.setApiKey(apiKey);
-    Geocode.setLanguage("en");
-    Geocode.fromAddress(this.state.trip.location)
-    .then((response) => {
-      const { lat, lng } = response.results[0].geometry.location;
-      let trip = this.state.trip;
-      trip.latitude = lat;
-      trip.longitude = lng;
-      this.setState({trip: trip, showMap: true})
-    },
-    error => {
-      console.error(error)
-    })
+    if(!this.state.trip.location){
+      this.setState({showMap: false})
+      console.log("hello");
+    }else{
+      Geocode.setApiKey(apiKey);
+      Geocode.setLanguage("en");
+      Geocode.fromAddress(this.state.trip.location)
+      .then((response) => {
+        const { lat, lng } = response.results[0].geometry.location;
+        let trip = this.state.trip;
+        trip.latitude = lat;
+        trip.longitude = lng;
+        this.setState({trip: trip, showMap: true})
+      },
+      error => {
+        console.error(error)
+      })
+    }
   }
 
   handleWarning(){
@@ -81,7 +86,7 @@ class TripEdit extends Component {
             <div className="map-container">
               <LocationMap position={[this.state.trip.latitude, this.state.trip.longitude]} />
             </div>
-            <p>Please check the location is correct before submitting.</p>
+            <p className="centered">Please check the location is correct before submitting.</p>
           </Fragment>
         )
       }
@@ -92,7 +97,7 @@ class TripEdit extends Component {
     if(this.state.warned){
       warning = (
         <Fragment>
-          <p>Warning!  This will permanently delete this trip.  Are you sure you wish to proceed?</p>
+          <p className="centered">Warning!  This will permanently delete this trip.  Are you sure you wish to proceed?</p>
           <button onClick={this.handleDelete} className="nav-buttons-white">Yes</button>
         </Fragment>
       )
@@ -101,20 +106,30 @@ class TripEdit extends Component {
     if(!this.state.confirmed){
       return (
         <Fragment>
-          <h3>Edit</h3>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="location">Trip Location:</label>
-            <input type="text"
-              name="location"
-              onChange={this.handleChange}
-              value={this.state.trip.location} />
-            <button onClick={this.findLocation}>Find Location</button>
-            {map()}
-            <p>{this.state.submissionError}</p>
-            <input type="submit" value="Update" />
-          </form>
-          <button onClick={this.handleWarning} className="nav-buttons-white">Delete Trip</button>
-          {warning}
+          <h3 className="form-heading">Edit</h3>
+          <div className="form-container">
+            <form className="form-content" onSubmit={this.handleSubmit}>
+              <div className="form-item">
+                <label htmlFor="location">Trip Location:</label>
+                <input type="text"
+                  name="location"
+                  onChange={this.handleChange}
+                  value={this.state.trip.location} />
+              </div>
+              <div className="buttons-centered">
+                <button onClick={this.findLocation} className="nav-buttons-white" type="button">Find Location</button>
+              </div>
+              {map()}
+              <p className="centered">{this.state.submissionError}</p>
+              <div className="buttons-centered">
+                <input type="submit" value="Update" className="nav-buttons-green" />
+              </div>
+              <div className="buttons-centered">
+                <button onClick={this.handleWarning} className="nav-buttons-white" type="button">Delete Trip</button>
+              </div>
+              {warning}
+            </form>
+          </div>
         </Fragment>
       )
     }else{

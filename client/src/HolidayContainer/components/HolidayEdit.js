@@ -103,7 +103,7 @@ class HolidayEdit extends Component {
             <h1 className="container-title">Edit Holiday</h1>
           </div>
           <div className="form-container">
-            <form onSubmit={this.handleSubmit} classname="form-content">
+            <form onSubmit={this.handleSubmit} className="form-content">
               <div className="form-item">
                 <label htmlFor="title">Holiday Title:</label>
                 <input type="text"
