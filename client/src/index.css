@@ -747,3 +747,13 @@ label.normal-weight {
   align-self: center;
   margin: 0 0 200px 0;
 }
+
+.comment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid grey;
+    padding: 5px 20px;
+    margin: 0px;
+}
