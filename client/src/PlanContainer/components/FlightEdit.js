@@ -50,8 +50,11 @@ class FlightEdit extends Component {
     if(this.state.warned){
       warning = (
         <Fragment>
-          <p>Warning!  This will permanently delete this plan.  Are you sure you wish to proceed?</p>
-          <button onClick={this.handleDelete} className="nav-buttons-white">Yes</button>
+          <p className="centered">Warning!  This will permanently delete this plan.</p>
+          <p className="centered">Are you sure you wish to proceed?</p>
+          <div className="buttons-centered">
+            <button onClick={this.handleDelete} className="nav-buttons-white">Yes</button>
+          </div>
         </Fragment>
       )
     }
@@ -59,24 +62,40 @@ class FlightEdit extends Component {
     if(!this.state.confirmed){
       return (
         <Fragment>
-          <h4>Flight</h4>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="date">Date:</label>
-            <input type="date" name="date" onChange={this.handleChange} value={this.state.flight.date} /><br />
-            <label htmlFor="bookingConfirmation">Booking Confirmation:</label>
-            <input type="text" name="bookingConfirmation" onChange={this.handleChange} value={this.state.flight.bookingConfirmation} /><br />
-            <label htmlFor="departureAirport">Departure Airport:</label>
-            <input type="text" name="departureAirport" onChange={this.handleChange} value={this.state.flight.departureAirport} /><br />
-            <label htmlFor="arrivalAirport">Arrival Airport:</label>
-            <input type="text" name="arrivalAirport" onChange={this.handleChange} value={this.state.flight.arrivalAirport} /><br />
-            <label htmlFor="departureTime">Departure Time:</label>
-            <input type="text" name="departureTime" onChange={this.handleChange} value={this.state.flight.departureTime} /><br />
-            <label htmlFor="arrivalTime">Arrival Time:</label>
-            <input type="text" name="arrivalTime" onChange={this.handleChange} value={this.state.flight.arrivalTime} /><br />
-            <input type="submit" value="Update" />
-          </form>
-          <button onClick={this.handleWarning} className="nav-buttons-white">Delete Plan</button>
-          {warning}
+          <div className="form-container">
+            <form className="form-content" onSubmit={this.handleSubmit}>
+              <h3 className="form-heading">Edit Flight</h3>
+              <div className="form-item">
+                <label htmlFor="date">Date:</label>
+                <input type="date" name="date" onChange={this.handleChange} value={this.state.flight.date} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="bookingConfirmation">Booking Confirmation:</label>
+                <input type="text" name="bookingConfirmation" onChange={this.handleChange} value={this.state.flight.bookingConfirmation} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="departureAirport">Departure Airport:</label>
+                <input type="text" name="departureAirport" onChange={this.handleChange} value={this.state.flight.departureAirport} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="arrivalAirport">Arrival Airport:</label>
+                <input type="text" name="arrivalAirport" onChange={this.handleChange} value={this.state.flight.arrivalAirport} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="departureTime">Departure Time:</label>
+                <input type="text" name="departureTime" onChange={this.handleChange} value={this.state.flight.departureTime} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="arrivalTime">Arrival Time:</label>
+                <input type="text" name="arrivalTime" onChange={this.handleChange} value={this.state.flight.arrivalTime} /><br />
+              </div>
+              <div className="buttons-centered">
+                <input type="submit" className="nav-buttons-green" value="Update" />
+                <button onClick={this.handleWarning} className="nav-buttons-white">Delete Plan</button>
+              </div>
+              {warning}
+            </form>
+          </div>
         </Fragment>
       )
     }else{

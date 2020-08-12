@@ -91,7 +91,6 @@ class AccommodationEdit extends Component {
               </div>
               {warning}
             </form>
-
           </div>
         </Fragment>
       )

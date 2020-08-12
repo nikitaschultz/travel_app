@@ -50,8 +50,11 @@ class EventEdit extends Component {
     if(this.state.warned){
       warning = (
         <Fragment>
-          <p>Warning!  This will permanently delete this plan.  Are you sure you wish to proceed?</p>
+        <p className="centered">Warning!  This will permanently delete this plan.</p>
+        <p className="centered">Are you sure you wish to proceed?</p>
+        <div className="buttons-centered">
           <button onClick={this.handleDelete} className="nav-buttons-white">Yes</button>
+        </div>
         </Fragment>
       )
     }
@@ -59,20 +62,32 @@ class EventEdit extends Component {
     if(!this.state.confirmed){
       return (
         <Fragment>
-          <h4>Event</h4>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="date">Date:</label>
-            <input type="date" name="date" onChange={this.handleChange} value={this.state.event.date} /><br />
-            <label htmlFor="bookingConfirmation">Booking Confirmation:</label>
-            <input type="text" name="bookingConfirmation" onChange={this.handleChange} value={this.state.event.bookingConfirmation} /><br />
-            <label htmlFor="name">Name:</label>
-            <input type="text" name="name" onChange={this.handleChange} value={this.state.event.name} /><br />
-            <label htmlFor="location">Location:</label>
-            <input type="text" name="location" onChange={this.handleChange} value={this.state.event.location} /><br />
-            <input type="submit" value="Update" />
-          </form>
-          <button onClick={this.handleWarning} className="nav-buttons-white">Delete Plan</button>
-          {warning}
+          <div className="form-container">
+            <form className="form-content" onSubmit={this.handleSubmit}>
+              <h3 className="form-heading">Edit Event</h3>
+              <div className="form-item">
+                <label htmlFor="date">Date:</label>
+                <input type="date" name="date" onChange={this.handleChange} value={this.state.event.date} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="bookingConfirmation">Booking Confirmation:</label>
+                <input type="text" name="bookingConfirmation" onChange={this.handleChange} value={this.state.event.bookingConfirmation} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="name">Name:</label>
+                <input type="text" name="name" onChange={this.handleChange} value={this.state.event.name} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="location">Location:</label>
+                <input type="text" name="location" onChange={this.handleChange} value={this.state.event.location} /><br />
+              </div>
+              <div className="buttons-centered">
+                <input className="nav-buttons-green" type="submit" value="Update" />
+                <button onClick={this.handleWarning} className="nav-buttons-white">Delete Plan</button>
+              </div>
+              {warning}
+            </form>
+          </div>
         </Fragment>
       )
     }else{

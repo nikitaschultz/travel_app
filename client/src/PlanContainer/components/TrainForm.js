@@ -65,7 +65,7 @@ class TrainForm extends Component {
                 <input type="text" name="arrivalTime" onChange={this.handleChange} value={this.state.train.arrivalTime} /><br />
               </div>
               <div className="buttons-centered">
-                <input type="submit" value="Create" />
+                <input className="nav-buttons-green" type="submit" value="Create" />
               </div>
             </form>
           </div>
