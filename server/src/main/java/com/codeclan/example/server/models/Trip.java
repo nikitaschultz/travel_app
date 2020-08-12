@@ -29,7 +29,7 @@ public class Trip {
     @JoinColumn(name="holiday_id", nullable = false)
     private Holiday holiday;
 
-    @JsonBackReference(value="plans")
+    @JsonIgnoreProperties({"trip"})
     @OneToMany(mappedBy="trip", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Plan> plans;
 

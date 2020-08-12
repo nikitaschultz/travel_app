@@ -82,7 +82,7 @@ class PlanList extends Component {
     return (
       <Fragment>
         <div className="buttons-centered">
-          <Link to={"/plans/new"} className="nav-buttons-green">Add a Plan</Link>
+          <Link to={"/plans/new"} onClick={this.handleAddPlan} className="nav-buttons-green">Add a Plan</Link>
         </div>
         <Timeline className="custom-timeline">
           {planList}
