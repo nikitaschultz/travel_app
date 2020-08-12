@@ -27,7 +27,7 @@ public abstract class Plan {
     @Column(name="booking_confirmation")
     private String bookingConfirmation;
 
-    @JsonManagedReference(value="plans")
+    @JsonIgnoreProperties({"plans"})
     @ManyToOne
     @JoinColumn(name="trip_id", nullable = false)
     private Trip trip;

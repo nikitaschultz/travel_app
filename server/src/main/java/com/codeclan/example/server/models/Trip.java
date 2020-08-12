@@ -33,7 +33,7 @@ public class Trip {
     @OneToMany(mappedBy="trip", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Plan> plans;
 
-    @JsonBackReference(value="comments")
+    @JsonIgnoreProperties({"trip"})
     @OneToMany(mappedBy="trip", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comment> comments;
 
