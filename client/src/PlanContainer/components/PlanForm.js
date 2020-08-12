@@ -58,7 +58,7 @@ class PlanForm extends Component {
         break;
       default:
         form = (
-          <p>Please select a plan type.</p>
+          <p className="plan-form-text">Please select a plan type.</p>
         );
     }
 

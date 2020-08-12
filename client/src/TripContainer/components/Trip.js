@@ -23,10 +23,9 @@ class Trip extends Component {
         </div>
         <h4>{this.props.trip.location}</h4>
         <div className="buttons-centered">
-          <Link to={"/plans/new"} onClick={this.handleAddPlan} className="nav-buttons-green">Add a Plan</Link>
           <Link to={"/trips/" + this.props.trip.id + "/edit"} className="nav-buttons-white">Edit Trip</Link>
         </div>
-        <PlanContainer fetchHolidays={this.props.fetchHolidays} selectedTrip={this.props.selectedTrip} plans={this.props.trip.plans} handleTripSelected={this.props.handleTripSelected} trip={this.props.trip} holiday={this.props.holiday} />
+        <PlanContainer handleTripSelected={this.props.handleTripSelected} fetchHolidays={this.props.fetchHolidays} selectedTrip={this.props.selectedTrip} plans={this.props.trip.plans} handleTripSelected={this.props.handleTripSelected} trip={this.props.trip} holiday={this.props.holiday} />
       </div>
     )
   }

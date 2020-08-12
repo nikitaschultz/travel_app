@@ -50,8 +50,11 @@ class AccommodationEdit extends Component {
     if(this.state.warned){
       warning = (
         <Fragment>
-          <p>Warning!  This will permanently delete this plan.  Are you sure you wish to proceed?</p>
-          <button onClick={this.handleDelete} className="nav-buttons-white">Yes</button>
+          <p className="centered">Warning!  This will permanently delete this plan.</p>
+          <p className="centered">Are you sure you wish to proceed?</p>
+          <div className="buttons-centered">
+            <button onClick={this.handleDelete} className="nav-buttons-white">Yes</button>
+          </div>
         </Fragment>
       )
     }
@@ -59,22 +62,37 @@ class AccommodationEdit extends Component {
     if(!this.state.confirmed){
       return (
         <Fragment>
-          <h4>Accommodation</h4>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="date">Date:</label>
-            <input type="date" name="date" onChange={this.handleChange} value={this.state.accommodation.date} /><br />
-            <label htmlFor="bookingConfirmation">Booking Confirmation:</label>
-            <input type="text" name="bookingConfirmation" onChange={this.handleChange} value={this.state.accommodation.bookingConfirmation} /><br />
-            <label htmlFor="name">Name:</label>
-            <input type="text" name="name" onChange={this.handleChange} value={this.state.accommodation.name} /><br />
-            <label htmlFor="address">Address:</label>
-            <input type="text" name="address" onChange={this.handleChange} value={this.state.accommodation.address} /><br />
-            <label htmlFor="numOfNights">Number of Nights:</label>
-            <input type="number" name="numOfNights" onChange={this.handleChange} value={this.state.accommodation.numOfNights} /><br />
-            <input type="submit" value="Update" />
-          </form>
-          <button onClick={this.handleWarning} className="nav-buttons-white">Delete Plan</button>
-          {warning}
+          <div className="form-container">
+            <form className="form-content" onSubmit={this.handleSubmit}>
+              <h3 className="form-heading">Edit Accommodation</h3>
+              <div className="form-item">
+                <label htmlFor="date">Date:</label>
+                <input type="date" name="date" onChange={this.handleChange} value={this.state.accommodation.date} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="bookingConfirmation">Booking Confirmation:</label>
+                <input type="text" name="bookingConfirmation" onChange={this.handleChange} value={this.state.accommodation.bookingConfirmation} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="name">Name:</label>
+                <input type="text" name="name" onChange={this.handleChange} value={this.state.accommodation.name} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="address">Address:</label>
+                <input type="text" name="address" onChange={this.handleChange} value={this.state.accommodation.address} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="numOfNights">Number of Nights:</label>
+                <input type="number" name="numOfNights" onChange={this.handleChange} value={this.state.accommodation.numOfNights} /><br />
+              </div>
+              <div className="buttons-centered">
+                <input type="submit" className="nav-buttons-green" value="Update" />
+                <button type="button" onClick={this.handleWarning} className="nav-buttons-white">Delete Plan</button>
+              </div>
+              {warning}
+            </form>
+
+          </div>
         </Fragment>
       )
     }else{
