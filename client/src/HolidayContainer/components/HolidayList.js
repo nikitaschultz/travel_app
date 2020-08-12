@@ -17,7 +17,30 @@ const Holidays = (props) => {
     )
   }
 
-	const holidays = props.holidays.map((holiday, index) => {
+  function compare(a, b){
+    if(!a.trips || a.trips.length===0 || !a.trips[0].plans){
+      return 1
+    }
+
+    if(!b.trips ||b.trips.length===0 || !b.trips[0].plans){
+      return -1
+    }
+
+    const aDate = a.trips[0].plans[0].date
+    const bDate = b.trips[0].plans[0].date
+
+    let comparison = 0;
+    if(aDate > bDate){
+      comparison = 1;
+    }else if(aDate < bDate){
+      comparison = -1;
+    }
+    return comparison
+  }
+
+  let sortedHolidays = props.holidays.sort(compare)
+
+	let holidays = sortedHolidays.map((holiday, index) => {
     if(!holiday.published){
       return (
           <li key={index} className="holiday-list-item">

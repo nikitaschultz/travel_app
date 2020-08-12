@@ -54,7 +54,7 @@ class AccommodationForm extends Component {
       )
     }else{
       return (
-        <Confirmation url={"/holidays/" + this.props.holiday.id} heading={false} />
+        <Confirmation url={"/holidays/"} heading={false} />
       )
     }
   }
