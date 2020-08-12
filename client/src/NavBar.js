@@ -29,7 +29,7 @@ const NavBar = (props) => {
           </Link>
         </li>
         <li className="navLink">
-          <Link className="nav-icon" to="/journal" >
+          <Link className="nav-icon" to="/journal/welcome" >
             <Icon icon="book" size="2x" />
           </Link>
         </li>

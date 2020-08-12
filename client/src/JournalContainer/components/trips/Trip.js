@@ -11,7 +11,7 @@ const Trip = (props) => {
       <div className="map-container">
         <LocationMap position={position} />
       </div>
-      <CommentBox selectedTraveller={props.selectedTraveller} comments = {props.trip.comments}/>
+      <CommentBox selectedTraveller={props.selectedTraveller} comments = {props.comments}/>
     </div>
   )
 }

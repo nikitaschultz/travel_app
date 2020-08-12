@@ -3,7 +3,13 @@ import Comment from "./Comment";
 
 
 class CommentList extends Component {
+
+
   render() {
+    if(this.props.comments.length === 0){
+      return null
+    }
+
     const commentNodes = this.props.comments.map(comment => {
       return (
         <Comment author={comment.traveller.name} key={comment.id}>

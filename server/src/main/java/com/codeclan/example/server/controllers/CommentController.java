@@ -18,7 +18,14 @@ public class CommentController {
     CommentRepository commentRepository;
 
     @GetMapping(value="/comments")
-    public ResponseEntity<List<Comment>> getAllComments(){
+    public ResponseEntity<List<Comment>> getAllComments(
+            @RequestParam(required = false, name="travellerId") Long id
+    ){
+
+        if(id != null){
+            return new ResponseEntity<>(commentRepository.findByTripHolidayTravellersId(id), HttpStatus.OK);
+        }
+
         return new ResponseEntity<>(commentRepository.findAll(), HttpStatus.OK);
     }
 
