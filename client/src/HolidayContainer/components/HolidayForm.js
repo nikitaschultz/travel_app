@@ -59,7 +59,7 @@ class HolidayForm extends Component {
         return (
           <li key={index}>
             <input type="checkbox" value={traveller.id} id={traveller.id} onChange={this.handleTravellerChange}></input>
-            <label htmlFor={traveller.id}>{traveller.name}</label>
+            <label className="normal-weight" htmlFor={traveller.id}>{traveller.name}</label>
           </li>
         )
       }else{
@@ -74,19 +74,27 @@ class HolidayForm extends Component {
             <h1 className="container-title">Create A New Holiday</h1>
           </div>
           <br />
-          <p>To create a new holiday, enter the holiday title and click "Create".</p>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="title">Holiday Title:</label>
-            <input type="text"
-              name="title"
-              onChange={this.handleChange}
-              value={this.state.holiday.title}/>
-            <ul className="no-bullet">
-              <label htmlFor="travellers">Travellers:</label>
-              {travellerCheckboxes}
-            </ul>
-            <input type="submit" value="Create" />
-          </form>
+          <p>To create a new holiday, enter the holiday title, select any travellers who are joining you and click "Create".</p>
+          <div className="form-container">
+            <form onSubmit={this.handleSubmit} className="form-content">
+              <div className="form-item">
+                <label htmlFor="title">Holiday Title:</label>
+                <input type="text"
+                  name="title"
+                  onChange={this.handleChange}
+                  value={this.state.holiday.title}/>
+              </div>
+              <div className="form-item">
+                <label htmlFor="travellers">Travellers:</label>
+                <ul className="no-bullet">
+                  {travellerCheckboxes}
+                </ul>
+              </div>
+              <div className="buttons-centered">
+                <input type="submit" value="Create" className="nav-buttons-green" />
+              </div>
+            </form>
+          </div>
         </Fragment>
       )
     }else{

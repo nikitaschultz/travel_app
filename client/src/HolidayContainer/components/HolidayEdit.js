@@ -69,14 +69,14 @@ class HolidayEdit extends Component {
           return (
             <li key={index}>
               <input type="checkbox" defaultChecked={true} value={traveller.id} id={traveller.id} onChange={this.handleTravellerChange} ></input>
-              <label htmlFor={traveller.id}>{traveller.name}</label>
+              <label className="normal-weight" htmlFor={traveller.id}>{traveller.name}</label>
             </li>
           )
         }else{
           return (
             <li key={index}>
               <input type="checkbox" value={traveller.id} id={traveller.id} onChange={this.handleTravellerChange}></input>
-              <label htmlFor={traveller.id}>{traveller.name}</label>
+              <label className="normal-weight" htmlFor={traveller.id}>{traveller.name}</label>
             </li>
           )
         }
@@ -102,20 +102,30 @@ class HolidayEdit extends Component {
           <div className="container-header">
             <h1 className="container-title">Edit Holiday</h1>
           </div>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="title">Holiday Title:</label>
-            <input type="text"
-              name="title"
-              onChange={this.handleChange}
-              value={this.state.holiday.title}/>
-            <ul className="no-bullet">
-              <label htmlFor="travellers">Travellers:</label>
-              {travellerCheckboxes}
-            </ul>
-            <button type="submit" className="nav-buttons-green">Save</button>
-          </form>
-          <button onClick={this.handleWarning} className="nav-buttons-white">Delete Holiday</button>
-          {warning}
+          <div className="form-container">
+            <form onSubmit={this.handleSubmit} classname="form-content">
+              <div className="form-item">
+                <label htmlFor="title">Holiday Title:</label>
+                <input type="text"
+                  name="title"
+                  onChange={this.handleChange}
+                  value={this.state.holiday.title}/>
+              </div>
+              <div className="form-item">
+                <label htmlFor="travellers">Travellers:</label>
+                <ul className="no-bullet">
+                  {travellerCheckboxes}
+                </ul>
+              </div>
+              <div className="buttons-centered">
+                <button className="nav-buttons-green" type="submit" className="nav-buttons-green">Save</button>
+              </div>
+            </form>
+          </div>
+          <div className="buttons-centered">
+            <button onClick={this.handleWarning} className="nav-buttons-white">Delete Holiday</button>
+            {warning}
+          </div>
         </Fragment>
       )
     }else{

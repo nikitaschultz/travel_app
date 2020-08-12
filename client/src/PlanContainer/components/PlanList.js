@@ -26,7 +26,7 @@ const PlanList = ({plans, handleTripSelected, trip}) => {
     return comparison
   }
 
-  let sortedPlans = plans.sort(compare) 
+  let sortedPlans = plans.sort(compare)
 
   planList = sortedPlans.map((plan, index) => {
     switch(plan.planType){
@@ -65,14 +65,14 @@ const PlanList = ({plans, handleTripSelected, trip}) => {
       default:
         return null
       }
-  })
-}
+    })
+  }
 
-    return (
-      <Timeline className="custom-timeline">
-        {planList}
-      </Timeline>
-    )
+  return (
+    <Timeline className="custom-timeline">
+      {planList}
+    </Timeline>
+  )
 
 }
 

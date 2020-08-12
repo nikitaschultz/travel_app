@@ -408,6 +408,7 @@ a.nav-icon:hover, a.nav-icon:active, a.nav-icon:focus{
 ul.no-bullet {
     list-style-type: none;
     padding-inline-start: 0px;
+    text-align: left;
 }
 
 li.nav-item{
@@ -656,6 +657,7 @@ h1.container-title {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  width: 100%
 }
 
 .confirmation-screen {
@@ -664,4 +666,57 @@ h1.container-title {
   align-items: center;
   justify-content: center;
   padding: 30vh 0 0 0;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  margin: 5px;
+  min-width: 300px;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 2px;
+}
+
+.form-heading {
+  font-size: 15px;
+  color: grey;
+}
+
+input[type=text] {
+  min-width: 280px;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+  left: 0;
+}
+
+label {
+  font-weight: bold;
+}
+
+label.normal-weight {
+  font-weight: normal;
+}
+
+.centered {
+  text-align: center;
+  align-items: center;
 }
