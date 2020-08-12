@@ -50,6 +50,7 @@ class MainContainer extends Component {
 
     logOut(){
       this.setState({isSelectingTraveller: true, selectTraveller: null})
+      window.location = "/"
     }
 
     render(){
