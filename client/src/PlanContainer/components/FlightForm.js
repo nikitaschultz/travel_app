@@ -37,22 +37,38 @@ class FlightForm extends Component {
     if(!this.state.confirmed){
       return (
         <Fragment>
-          <h4>Flight</h4>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="date">Date:</label>
-            <input type="date" name="date" onChange={this.handleChange} value={this.state.flight.date} /><br />
-            <label htmlFor="bookingConfirmation">Booking Confirmation:</label>
-            <input type="text" name="bookingConfirmation" onChange={this.handleChange} value={this.state.flight.bookingConfirmation} /><br />
-            <label htmlFor="departureAirport">Departure Airport:</label>
-            <input type="text" name="departureAirport" onChange={this.handleChange} value={this.state.flight.departureAirport} /><br />
-            <label htmlFor="arrivalAirport">Arrival Airport:</label>
-            <input type="text" name="arrivalAirport" onChange={this.handleChange} value={this.state.flight.arrivalAirport} /><br />
-            <label htmlFor="departureTime">Departure Time:</label>
-            <input type="text" name="departureTime" onChange={this.handleChange} value={this.state.flight.departureTime} /><br />
-            <label htmlFor="arrivalTime">Arrival Time:</label>
-            <input type="text" name="arrivalTime" onChange={this.handleChange} value={this.state.flight.arrivalTime} /><br />
-            <input type="submit" value="Create" />
-          </form>
+          <div className="form-container">
+            <form className="form-content" onSubmit={this.handleSubmit}>
+              <h3 className="form-heading">Flight</h3>
+              <div className="form-item">
+                <label htmlFor="date">Date:</label>
+                <input type="date" name="date" onChange={this.handleChange} value={this.state.flight.date} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="bookingConfirmation">Booking Confirmation:</label>
+                <input type="text" name="bookingConfirmation" onChange={this.handleChange} value={this.state.flight.bookingConfirmation} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="departureAirport">Departure Airport:</label>
+                <input type="text" name="departureAirport" onChange={this.handleChange} value={this.state.flight.departureAirport} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="arrivalAirport">Arrival Airport:</label>
+                <input type="text" name="arrivalAirport" onChange={this.handleChange} value={this.state.flight.arrivalAirport} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="departureTime">Departure Time:</label>
+                <input type="text" name="departureTime" onChange={this.handleChange} value={this.state.flight.departureTime} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="arrivalTime">Arrival Time:</label>
+                <input type="text" name="arrivalTime" onChange={this.handleChange} value={this.state.flight.arrivalTime} /><br />
+              </div>
+              <div className="buttons-centered">
+                <input className="nav-buttons-green" type="submit" value="Create" />
+              </div>
+            </form>
+          </div>
         </Fragment>
       )
     }else{

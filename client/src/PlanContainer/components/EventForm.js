@@ -35,18 +35,30 @@ class EventForm extends Component {
     if(!this.state.confirmed){
       return (
         <Fragment>
-          <h4>Event</h4>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="date">Date:</label>
-            <input type="date" name="date" onChange={this.handleChange} value={this.state.event.date} /><br />
-            <label htmlFor="bookingConfirmation">Booking Confirmation:</label>
-            <input type="text" name="bookingConfirmation" onChange={this.handleChange} value={this.state.event.bookingConfirmation} /><br />
-            <label htmlFor="name">Name:</label>
-            <input type="text" name="name" onChange={this.handleChange} value={this.state.event.name} /><br />
-            <label htmlFor="location">Location:</label>
-            <input type="text" name="location" onChange={this.handleChange} value={this.state.event.location} /><br />
-            <input type="submit" value="Create" />
-          </form>
+          <div className="form-container">
+            <form className="form-content"onSubmit={this.handleSubmit}>
+              <h3 className="form-heading">Event</h3>
+              <div className="form-item">
+                <label htmlFor="date">Date:</label>
+                <input type="date" name="date" onChange={this.handleChange} value={this.state.event.date} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="bookingConfirmation">Booking Confirmation:</label>
+                <input type="text" name="bookingConfirmation" onChange={this.handleChange} value={this.state.event.bookingConfirmation} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="name">Name:</label>
+                <input type="text" name="name" onChange={this.handleChange} value={this.state.event.name} /><br />
+              </div>
+              <div className="form-item">
+                <label htmlFor="location">Location:</label>
+                <input type="text" name="location" onChange={this.handleChange} value={this.state.event.location} /><br />
+              </div>
+              <div className="buttons-centered">
+                <input className="nav-buttons-green" type="submit" value="Create" />
+              </div>
+            </form>
+          </div>
         </Fragment>
       )
     }else{

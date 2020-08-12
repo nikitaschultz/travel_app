@@ -696,6 +696,7 @@ h1.container-title {
 .form-heading {
   font-size: 15px;
   color: grey;
+  align-self: center;
 }
 
 input[type=text] {
