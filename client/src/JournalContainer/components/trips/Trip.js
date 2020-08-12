@@ -4,7 +4,7 @@ import CommentBox from '../../containers/CommentBox.js'
 
 
 const Trip = (props) => {
-  const position = [props.trip.latitude, -props.trip.longitude];
+  const position = [props.trip.latitude, props.trip.longitude];
 
   return (
     <div className="trip">

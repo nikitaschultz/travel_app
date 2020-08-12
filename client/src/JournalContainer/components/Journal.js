@@ -1,11 +1,15 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Journal = ({holiday}) => {
 
   if (!holiday){
-    return "Loading..."
+    return (
+      <div className="confirmation-screen">
+        <p>Oops! Looks like you've not published any holidays to your journal yet.</p>
+        <p>Use the holiday page to publish some holidays to your journal.</p>
+      </div>
+    )
   }
 
   let locations = "";

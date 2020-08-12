@@ -19,7 +19,7 @@ class CommentList extends Component {
     });
 
     return (
-      <ul className="comment-list">
+      <ul className="no-bullet">
         {commentNodes}
       </ul>
     );
