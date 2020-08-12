@@ -14,12 +14,30 @@ class HolidayForm extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTravellerChange = this.handleTravellerChange.bind(this);
   }
 
   componentDidMount(){
     let holiday = this.state.holiday;
     holiday.travellers.push(this.props.selectedTraveller);
     this.setState({holiday: holiday});
+  }
+
+  handleTravellerChange(event){
+    const id = event.target.value;
+    const traveller = this.props.findTravellerById(id);
+    let holiday = this.state.holiday;
+
+    if(event.target.checked === true){
+      holiday.travellers.push(traveller);
+    }else{
+      const index = holiday.travellers.findIndex((foundTraveller) => {
+        return foundTraveller.id === traveller.id
+      })
+      holiday.travellers.splice(index, 1);
+    }
+
+    this.setState({holiday: holiday})
   }
 
   handleChange(event){
@@ -36,6 +54,19 @@ class HolidayForm extends Component {
   }
 
   render(){
+    let travellerCheckboxes = this.props.travellers.map((traveller, index) => {
+      if(traveller.id !== this.props.selectedTraveller.id){
+        return (
+          <li key={index}>
+            <input type="checkbox" value={traveller.id} id={traveller.id} onChange={this.handleTravellerChange}></input>
+            <label htmlFor={traveller.id}>{traveller.name}</label>
+          </li>
+        )
+      }else{
+        return null
+      }
+    })
+
     if(!this.state.confirmed){
       return (
         <Fragment>
@@ -50,6 +81,10 @@ class HolidayForm extends Component {
               name="title"
               onChange={this.handleChange}
               value={this.state.holiday.title}/>
+            <ul className="no-bullet">
+              <label htmlFor="travellers">Travellers:</label>
+              {travellerCheckboxes}
+            </ul>
             <input type="submit" value="Create" />
           </form>
         </Fragment>

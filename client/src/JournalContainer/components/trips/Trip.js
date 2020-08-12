@@ -4,14 +4,14 @@ import CommentBox from '../../containers/CommentBox.js'
 
 
 const Trip = (props) => {
-  const position = [props.trip.latitude, -props.trip.longitude];
+  const position = [props.trip.latitude, props.trip.longitude];
 
   return (
     <div className="trip">
       <div className="map-container">
         <LocationMap position={position} />
       </div>
-      <CommentBox selectedTraveller={props.selectedTraveller} comments = {props.trip.comments}/>
+      <CommentBox selectedTrip={props.trip} selectedTraveller={props.selectedTraveller} comments = {props.comments}/>
     </div>
   )
 }

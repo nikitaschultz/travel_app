@@ -49,7 +49,6 @@ class HolidayContainer extends Component {
     .then((data) => {
       this.setState({holidays: data})
     })
-    console.log("Fetched");
   }
 
   findHolidayById(id){
@@ -93,16 +92,24 @@ class HolidayContainer extends Component {
   }
 
   render(){
+    let unpublishedHolidays = this.state.holidays.filter((holiday) => {
+      return !holiday.published
+    })
+
     return (
       <Router>
         <div className="extended-container">
-        <HolidayNavBar logOut={this.props.logOut} selectedTraveller={this.props.selectedTraveller} />
+        <HolidayNavBar
+          logOut={this.props.logOut}
+          selectedTraveller={this.props.selectedTraveller} />
         <div className="container">
           <Switch>
             <Route exact path="/holidays/new" render={(props) => {
               return <HolidayForm
                 selectedTraveller={this.props.selectedTraveller}
-                onCreate={this.handlePost} />
+                onCreate={this.handlePost}
+                travellers={this.state.travellers}
+                findTravellerById={this.findTravellerById} />
             }} />
             <Route exact path="/holidays/welcome" render={(props) => {
               return <HolidayWelcome />
@@ -143,7 +150,9 @@ class HolidayContainer extends Component {
                 handleTripSelected={this.props.handleTripSelected} />
             }} />
             <Route render={(props) => {
-              return <HolidayList key={Math.random()} holidays={this.state.holidays} />
+              return <HolidayList
+                key={Math.random()}
+                holidays={unpublishedHolidays} />
             }} />
           </Switch>
         </div>

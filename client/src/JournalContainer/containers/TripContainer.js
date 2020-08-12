@@ -4,7 +4,7 @@ import TripList from '../components/trips/TripList.js'
 const TripContainer = (props) => {
 
   return(
-    <TripList selectedTraveller={props.selectedTraveller} trips={props.trips} />
+    <TripList selectedTraveller={props.selectedTraveller} trips={props.trips} comments={props.comments} />
   )
 }
 

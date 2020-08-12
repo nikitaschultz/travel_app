@@ -8,9 +8,13 @@ const TripList = (props) => {
   }
 
   const allTrips = props.trips.map((trip, index) => {
+    let commentList = props.comments.filter((comment) => {
+      return comment.trip.id === trip.id
+    })
+
     return (
       <Panel key={index} header={trip.location} defaultExpanded>
-        <Trip selectedTraveller={props.selectedTraveller} trip={trip} />
+        <Trip selectedTraveller={props.selectedTraveller} trip={trip} comments={commentList} />
       </Panel>
     )
   })
