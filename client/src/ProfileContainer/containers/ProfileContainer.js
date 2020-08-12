@@ -25,7 +25,6 @@ class ProfileContainer extends Component{
     };
 
     handlePut(id, newTraveller){
-
         newTraveller.id = id;
 
         const request = new Request();

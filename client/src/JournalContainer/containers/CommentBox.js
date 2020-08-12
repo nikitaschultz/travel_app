@@ -3,34 +3,38 @@ import CommentList from "../components/comments/CommentList";
 import CommentForm from "../components/comments/CommentForm";
 import Request from '../../helpers/request';
 
-const CommentBox = (props) => {
+class CommentBox extends Component {
+  constructor(props){
+    super(props);
+    this.handlePost = this.handlePost.bind(this);
+  }
 
-   function  handlePost(comment){
-      const request = new Request();
-      const url = '/api/comments'
+  handlePost(comment){
+    const request = new Request();
+    const url = '/api/comments'
+    let trip = this.props.selectedTrip;
+    delete trip.plans;
+    comment.trip = trip;
+    request.post(url, comment)
+    .then(() => {
+      this.props.fetchHolidays();
+      this.props.fetchComments();
+    })
+  }
 
-      let trip = props.selectedTrip;
-      delete trip.plans;
-      comment.trip = trip;
-      console.log(comment);
-      request.post(url, comment)
-      .then(() => {
-
-      })
-    }
-
-
+  render(){
     return (
       <div className="comment-box">
 
-        <CommentForm onCreate={handlePost} selectedTrip={props.selectedTrip} selectedTraveller={props.selectedTraveller} comments = {props.comments} />
+        <CommentForm onCreate={this.handlePost} selectedTrip={this.props.selectedTrip} selectedTraveller={this.props.selectedTraveller} comments = {this.props.comments} holiday={this.props.holiday} />
         <h2>Comments</h2>
-        <CommentList comments={props.comments} />
+        <CommentList comments={this.props.comments} />
 
       </div>
     )
-
+  }
 
 }
+
 
 export default CommentBox;

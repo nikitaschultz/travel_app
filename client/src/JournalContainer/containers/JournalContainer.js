@@ -55,8 +55,6 @@ class JournalContainer extends Component {
     }
     else{
       const published = this.state.holidays.filter(holiday => holiday.published);
-
-
     return (
 
       <Router>
@@ -70,7 +68,7 @@ class JournalContainer extends Component {
               <Route exact path="/journal/:id" render={(props) => {
                 const id = props.match.params.id;
                 const holiday = this.findHolidayById(id);
-                return <JournalDetail selectedTraveller={this.props.selectedTraveller} holiday={holiday} comments={this.state.comments} />
+                return <JournalDetail fetchComments={this.fetchComments} fetchHolidays={this.fetchHolidays} selectedTraveller={this.props.selectedTraveller} holiday={holiday} comments={this.state.comments} />
               }} />
               <Route render={(props) => {
                 return <JournalList holidays={published} comments={this.state.comments} />

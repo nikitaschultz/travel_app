@@ -11,7 +11,7 @@ const Trip = (props) => {
       <div className="map-container">
         <LocationMap position={position} />
       </div>
-      <CommentBox selectedTrip={props.trip} selectedTraveller={props.selectedTraveller} comments = {props.comments}/>
+      <CommentBox fetchComments={props.fetchComments} holiday={props.holiday} fetchHolidays={props.fetchHolidays} selectedTrip={props.trip} selectedTraveller={props.selectedTraveller} comments = {props.comments}/>
     </div>
   )
 }

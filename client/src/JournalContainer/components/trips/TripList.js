@@ -14,7 +14,7 @@ const TripList = (props) => {
 
     return (
       <Panel key={index} header={trip.location} defaultExpanded>
-        <Trip selectedTraveller={props.selectedTraveller} trip={trip} comments={commentList} />
+        <Trip fetchComments={props.fetchComments} fetchHolidays={props.fetchHolidays} selectedTraveller={props.selectedTraveller} trip={trip} comments={commentList} holiday={props.holiday} />
       </Panel>
     )
   })
