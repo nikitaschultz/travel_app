@@ -2,12 +2,12 @@
 ## Prerequisites:
 - npm
 - IntelliJ
-- Google Cloud API Key
+- Google Cloud API Key (with Geocoding API enabled)
 
 ## Project setup 
 - Clone the project to your desired location
 - Open the server folder in IntelliJ
-- Run the "ServerApplication" file contained in _src/main/java/com.codeclan.example.server_
+- Run the "ServerApplication.java" file contained in _src/main/java/com.codeclan.example.server_
   - (You may need to reload all maven projects first)
 - Run the following command in the client folder
 ```
@@ -25,5 +25,4 @@ npm run start
 
 ## Navigating the Project
 - To begin, select a traveller from the dropdown and click _Enter_
-- 
-- 
+- Use the icons on the left to navigate between Home, Profile, Holidays and Journal
